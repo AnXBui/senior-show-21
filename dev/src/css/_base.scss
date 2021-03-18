@@ -1,0 +1,45 @@
+/* =============
+    Base
+============= */
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  margin-inline-end: 0;
+  margin-inline-start: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  color: var(--text-color);
+}
+
+.flexBetween{
+  display: flex;
+  justify-content: space-between;
+}

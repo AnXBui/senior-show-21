@@ -1,0 +1,2 @@
+(self.webpackChunkgatsby_strapi_starter=self.webpackChunkgatsby_strapi_starter||[]).push([[682],{5518:function(t,e,a){"use strict";a.r(e);var r=a(7294);a(5298),a(5444),a(2484),a(1496);e.default=function(){return r.createElement("h2",null,"about page")}}}]);
+//# sourceMappingURL=component---src-pages-about-js-74fe78483945bad601d5.js.map

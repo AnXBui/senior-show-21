@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_info_additional_infos",
+  "info": {
+    "name": "additional_info",
+    "icon": "font",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
