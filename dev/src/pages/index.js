@@ -3,14 +3,14 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import Services from "../components/Services"
-import Artworks from "../components/Artworks"
+import Seniors from "../components/Seniors"
 import Projects from "../components/Projects"
 import Blogs from "../components/Blogs"
 export default () => {
   return <Layout>
     <Hero/>
     <Services/>
-    <Artworks/>
+    <Seniors/>
   </Layout>
 }
 // ...GatsbyImageSharpFluid
