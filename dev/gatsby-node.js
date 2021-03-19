@@ -25,7 +25,6 @@
         
                 if (fileNode) {
                   image.localFile___NODE = fileNode.id;
-                  console.log(fileNode);
                 }
               }       
          }

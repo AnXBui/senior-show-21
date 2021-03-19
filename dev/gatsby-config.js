@@ -66,6 +66,18 @@ module.exports = {
         duration: 250
       }
     },
+    // {
+    //   resolve: `gatsby-plugin-layout`,
+    //   options: {
+    //     component: require.resolve(`./src/components/Layout.js`),
+    //   },
+    // },
+    {
+      resolve: "gatsby-plugin-transition-link",
+      options: {
+          // layout: require.resolve(`./src/components/Layout.js`)
+        }
+    },
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,

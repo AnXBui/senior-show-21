@@ -4,6 +4,8 @@ import { FaAlignRight } from "react-icons/fa"
 import PageLinks from "../constants/links"
 import { graphql, Link } from "gatsby"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
+import AniLink from "gatsby-plugin-transition-link/AniLink";
+
 // import scrollToElement from 'scroll-to-element';
 
 
@@ -27,9 +29,10 @@ gsap.registerPlugin(ScrollToPlugin);
 const Navbar = ({location}) => {
   return <nav className='nav'>
     <div className="navBar">
-      <Link to="/">
+      <AniLink cover to="/" bg="#663399" direction="right"
+  duration={1}>
           <Logo />
-      </Link>
+      </AniLink> 
         
       <button>
             <Burger/>
@@ -39,7 +42,8 @@ const Navbar = ({location}) => {
     <div className="navMenu">
         <AnchorLink to="/#intro" title="Intro"/>
         <AnchorLink to="/#students" title="Students" />
-        {/* <AnchorLink to="/#students" title="Students"/> */}
+        <AnchorLink to="/#socialmedia" title="Social Media" />
+        <AnchorLink to="/#info" title="More Info" />
     </div>
   </nav>
 }

@@ -11,12 +11,10 @@ var slugify = require('slugify')
 const Project = ({data}) => {
 
     const {title, description, projecTag, gallery} = data;
-    // console.log(gallery)
 
     const images = gallery.map((image, index) => {
        
         const src = getImage(image.localFile);
-        console.log(image)
 
         if (image.localFile){
             return <li key={index}>

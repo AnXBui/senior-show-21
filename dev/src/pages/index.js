@@ -7,12 +7,16 @@ import Awards from "../components/Awards"
 import Seniors from "../components/Seniors"
 // import Projects from "../components/Projects"
 // import Blogs from "../components/Blogs"
-export default () => {
+const Home = () => {
   return <Layout>
-    <Hero/>
-    <Message/>
-    <Awards/>
-    <Seniors/>
-  </Layout>
+  <Hero/>
+  <Message/>
+  <Awards/>
+  <Seniors/>
+</Layout>
 }
+export default Home
+
+
+
 // ...GatsbyImageSharpFluid

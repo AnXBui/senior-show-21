@@ -1,17 +1,10 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
-import Layout from "../components/Layout"
+import { graphql} from "gatsby"
 import SocialIcon from "../components/SocialIcon"
 import Project from "../components/Project"
+import Layout from "../components/Layout"
 
-// import ReactMarkdown from "react-markdown"
-// export const query =  graphql`
-// {
-//   strapiSeniors(name: {eq: $name}) {
-   
-//   }
-// }
-// `
+
 
 export const query = graphql`
   query GetSingleSenior($name: String) {
@@ -95,7 +88,4 @@ const SeniorProfile = ({data}) => {
     </section>
   </Layout>
 }
-
-
-
 export default SeniorProfile
