@@ -1,13 +1,40 @@
 import React from "react"
+import { GatsbyImage , getImage} from "gatsby-plugin-image";
 import PropTypes from "prop-types"
-import { GatsbyImage } from "gatsby-plugin-image";
-import { FaGithubSquare, FaShareSquare } from "react-icons/fa"
-const Project = () => {
-  return <h2>project copmonent
-  </h2>
-  
+import { Link } from "gatsby"
+// import {slugify} from "slugify"
+
+var slugify = require('slugify')
+
+
+
+const Project = ({data}) => {
+
+    const {title, description, projecTag, gallery} = data;
+    // console.log(gallery)
+
+    const images = gallery.map((image, index) => {
+       
+        const src = getImage(image.localFile);
+        console.log(image)
+
+        if (image.localFile){
+            return <li key={index}>
+            <GatsbyImage image={src} alt={title} />
+        </li> 
+        } else 
+        return null;
+       
+      })
+
+
+    return <div>
+        <h3>{title}</h3>
+        <ul>
+            {images}
+        </ul>
+    </div>
 }
 
-Project.propTypes = {}
+export default Project;
 
-export default Project

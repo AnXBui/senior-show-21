@@ -29,6 +29,7 @@ a {
   color: var(--text-color);
   text-decoration: none;
   transition: 0.25s;
+  font-family: "Roboto", sans-serif;
 }
 
 *{
@@ -42,4 +43,8 @@ body{
 .flexBetween{
   display: flex;
   justify-content: space-between;
+}
+
+html,body,main{
+  scroll-behavior: smooth;
 }

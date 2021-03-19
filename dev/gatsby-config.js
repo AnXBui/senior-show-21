@@ -60,6 +60,12 @@ module.exports = {
         }
       }
     },
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        duration: 250
+      }
+    },
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,

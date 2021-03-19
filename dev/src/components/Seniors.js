@@ -50,7 +50,7 @@ const Seniors = () => {
      </li>
    })
 
-  return <section className='artworkCollection'>
+  return <section id="students" className='artworkCollection'>
 
     <h1>Senior Gallery</h1>
 

@@ -28,7 +28,8 @@
       "min": 0
     },
     "video": {
-      "type": "string"
+      "type": "string",
+      "default": "none"
     },
     "gallery": {
       "collection": "file",

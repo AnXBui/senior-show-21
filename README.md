@@ -11,10 +11,16 @@ Exhibition website with interactive playground for Westphal Graphic Design progr
  + Gatsby-strapi to generate dynamic profile page
  + Profile page feature project (single image / hosted video / gallery)
  + Max 10 projects per profile, max 8 images per project or 1 hosted video.
+ + Hosted video only on Vimeo (no ads, no recommendation, minimal brand) with poster image.
+ https://chaseohlson.com/plyr-gatsby-youtube-vimeo 
+ https://dev.to/lukekyl/implementing-medium-s-image-preview-with-gatsby-images-f5b 
+
  + Project feature project description, title, and tag
  + Profile feature link to website, and social media, and short bio
  + Home page feature gallery of profiles
  + Social media thumbnails feature: Facebook & Twitter
+ + Page transititon 
+ https://transitionlink.tylerbarnes.ca/docs/installation/ 
 
 ## Extensive playground
  + This is a progressive enhancement

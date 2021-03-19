@@ -5,18 +5,16 @@
  */
 
  const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
+ const path = require(`path`)
 
  exports.onCreateNode = async ({ node, actions, store, cache }) => {
    const { createNode, createNodeField } = actions;
  
    if (node.internal.type !== null && node.internal.type === "StrapiSeniors") {
-    //    console.log(node.projects_list);
-     for (const project of node.projects_list) {
-        //  console.log(project);
+     for (let project of node.projects_list) {
          if (project.gallery.length > 0) {
 
             for (const image of project.gallery) {
-                // console.log(image);
                 const fileNode = await createRemoteFileNode({
                   url: "http://localhost:1337" + image.url,
                   store,
@@ -34,4 +32,38 @@
    }
  };
  }
+ var slugify = require('slugify')
+
+ // // create pages dynamically
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(`
+  {
+    allStrapiSeniors {
+      nodes {
+        name
+      }
+    }
+  }
+`)
+
+
+
+console.log(result.data.allStrapiSeniors.nodes)
+
+
+result.data.allStrapiSeniors.nodes.forEach(senior => {
+    const slug = slugify(senior.name)
+    createPage({
+      path: `/${slug}`,
+      component: path.resolve(`src/templates/senior-template.js`),
+      context: {
+        name: senior.name,
+      },
+    })
+  })
+}
+
+
+
 

@@ -5,8 +5,8 @@ import Hero from "../components/Hero"
 import Message from "../components/Message"
 import Awards from "../components/Awards"
 import Seniors from "../components/Seniors"
-import Projects from "../components/Projects"
-import Blogs from "../components/Blogs"
+// import Projects from "../components/Projects"
+// import Blogs from "../components/Blogs"
 export default () => {
   return <Layout>
     <Hero/>
