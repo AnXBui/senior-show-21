@@ -1,2 +1,0 @@
-(self.webpackChunkgatsby_strapi_starter=self.webpackChunkgatsby_strapi_starter||[]).push([[7],{2871:function(t,e,r){"use strict";r(7294),r(2484),r(1496),r(5444)},223:function(t,e,r){"use strict";r.r(e);var s=r(7294);r(1636),r(5444),r(2871);e.default=function(){return s.createElement("h2",null,"blog page")}}}]);
-//# sourceMappingURL=component---src-pages-blog-js-a50c193d50f05cd742e9.js.map

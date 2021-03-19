@@ -1,0 +1,43 @@
+{
+  "collectionName": "projects",
+  "info": {
+    "name": "project",
+    "icon": "poll-h",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "project_tag": {
+      "type": "component",
+      "repeatable": true,
+      "component": "projects.project-tag",
+      "required": true
+    },
+    "index": {
+      "type": "integer",
+      "required": true,
+      "default": 0,
+      "min": 0
+    },
+    "video": {
+      "type": "string"
+    },
+    "gallery": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

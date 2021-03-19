@@ -21,7 +21,7 @@ module.exports = {
       options: {
         apiURL: `http://localhost:1337`,
         queryLimit: 1000, // Default to 100
-        contentTypes: [`artworks`],
+        contentTypes: [`seniors`],
         //If using single types place them in this array.
         // singleTypes: [`home-page`],
       },

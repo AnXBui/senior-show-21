@@ -1,2 +1,0 @@
-(self.webpackChunkgatsby_strapi_starter=self.webpackChunkgatsby_strapi_starter||[]).push([[853],{5961:function(t,e,r){"use strict";r(7294),r(2484),r(1496),r(5444)},7744:function(t,e,r){"use strict";r.r(e);var s=r(7294);r(5298),r(5444),r(5961);e.default=function(){return s.createElement("h2",null,"projects page")}}}]);
-//# sourceMappingURL=component---src-pages-projects-js-15c70cf00add291a2564.js.map

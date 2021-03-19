@@ -41,148 +41,175 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
-enum ENUM_ARTWORK_COUNTRY {
-  US
-  USSR
-}
-
-type Artwork {
+type Senior {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  Title: String!
-  Designer: String
-  Date: String!
-  Description: String
-  image: UploadFile
-  additional_info: [ComponentInfoAdditionalInfo]
-  Country: ENUM_ARTWORK_COUNTRY!
+  name: String!
+  bio: String!
+  website: String!
+  signature: UploadFile
+  avatar: UploadFile
+  photo: UploadFile
+  index: Int!
+  projects_list: [ComponentProjectsProject]
+  social_media: [ComponentSocialSocialLink]
   published_at: DateTime
 }
 
-type ArtworkConnection {
-  values: [Artwork]
-  groupBy: ArtworkGroupBy
-  aggregate: ArtworkAggregator
+type SeniorConnection {
+  values: [Senior]
+  groupBy: SeniorGroupBy
+  aggregate: SeniorAggregator
 }
 
-type ArtworkAggregator {
+type SeniorAggregator {
   count: Int
   totalCount: Int
+  sum: SeniorAggregatorSum
+  avg: SeniorAggregatorAvg
+  min: SeniorAggregatorMin
+  max: SeniorAggregatorMax
 }
 
-type ArtworkGroupBy {
-  id: [ArtworkConnectionId]
-  created_at: [ArtworkConnectionCreated_at]
-  updated_at: [ArtworkConnectionUpdated_at]
-  Title: [ArtworkConnectionTitle]
-  Designer: [ArtworkConnectionDesigner]
-  Date: [ArtworkConnectionDate]
-  Description: [ArtworkConnectionDescription]
-  image: [ArtworkConnectionImage]
-  Country: [ArtworkConnectionCountry]
-  published_at: [ArtworkConnectionPublished_at]
+type SeniorAggregatorSum {
+  index: Float
 }
 
-type ArtworkConnectionId {
+type SeniorAggregatorAvg {
+  index: Float
+}
+
+type SeniorAggregatorMin {
+  index: Float
+}
+
+type SeniorAggregatorMax {
+  index: Float
+}
+
+type SeniorGroupBy {
+  id: [SeniorConnectionId]
+  created_at: [SeniorConnectionCreated_at]
+  updated_at: [SeniorConnectionUpdated_at]
+  name: [SeniorConnectionName]
+  bio: [SeniorConnectionBio]
+  website: [SeniorConnectionWebsite]
+  signature: [SeniorConnectionSignature]
+  avatar: [SeniorConnectionAvatar]
+  photo: [SeniorConnectionPhoto]
+  index: [SeniorConnectionIndex]
+  published_at: [SeniorConnectionPublished_at]
+}
+
+type SeniorConnectionId {
   key: ID
-  connection: ArtworkConnection
+  connection: SeniorConnection
 }
 
-type ArtworkConnectionCreated_at {
+type SeniorConnectionCreated_at {
   key: DateTime
-  connection: ArtworkConnection
+  connection: SeniorConnection
 }
 
-type ArtworkConnectionUpdated_at {
+type SeniorConnectionUpdated_at {
   key: DateTime
-  connection: ArtworkConnection
+  connection: SeniorConnection
 }
 
-type ArtworkConnectionTitle {
+type SeniorConnectionName {
   key: String
-  connection: ArtworkConnection
+  connection: SeniorConnection
 }
 
-type ArtworkConnectionDesigner {
+type SeniorConnectionBio {
   key: String
-  connection: ArtworkConnection
+  connection: SeniorConnection
 }
 
-type ArtworkConnectionDate {
+type SeniorConnectionWebsite {
   key: String
-  connection: ArtworkConnection
+  connection: SeniorConnection
 }
 
-type ArtworkConnectionDescription {
-  key: String
-  connection: ArtworkConnection
-}
-
-type ArtworkConnectionImage {
+type SeniorConnectionSignature {
   key: ID
-  connection: ArtworkConnection
+  connection: SeniorConnection
 }
 
-type ArtworkConnectionCountry {
-  key: String
-  connection: ArtworkConnection
+type SeniorConnectionAvatar {
+  key: ID
+  connection: SeniorConnection
 }
 
-type ArtworkConnectionPublished_at {
+type SeniorConnectionPhoto {
+  key: ID
+  connection: SeniorConnection
+}
+
+type SeniorConnectionIndex {
+  key: Int
+  connection: SeniorConnection
+}
+
+type SeniorConnectionPublished_at {
   key: DateTime
-  connection: ArtworkConnection
+  connection: SeniorConnection
 }
 
-input ArtworkInput {
-  Title: String
-  Designer: String
-  Date: String!
-  Description: String
-  image: ID
-  additional_info: [ComponentInfoAdditionalInfoInput]
-  Country: ENUM_ARTWORK_COUNTRY
+input SeniorInput {
+  name: String!
+  bio: String!
+  website: String!
+  signature: ID
+  avatar: ID
+  photo: ID
+  index: Int
+  projects_list: [ComponentProjectsProjectInput]
+  social_media: [ComponentSocialSocialLinkInput]
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
-input editArtworkInput {
-  Title: String
-  Designer: String
-  Date: String
-  Description: String
-  image: ID
-  additional_info: [editComponentInfoAdditionalInfoInput]
-  Country: ENUM_ARTWORK_COUNTRY
+input editSeniorInput {
+  name: String
+  bio: String
+  website: String
+  signature: ID
+  avatar: ID
+  photo: ID
+  index: Int
+  projects_list: [editComponentProjectsProjectInput]
+  social_media: [editComponentSocialSocialLinkInput]
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
-input createArtworkInput {
-  data: ArtworkInput
+input createSeniorInput {
+  data: SeniorInput
 }
 
-type createArtworkPayload {
-  artwork: Artwork
+type createSeniorPayload {
+  senior: Senior
 }
 
-input updateArtworkInput {
+input updateSeniorInput {
   where: InputID
-  data: editArtworkInput
+  data: editSeniorInput
 }
 
-type updateArtworkPayload {
-  artwork: Artwork
+type updateSeniorPayload {
+  senior: Senior
 }
 
-input deleteArtworkInput {
+input deleteSeniorInput {
   where: InputID
 }
 
-type deleteArtworkPayload {
-  artwork: Artwork
+type deleteSeniorPayload {
+  senior: Senior
 }
 
 type UploadFile {
@@ -633,21 +660,86 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-type ComponentInfoAdditionalInfo {
+enum ENUM_COMPONENTPROJECTSPROJECTTAG_TAG {
+  web
+  interactive
+  print
+  packaging
+  exhibition
+  environmental
+  motion
+  branding
+  typography
+  illustration
+}
+
+type ComponentProjectsProjectTag {
   id: ID!
-  text: String!
+  tag: ENUM_COMPONENTPROJECTSPROJECTTAG_TAG
 }
 
-input ComponentInfoAdditionalInfoInput {
-  text: String!
+input ComponentProjectsProjectTagInput {
+  tag: ENUM_COMPONENTPROJECTSPROJECTTAG_TAG
 }
 
-input editComponentInfoAdditionalInfoInput {
+input editComponentProjectsProjectTagInput {
   id: ID
-  text: String
+  tag: ENUM_COMPONENTPROJECTSPROJECTTAG_TAG
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Artwork | ArtworkConnection | ArtworkAggregator | ArtworkGroupBy | ArtworkConnectionId | ArtworkConnectionCreated_at | ArtworkConnectionUpdated_at | ArtworkConnectionTitle | ArtworkConnectionDesigner | ArtworkConnectionDate | ArtworkConnectionDescription | ArtworkConnectionImage | ArtworkConnectionCountry | ArtworkConnectionPublished_at | createArtworkPayload | updateArtworkPayload | deleteArtworkPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentInfoAdditionalInfo
+type ComponentProjectsProject {
+  id: ID!
+  title: String!
+  description: String!
+  project_tag: [ComponentProjectsProjectTag]
+  index: Int!
+  video: String
+  gallery(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input ComponentProjectsProjectInput {
+  title: String!
+  description: String!
+  project_tag: [ComponentProjectsProjectTagInput!]
+  index: Int
+  video: String
+  gallery: [ID]
+}
+
+input editComponentProjectsProjectInput {
+  id: ID
+  title: String
+  description: String
+  project_tag: [editComponentProjectsProjectTagInput]
+  index: Int
+  video: String
+  gallery: [ID]
+}
+
+enum ENUM_COMPONENTSOCIALSOCIALLINK_TYPE {
+  facebook
+  instagram
+  linkedin
+}
+
+type ComponentSocialSocialLink {
+  id: ID!
+  type: ENUM_COMPONENTSOCIALSOCIALLINK_TYPE!
+  link: String!
+}
+
+input ComponentSocialSocialLinkInput {
+  type: ENUM_COMPONENTSOCIALSOCIALLINK_TYPE!
+  link: String!
+}
+
+input editComponentSocialSocialLinkInput {
+  id: ID
+  type: ENUM_COMPONENTSOCIALSOCIALLINK_TYPE
+  link: String
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Senior | SeniorConnection | SeniorAggregator | SeniorAggregatorSum | SeniorAggregatorAvg | SeniorAggregatorMin | SeniorAggregatorMax | SeniorGroupBy | SeniorConnectionId | SeniorConnectionCreated_at | SeniorConnectionUpdated_at | SeniorConnectionName | SeniorConnectionBio | SeniorConnectionWebsite | SeniorConnectionSignature | SeniorConnectionAvatar | SeniorConnectionPhoto | SeniorConnectionIndex | SeniorConnectionPublished_at | createSeniorPayload | updateSeniorPayload | deleteSeniorPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentProjectsProjectTag | ComponentProjectsProject | ComponentSocialSocialLink
 
 input InputID {
   id: ID!
@@ -666,9 +758,9 @@ type AdminUser {
 }
 
 type Query {
-  artwork(id: ID!, publicationState: PublicationState): Artwork
-  artworks(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Artwork]
-  artworksConnection(sort: String, limit: Int, start: Int, where: JSON): ArtworkConnection
+  senior(id: ID!, publicationState: PublicationState): Senior
+  seniors(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Senior]
+  seniorsConnection(sort: String, limit: Int, start: Int, where: JSON): SeniorConnection
   files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
@@ -685,9 +777,9 @@ type Query {
 }
 
 type Mutation {
-  createArtwork(input: createArtworkInput): createArtworkPayload
-  updateArtwork(input: updateArtworkInput): updateArtworkPayload
-  deleteArtwork(input: deleteArtworkInput): deleteArtworkPayload
+  createSenior(input: createSeniorInput): createSeniorPayload
+  updateSenior(input: updateSeniorInput): updateSeniorPayload
+  deleteSenior(input: deleteSeniorInput): deleteSeniorPayload
 
   """Delete one file"""
   deleteFile(input: deleteFileInput): deleteFilePayload

@@ -37,6 +37,7 @@
     "reactstrap-form-fields": "^1.0.8",
     "reactstrap-json-nav": "^1.0.2",
     "slick-carousel": "^1.8.1",
+    "strapi-provider-upload-local": "^3.5.3",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {

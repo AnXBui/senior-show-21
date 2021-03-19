@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_projects_project_tags",
+  "info": {
+    "name": "project_tag",
+    "icon": "hashtag"
+  },
+  "options": {},
+  "attributes": {
+    "tag": {
+      "type": "enumeration",
+      "enum": [
+        "web",
+        "interactive",
+        "print",
+        "packaging",
+        "exhibition",
+        "environmental",
+        "motion",
+        "branding",
+        "typography",
+        "illustration"
+      ]
+    }
+  }
+}

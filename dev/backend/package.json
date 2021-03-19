@@ -1,5 +1,5 @@
 {
-  "name": "arthistory",
+  "name": "seniorshow",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -9,7 +9,6 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
     "knex": "0.21.18",
     "sqlite3": "5.0.0",
@@ -22,6 +21,7 @@
     "strapi-plugin-graphql": "3.5.2",
     "strapi-plugin-upload": "3.5.2",
     "strapi-plugin-users-permissions": "3.5.2",
+    "strapi-provider-upload-local": "^3.5.2",
     "strapi-utils": "3.5.2"
   },
   "author": {

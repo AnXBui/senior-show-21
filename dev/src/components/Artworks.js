@@ -6,44 +6,44 @@ import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
-const query = graphql`
-{
-  allStrapiArtworks {
-    nodes {
-      id
-      Title
-      Designer
-      Date
-      Description
-      additional_info {
-        id
-        text
-      }
-      Country
-      image {
-        childImageSharp {
-          fluid (maxWidth: 2048, quality: 80){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  }
-}
-`
+// const query = graphql`
+// {
+//   allStrapiArtworks {
+//     nodes {
+//       id
+//       Title
+//       Designer
+//       Date
+//       Description
+//       additional_info {
+//         id
+//         text
+//       }
+//       Country
+//       image {
+//         childImageSharp {
+//           fluid (maxWidth: 2048, quality: 80){
+//             ...GatsbyImageSharpFluid
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// `
 
 
 const Artworks = () => {
 
 
-   const data = useStaticQuery(query)
-   const {allStrapiArtworks:{nodes: artworks}} = data
+  //  const data = useStaticQuery(query)
+  //  const {allStrapiArtworks:{nodes: artworks}} = data
    
-   console.log(artworks[0]);
+  //  console.log(artworks[0]);
 
   return <section className='artworkCollection'>
 
-    {artworks.map((item, index)=> {
+    {/* {artworks.map((item, index)=> {
       const {Title,Designer,Date,Description,Country,id, additional_info, image} = item;
       console.log(image.childImageSharp.fluid);
       return <div className="artworkItem" key={index}>
@@ -55,7 +55,6 @@ const Artworks = () => {
                   }}
                   className='imageContent'/>
         </div>
-        {/* <Image /> */}
         <div className="artworkInfo">
         <h3>{Title}</h3>
         <p>{Designer}</p>
@@ -73,7 +72,7 @@ const Artworks = () => {
           <p>{Description}</p>
       </div>
       </div>
-    })}
+    })} */}
  
     </section>
 }
