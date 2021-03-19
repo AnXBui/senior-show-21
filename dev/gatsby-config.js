@@ -56,7 +56,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Space Grotesk:300,500,800']
+          families: ['Roboto:100,400,800', 'Krona One']
         }
       }
     },

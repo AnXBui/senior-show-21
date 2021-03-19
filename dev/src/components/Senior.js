@@ -6,7 +6,6 @@ import { Link } from "gatsby"
 
 
 const Senior = ({data}) => {
-    console.log(data);
     const avatar = getImage(data.avatar)
     const photo = getImage(data.photo)
     // const signature = getImage(data.blogPost.avatar)
