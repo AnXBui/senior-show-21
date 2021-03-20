@@ -3,6 +3,8 @@ import { graphql} from "gatsby"
 import SocialIcon from "../components/SocialIcon"
 import Project from "../components/Project"
 import Layout from "../components/Layout"
+import { GatsbyImage , getImage} from "gatsby-plugin-image";
+
 
 
 
@@ -55,6 +57,9 @@ const SeniorProfile = ({data}) => {
   // console.log(data.senior);
   const {senior} = data;
   const {name, bio,social_media,website, projects_list} = senior;
+  const avatar = getImage(senior.avatar);
+  const signature = getImage(senior.signature);
+
 
   const socialLinks = social_media.map((social, index) => {
     return <li key={index}>
@@ -64,27 +69,32 @@ const SeniorProfile = ({data}) => {
 
   const projects = projects_list.map((project, index) => {
     return <li key={index}>
-      <h1>{project.title}</h1>
+      {/* <h1>{project.title}</h1> */}
       <Project data={project}/>
     </li>
   })
 
   // const {allStrapiSeniors:{nodes: seniors}} = data
 
-  return <Layout>
-    <aside>
-        <h1>{name}</h1>
-        <p>{bio}</p>
+  console.log(name);
+
+  return <Layout className='seniorProfile'>
+    <aside className='seniorInfo'>
+      <div className='stickyInfo'>
+      <GatsbyImage className='seniorAvatar' image={avatar} alt={name + " avatar"} />
+        {/* <h1>{name}</h1> */}
+        <GatsbyImage className='seniorSignature' image={signature} alt={name + " signature"} />
+        {/* <p>{bio}</p> */}
         <a href={website}>{website}</a>
         <ul>
           {socialLinks}
         </ul>
+      </div> 
     </aside>
-    <section>
+    <section className='seniorProjects'>
       <ul>
         {projects}
       </ul>
-
     </section>
   </Layout>
 }

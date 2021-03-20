@@ -1,0 +1,54 @@
+/* =============
+    Profile
+============= */
+
+.seniorProfile{
+    @include lg{
+        display: grid;
+        width: 100vw;
+        grid-template-columns: 6fr 25fr;
+    }
+}
+
+
+.seniorInfo{
+    height: 100%;
+    position: relative;
+    
+    &::after{
+        content:'';
+        width: 2.5rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: $rainbow;
+        border-right: 3px solid $dark;
+        border-left: 3px solid $dark;
+    }
+
+    .stickyInfo{
+        height: fit-content;
+        padding: 1.5rem;
+
+        @include lg{
+            position: sticky;
+            top: 3.75rem;
+            margin-right: 2.5rem;
+        }
+    }
+}
+
+.seniorProjects{
+    >ul{
+        width: 100%;
+        padding: 4rem;
+        row-gap: 2rem;
+        // display: grid;
+        // grid-template-columns: 2rem 1fr 2rem;;
+    }
+
+    .projectSingle{
+        
+    }
+}

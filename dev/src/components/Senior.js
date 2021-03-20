@@ -25,7 +25,7 @@ const Senior = ({data}) => {
   duration={1}>
             <h3>{data.name}</h3>
             {/* <p>{slug}</p> */}
-            <GatsbyImage image={avatar} alt="random alt" />
+            <GatsbyImage image={avatar} alt={data.name + " avatar"} />
         </AniLink>          
         
     </div>

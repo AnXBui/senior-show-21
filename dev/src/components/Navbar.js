@@ -29,22 +29,24 @@ gsap.registerPlugin(ScrollToPlugin);
 const Navbar = ({location}) => {
   return <nav className='nav'>
     <div className="navBar">
-      <AniLink cover to="/" bg="#663399" direction="right"
+      <AniLink cover to="/" bg="#663399" className='navLogo' direction="right"
   duration={1}>
           <Logo />
       </AniLink> 
         
-      <button>
+      <button className='navButton'>
             <Burger/>
       </button>
+
+      <div className="navMenu">
+        <AnchorLink className='navMenuItem' to="/#intro" title="intro"/>
+        <AnchorLink className='navMenuItem' to="/#students" title="students" />
+        <AnchorLink className='navMenuItem' to="/#socialmedia" title="social media" />
+        <AnchorLink className='navMenuItem' to="/#info" title="more info" />
+      </div>
     </div>
 
-    <div className="navMenu">
-        <AnchorLink to="/#intro" title="Intro"/>
-        <AnchorLink to="/#students" title="Students" />
-        <AnchorLink to="/#socialmedia" title="Social Media" />
-        <AnchorLink to="/#info" title="More Info" />
-    </div>
+    
   </nav>
 }
 

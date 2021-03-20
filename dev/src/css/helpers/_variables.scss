@@ -1,0 +1,33 @@
+/* =============
+    Variables
+============= */
+
+// Define the breakpoints
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Colors
+$light: #EDE0DB;
+$light2: #E4C9BE;
+$grey: #AA948E;
+$dark: #2E2D2C;
+$red: #EC6B5B;
+$yellow: #F7B125;
+$green: #02B49C;
+$pink: #ED93A8;
+$navy: #1075BB;
+$blue: #3EC1DF;
+$line: 2px;
+
+$rainbow: linear-gradient(to bottom, $red 0%, $yellow 20%, green 40%, $blue 60%, $navy 80%, $pink 100%);
+
+$gradientLight: linear-gradient(to top, $light 0%, rgba($light, 0.45) 100%);

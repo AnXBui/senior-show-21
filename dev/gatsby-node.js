@@ -63,6 +63,21 @@ result.data.allStrapiSeniors.nodes.forEach(senior => {
   })
 }
 
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === "build-html" || stage === "develop-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: "/gatsby-plugin-transition-link/",
+            use: loaders.null(),
+          },
+        ],
+      },
+    })
+  }
+}
+
 
 
 

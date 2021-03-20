@@ -1,0 +1,73 @@
+/* =============
+    Header
+============= */
+
+.tl-wrapper{
+    height: 100%;
+}
+
+.nav{
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 3.75rem;
+    width: 100vw;
+    z-index: 100;
+    box-sizing: content-box;
+    background-color: $light;
+    border-bottom: $line solid $dark;
+
+    .navBar{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .navLogo{
+        height: 100%;
+        width: 3.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navButton{
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include lg{
+            display: none;
+        }
+
+        >svg{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .navMenu{
+        display: none;
+
+        @include lg{
+            display: block;
+        }
+    }
+
+    .navMenuItem{
+        margin-left: 2rem;
+    }
+}
+
+
+.tl-edges{
+    overflow-x:visible;
+}
+
+
+

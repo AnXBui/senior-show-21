@@ -56,7 +56,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Roboto:100,400,800', 'Krona One']
+          families: ['Roboto Mono:100,400,800', 'Krona One']
         }
       }
     },

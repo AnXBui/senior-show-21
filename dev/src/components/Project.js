@@ -26,8 +26,8 @@ const Project = ({data}) => {
       })
 
 
-    return <div>
-        <h3>{title}</h3>
+    return <div className='projectSingle'>
+        {/* <h3>{title}</h3> */}
         <ul>
             {images}
         </ul>
