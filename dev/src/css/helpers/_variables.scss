@@ -28,6 +28,6 @@ $navy: #1075BB;
 $blue: #3EC1DF;
 $line: 2px;
 
-$rainbow: linear-gradient(to bottom, $red 0%, $yellow 20%, green 40%, $blue 60%, $navy 80%, $pink 100%);
+$rainbow: repeating-linear-gradient(to bottom, $red 0vh, $yellow 20vh, green 40vh, $blue 60vh, $navy 80vh, $pink 100vh, $red 120vh);
 
 $gradientLight: linear-gradient(to top, $light 0%, rgba($light, 0.45) 100%);

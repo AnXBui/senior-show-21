@@ -2,6 +2,22 @@
     Profile
 ============= */
 
+div[data-rmiz-wrap='visible'],
+div[data-rmiz-wrap='hidden'] {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+
+    img{
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+    }
+}
+
 .seniorProfile{
     @include lg{
         display: grid;
@@ -17,7 +33,7 @@
     
     &::after{
         content:'';
-        width: 2.5rem;
+        width: 10%;
         height: 100%;
         position: absolute;
         top: 0;
@@ -40,6 +56,9 @@
 }
 
 .seniorProjects{
+    @include lg{
+        max-width: 80.6vw;
+    }
     >ul{
         width: 100%;
         padding: 4rem;
@@ -49,6 +68,7 @@
     }
 
     .projectSingle{
+        margin-bottom: 4rem;
         
     }
 }

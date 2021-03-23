@@ -38,7 +38,7 @@ export const query = graphql`
         gallery {
           localFile {
             childImageSharp {
-              gatsbyImageData(formats: [AUTO, WEBP, AVIF], sizes: "", layout: FULL_WIDTH)
+              gatsbyImageData(formats: [AUTO, WEBP], sizes: "", layout: FULL_WIDTH)
             }
           }
           caption
