@@ -1,8 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql} from "gatsby"
 import SocialIcon from "../components/SocialIcon"
 import Project from "../components/Project"
-import Layout from "../components/Layout"
+// import Layout from "../components/Layout"
 import { GatsbyImage , getImage} from "gatsby-plugin-image";
 
 
@@ -60,6 +60,8 @@ const SeniorProfile = ({data}) => {
   const avatar = getImage(senior.avatar);
   const signature = getImage(senior.signature);
 
+  const [bioState, setBio] = useState(false);
+
 
   const socialLinks = social_media.map((social, index) => {
     return <li key={index}>
@@ -68,7 +70,7 @@ const SeniorProfile = ({data}) => {
   })
 
   const projects = projects_list.map((project, index) => {
-    return <li key={index}>
+    return <li className='projectSingle' key={index}>
       {/* <h1>{project.title}</h1> */}
       <Project data={project}/>
     </li>
@@ -78,24 +80,43 @@ const SeniorProfile = ({data}) => {
 
   console.log(name);
 
-  return <Layout className='seniorProfile'>
-    <aside className='seniorInfo'>
+  return <div className='seniorProfile'>
+    <aside className={`seniorInfo ${bioState ? "expand" : " "}`}>
       <div className='stickyInfo'>
-      <GatsbyImage className='seniorAvatar' image={avatar} alt={name + " avatar"} />
-        {/* <h1>{name}</h1> */}
-        <GatsbyImage className='seniorSignature' image={signature} alt={name + " signature"} />
-        {/* <p>{bio}</p> */}
-        <a href={website}>{website}</a>
-        <ul>
+
+          <div className="seniorInfoMain">
+          <GatsbyImage className='seniorAvatar' image={avatar} alt={name + " avatar"} />
+          <h1 className='seniorInfoName'>{name}</h1>
+          </div>
+
+          
+          {/* <GatsbyImage className='seniorSignature' image={signature} alt={name + " signature"} /> */}
+      
+        
+
+        <div className='seniorInfoDetails'>
+        <button onClick={() => setBio(!bioState)} className='bioButton'>
+            {bioState ? "Close Bio X" : "Read My Bio ➤"}
+        </button>
+
+        <ul className='seniorSocials'>
           {socialLinks}
         </ul>
+
+        <a class='seniorWebsite solidButton' href={website}>{website}</a>
+        </div>        
       </div> 
+
+      <div className='seniorBio'>
+          <p>{bio}</p>
+        </div>
     </aside>
     <section className='seniorProjects'>
+      <button onClick={() => setBio(!bioState)} className={`projectOverlay ${bioState ? "expand" : " "}`}></button>
       <ul>
         {projects}
       </ul>
     </section>
-  </Layout>
+  </div>
 }
 export default SeniorProfile

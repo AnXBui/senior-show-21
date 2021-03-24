@@ -23,7 +23,7 @@ const settings = {
 
 const Project = ({data}) => {
 
-    const {title, description, projecTag, gallery} = data;
+    const {title, description, project_tag, gallery} = data;
 
     const images = gallery.map((image, index) => {
        
@@ -40,20 +40,31 @@ const Project = ({data}) => {
        
       })
 
+    const tags = project_tag.map((item, index) => {
+          return <li key={index}><p>{item.tag}</p></li>
+    })
 
-    return <div className='projectSingle'>
-        {/* <h3>{title}</h3> */}
+
+    return <div>
         <Swiper
             spaceBetween={32}
             slidesPerView={1}
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
+            loop={true}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
             >
             {images}
         </Swiper>
+        <div className="projectInfo">
+          <h3>{title}</h3>
+          <ul>
+            {tags}
+          </ul>
+        </div>
+        
     </div>
 
 }

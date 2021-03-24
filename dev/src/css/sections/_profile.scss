@@ -27,9 +27,92 @@ div[data-rmiz-wrap='hidden'] {
 }
 
 
+
+.seniorProjects{
+    z-index: 4;
+    @include lg{
+        max-width: 80.6vw;
+    }
+    >ul{
+        width: 100%;
+        padding: 4rem;
+        row-gap: 2rem;
+        // display: grid;
+        // grid-template-columns: 2rem 1fr 2rem;;
+    }
+}
+
+.projectSingle{
+    margin-bottom: 4rem;
+    &:last-child{
+        margin-bottom: 0;
+    }
+
+    
+}
+
+.projectInfo{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+
+    h3{
+        margin-top: 0.75rem;
+    }
+
+
+    ul{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.75rem;
+        
+        li{
+            margin-left: 1rem;
+            padding: 0.25em 0.5em;
+            border: 2px solid $dark;
+
+            &:first-child{
+                margin-left: 0;
+            }
+        }
+    }
+
+}
+
+.projectOverlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    pointer-events: none;
+    backdrop-filter: blur(10px) brightness(0.5);
+    transition: 0.25s;
+    opacity: 0;
+    display: none;
+
+    @include lg{
+        display: block;
+    }
+}
+
+.projectOverlay.expand{
+    pointer-events: all;
+    opacity: 1;
+}
+
+
 .seniorInfo{
     height: 100%;
     position: relative;
+    z-index: 5;
+    background-color: $light;
+
+    @include lg{
+        // height: calc(100% - 3.75rem);
+        // margin-top: 3.75rem;
+    }
     
     &::after{
         content:'';
@@ -41,34 +124,143 @@ div[data-rmiz-wrap='hidden'] {
         background: $rainbow;
         border-right: 3px solid $dark;
         border-left: 3px solid $dark;
+        transform: translateX(0);
+        transition: transform 0.25s;
+    }
+}
+
+.seniorBio{
+    position: fixed;
+    top: 3.75rem;
+    left: 17.4vw;
+    width: 40vw;
+    height: calc(100vh - 3.75rem);
+    background-color: $light;
+    padding: 6vw;
+    border: 3px solid $dark;
+    border-width: 0 3px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.25s;
+
+    p{
+        line-height: 150%;
+    }
+}
+
+.seniorInfo.expand{
+    &::after{
+        transform: translateX(40vw);
     }
 
-    .stickyInfo{
-        height: fit-content;
-        padding: 1.5rem;
+    .seniorBio{
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+
+
+.stickyInfo{
+    background-color: $light;
+
+    @include lg{
+        position: sticky;
+        top: 2rem;
+        margin-right: 10%;
+        // height: fit-content;
+        // min-height: calc(100vh - 3.75rem);
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: space-between;
+    }
+}
+
+.seniorAvatar{
+    margin: 2rem 2rem 0;
+}
+
+.seniorSignature{
+    margin: 0 2rem;
+}
+
+.seniorInfoName{
+    margin: 1rem 2rem 2rem;
+    // width: fit-content;
+    text-align: center;
+
+    @include lg{
+        font-size: 1.2vw;
+    }
+}
+
+
+.seniorSocials{
+    display: flex;
+    width: fit-content;
+
+    li{
+        margin-right: 1rem;
+    }
+
+    a{
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        color: $grey;
 
         @include lg{
-            position: sticky;
-            top: 3.75rem;
-            margin-right: 2.5rem;
+            width: 2vw;
+            height: 2vw;
+        }
+
+        svg{
+            width: 100%;
+            height: 100%;
         }
     }
 }
 
-.seniorProjects{
-    @include lg{
-        max-width: 80.6vw;
-    }
-    >ul{
-        width: 100%;
-        padding: 4rem;
-        row-gap: 2rem;
-        // display: grid;
-        // grid-template-columns: 2rem 1fr 2rem;;
+.solidButton{
+    display: flex;
+    padding: 1rem;
+    background-color: $red;
+    border: 2px solid $dark;
+    color: $light;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.bioButton{
+    padding: 0.5em;
+    border-bottom: 3px solid currentColor;
+    font-size: 1.25rem;
+    width: fit-content;
+    color: $grey;
+    width: 11em;
+
+    &:focus, &:hover{
+        outline: 0;
+
     }
 
-    .projectSingle{
-        margin-bottom: 4rem;
-        
+    @include lg{
+        font-size: 1vw;
     }
 }
+
+.seniorInfoDetails{
+    border-top: 2px solid $dark;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    >*{
+        margin-bottom: 2rem;
+    }
+}
+
+
+
