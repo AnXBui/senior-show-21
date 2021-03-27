@@ -19,10 +19,10 @@ div[data-rmiz-wrap='hidden'] {
 }
 
 .seniorProfile{
-    @include lg{
+    @include md{
         display: grid;
         width: 100vw;
-        grid-template-columns: 6fr 25fr;
+        grid-template-columns: 20% 80%;
     }
 }
 
@@ -30,12 +30,13 @@ div[data-rmiz-wrap='hidden'] {
 
 .seniorProjects{
     z-index: 4;
-    @include lg{
-        max-width: 80.6vw;
+
+    @include md{
+        max-width: 80vw;
     }
     >ul{
         width: 100%;
-        padding: 4rem;
+        padding: 4rem 0 0;
         row-gap: 2rem;
         // display: grid;
         // grid-template-columns: 2rem 1fr 2rem;;
@@ -55,6 +56,12 @@ div[data-rmiz-wrap='hidden'] {
     display: flex;
     justify-content: space-between;
     flex-wrap:wrap;
+    padding: 0 calc(15%);
+    
+
+    @include md{
+        padding: 0 calc(15%);
+    }
 
     h3{
         margin-top: 0.75rem;
@@ -69,10 +76,18 @@ div[data-rmiz-wrap='hidden'] {
         li{
             margin-left: 1rem;
             padding: 0.25em 0.5em;
-            border: 2px solid $dark;
+            border: 1px solid $dark;
+
+            @include md{
+                border-width: 2px;
+            }
 
             &:first-child{
                 margin-left: 0;
+            }
+
+            p{
+                font-size: 0.85rem;
             }
         }
     }
@@ -92,7 +107,7 @@ div[data-rmiz-wrap='hidden'] {
     opacity: 0;
     display: none;
 
-    @include lg{
+    @include md{
         display: block;
     }
 }
@@ -103,13 +118,16 @@ div[data-rmiz-wrap='hidden'] {
 }
 
 
+
 .seniorInfo{
-    height: 100%;
+    // height: 100%;
     position: relative;
     z-index: 5;
     background-color: $light;
+    margin-top: 0;
 
-    @include lg{
+    @include md{
+        height: 100%;
         // height: calc(100% - 3.75rem);
         // margin-top: 3.75rem;
     }
@@ -126,26 +144,80 @@ div[data-rmiz-wrap='hidden'] {
         border-left: 3px solid $dark;
         transform: translateX(0);
         transition: transform 0.25s;
+        display: none;
+
+        @include md{
+            display: block;
+        }
     }
 }
 
 .seniorBio{
     position: fixed;
     top: 3.75rem;
-    left: 17.4vw;
-    width: 40vw;
+    left: 0;
     height: calc(100vh - 3.75rem);
     background-color: $light;
-    padding: 6vw;
-    border: 3px solid $dark;
+    width: 100vw;
     border-width: 0 3px;
     overflow-y: auto;
     overflow-x: hidden;
-    clip-path: inset(0 100% 0 0);
-    transition: clip-path 0.25s;
+    transition: clip-path 0.25s, transform 0.25s;
+    transform: translateX(100%);
+    border: 2px solid $dark;
+
+
+    @include md{
+        border: 3px solid $dark;
+        height: calc(100vh - 3.75rem);
+        position: fixed;
+        clip-path: inset(0 100% 0 0);
+        width: 40vw;
+        transition: clip-path 0.25s;
+        transform: translateX(0);
+        left: 20vw;
+        border-bottom: 0;
+    }
+
+    
 
     p{
         line-height: 150%;
+        padding: 2rem;
+
+        @include sm{
+            margin-left: 6rem;
+            max-height: calc(100vh - 3.75rem);
+            overflow: auto;
+        }
+
+        @include md{
+            padding: 6vw;
+            margin-left: 0;
+        }
+    }
+
+    button{
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        background-color: $light;
+        padding: 2rem;
+        border-top: 2px solid $dark;
+
+        @include sm{
+            width: auto;
+            left: 0;
+            height: 100%;
+            border-top: 0;
+            padding: 1rem;
+            border-right: 2px solid $dark;
+            position: absolute;
+        }
+
+        @include lg{
+            display: none;
+        }
     }
 }
 
@@ -155,41 +227,57 @@ div[data-rmiz-wrap='hidden'] {
     }
 
     .seniorBio{
-        clip-path: inset(0 0 0 0);
+        transform: translateX(0);
+        
+        @include md{
+            clip-path: inset(0 0 0 0);
+        }
     }
 }
+
 
 
 
 .stickyInfo{
     background-color: $light;
 
-    @include lg{
+    @include sm{
+        display: grid;
+        grid-template-columns: 4fr 5fr;
+        border-bottom: 2px solid $dark;
+    }
+
+    @include md{
         position: sticky;
         top: 2rem;
         margin-right: 10%;
-        // height: fit-content;
-        // min-height: calc(100vh - 3.75rem);
-        // display: flex;
-        // flex-direction: column;
-        // justify-content: space-between;
+        display: block;
+        border-bottom: 0;
     }
 }
 
 .seniorAvatar{
-    margin: 2rem 2rem 0;
+    margin: 10% 20% 0; 
+
+    @include md{
+        margin: 5% 5% 0; 
+    }
 }
 
 .seniorSignature{
-    margin: 0 2rem;
+    margin: 0 20%;
+
+    @include lg{
+        margin: 0 5%;
+    }
 }
 
 .seniorInfoName{
-    margin: 1rem 2rem 2rem;
+    margin: 1rem 2rem 10%;
     // width: fit-content;
     text-align: center;
 
-    @include lg{
+    @include md{
         font-size: 1.2vw;
     }
 }
@@ -209,7 +297,7 @@ div[data-rmiz-wrap='hidden'] {
         height: 2rem;
         color: $grey;
 
-        @include lg{
+        @include md{
             width: 2vw;
             height: 2vw;
         }
@@ -242,10 +330,9 @@ div[data-rmiz-wrap='hidden'] {
 
     &:focus, &:hover{
         outline: 0;
-
     }
 
-    @include lg{
+    @include md{
         font-size: 1vw;
     }
 }
@@ -256,11 +343,277 @@ div[data-rmiz-wrap='hidden'] {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 2px solid $dark;
+
+    @include sm{
+        border-bottom: 0;
+        border-left: 2px solid $dark;
+        justify-content: center;
+    }
+
+    @include md{
+        border-bottom: 0;
+        border-left: 0;
+    }
 
     >*{
         margin-bottom: 2rem;
+        &:last-child{
+            margin-bottom: 0;
+        }
     }
 }
 
+
+.zoomButton{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgba($light,0.5);
+    border-radius: 100%;
+    transition: background 0.25s, opacity 0.25s;
+    opacity: 0;
+
+
+
+
+    svg{
+        width: 100%;
+        height: 100%;
+        stroke: $dark;
+    }
+
+    &:hover, &:active{
+        background-color: rgba($light,1);
+    }
+}
+
+.zoomableImage{
+    button[aria-label="Zoom image"]{
+
+        @include lg{
+            pointer-events: none;
+        }
+    } 
+
+        &:hover, &:active{
+            .zoomButton{
+                @include lg{
+                    opacity: 1;
+                }
+            }     
+        }
+ }
+
+ .projectSlider{
+    // @media (any-hover: hover) {
+        // .second{
+        //     opacity: 0;
+        // }
+    //   }
+ }
+
+ .projectSlider{
+
+    .swiper-slide{
+        opacity: 1;
+        transition: transform 0.25s, opacity 0.25s;
+
+        @include md{
+            opacity: 0;
+        }
+    }
+
+    .swiper-slide-active{
+        opacity: 1;
+    }
+
+ }
+
+ .activeSlide{
+    .swiper-slide{
+        opacity: 1;
+    }
+ }
+
+ .projectSlider.slideLoading{
+     opacity: 0;
+ }
+
+
+
+ .swiper-button-next, .swiper-button-prev{
+    height: 3rem;
+    width: 3rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5rem;
+    z-index: 4;
+    background-size: 80% 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    // background-color: rgba($light,0.5);
+    transition: background 0.25s, opacity 0.25s;
+    pointer-events: all;
+    opacity: 0;
+
+    &:hover, &:active{
+        background-color: rgba($light,1);
+   
+    }
+ }
+
+ .swiper-button-next{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z'/%3E%3C/svg%3E");
+    right: 0;
+ }
+
+ .swiper-button-prev{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-left' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z'/%3E%3C/svg%3E");
+    left: 0;
+}
+
+ .swiper-wrapper{
+     position: relative;
+     z-index: 2;
+ }
+
+ .swiper-container{
+     padding: 0 15% !important;
+     &:hover, &:active{
+        .swiper-button-next, .swiper-button-prev{
+            opacity: 1;
+        } 
+     }
+
+     &::before{
+         content:'';
+         width: 4rem;
+         height: 100%;
+         position: absolute;
+         top: 0;
+         left: 0;
+         z-index: 3;
+        background: linear-gradient(to right, rgba($light, 0.75) 0%, rgba($light, 0) 100%);
+     }
+
+     &::after{
+        content:'';
+        width: 4rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 3;
+       background: linear-gradient(to left, rgba($light, 0.75) 0%, rgba($light, 0) 100%);
+
+     }
+ }
+
+ .profileLinkList{
+    padding: 4rem 15%;
+    border-top: 2px solid $dark;
+    overflow: hidden;
+    position: relative;
+
+    h3{
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        text-align: center;
+
+        @include md{
+            font-size: 4vw;
+        }
+    }
+
+    >div{
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+
+        @include sm{
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+
+        @include md{
+            flex-direction: row;
+            
+        }
+    }
+
+    .deco1{
+        width: 20vw;
+        height: 20vw;
+        position: absolute;
+        top: -7vw;
+        left: -5vw;
+        transform: rotate(-40deg)
+    }
+
+    .deco2{
+        width: 20vw;
+        height: 20vw;
+        position: absolute;
+        bottom: -7.5vw;
+        right: -7.5vw;
+        transform: rotate(40deg)
+    }
+
+    .profileLink{
+        text-transform: lowercase;
+        font-family: 'Krona One', sans-serif;
+        color: $red;
+        position: relative;  
+        font-size: 1rem;
+        margin: 1rem 0;
+        width: fit-content;
+
+        @include sm{
+            flex-grow: 33%;
+        }
+
+
+        @include md{
+            font-size: 1.5vw;
+        }
+
+        @include lg{
+            font-size: 1.4vw;
+        }
+        
+        &:nth-child(1){
+            text-align: left;
+        }
+
+        &:nth-child(2){
+            color: $grey;
+            text-align: center;
+        }
+
+        &:nth-child(3){
+            text-align: right;
+        }
+
+        &::before{
+            content:'';
+            width: 100%;
+            height: 0.15em;
+            background-color: currentColor;
+            position: absolute;
+            bottom: -0.2em;
+            left: 0;
+
+        }
+    }
+ }
+
+
+ 
 
 

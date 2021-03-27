@@ -1,9 +1,16 @@
-import React, { useState } from "react"
+import React, { useState, useRef} from 'react'
 import { graphql} from "gatsby"
 import SocialIcon from "../components/SocialIcon"
+import Explosive from "../components/svg/Explosive"
 import Project from "../components/Project"
+import Layout from "../components/Layout"
+import SEO from "../components/seo"
+
+import AniLink from "gatsby-plugin-transition-link/AniLink";
+
 // import Layout from "../components/Layout"
 import { GatsbyImage , getImage} from "gatsby-plugin-image";
+
 
 
 
@@ -50,7 +57,18 @@ export const query = graphql`
 `
 
 
-const SeniorProfile = ({data}) => {
+const SeniorProfile = ({data, pageContext}) => {
+
+  var slugify = require('slugify')
+
+  const wrapper = useRef(null);
+
+
+  console.log(pageContext.next);
+
+  const nextUrl = slugify(pageContext.next);
+  const prevUrl = slugify(pageContext.prev);
+
   // console.log(query);
 
   // const data = useStaticQuery(query)
@@ -78,21 +96,21 @@ const SeniorProfile = ({data}) => {
 
   // const {allStrapiSeniors:{nodes: seniors}} = data
 
-  console.log(name);
+  // console.log(name);
 
-  return <div className='seniorProfile'>
+  const seoDesc = `See ${name}'s amazing projects and more in the Graphic Design Senior Show by Westphal College, Drexel University!`;
+
+  return <Layout type='profile' page={name} className='seniorProfile'>
+    <SEO title={name} description={seoDesc}/>
+
     <aside className={`seniorInfo ${bioState ? "expand" : " "}`}>
       <div className='stickyInfo'>
 
           <div className="seniorInfoMain">
           <GatsbyImage className='seniorAvatar' image={avatar} alt={name + " avatar"} />
-          <h1 className='seniorInfoName'>{name}</h1>
+          {/* <h1 className='seniorInfoName'>{name}</h1> */}
+          <GatsbyImage className=' seniorInfoName seniorSignature' image={signature} alt={name + " signature"} />
           </div>
-
-          
-          {/* <GatsbyImage className='seniorSignature' image={signature} alt={name + " signature"} /> */}
-      
-        
 
         <div className='seniorInfoDetails'>
         <button onClick={() => setBio(!bioState)} className='bioButton'>
@@ -103,20 +121,45 @@ const SeniorProfile = ({data}) => {
           {socialLinks}
         </ul>
 
-        <a class='seniorWebsite solidButton' href={website}>{website}</a>
+        <a className='seniorWebsite solidButton' href={website}>Website</a>
         </div>        
       </div> 
 
       <div className='seniorBio'>
           <p>{bio}</p>
+          <button onClick={() => setBio(!bioState)}>Back</button>
         </div>
     </aside>
-    <section className='seniorProjects'>
+    <section ref={wrapper} className='seniorProjects'>
       <button onClick={() => setBio(!bioState)} className={`projectOverlay ${bioState ? "expand" : " "}`}></button>
       <ul>
         {projects}
+        <li className='profileLinkList'>
+
+        <h3>More Seniors</h3>
+
+        <div>
+        <AniLink cover to={`/${prevUrl}`} bg="#663399" className='profileLink' direction="right"
+        duration={1}>
+              {pageContext.prev}
+        </AniLink> 
+
+        <AniLink cover to="/" bg="#663399" className='profileLink' direction="down"
+        duration={1}>
+              back to home
+        </AniLink> 
+
+        <AniLink cover to={`/${nextUrl}`} bg="#663399" className='profileLink' direction="left"
+        duration={1}>
+              {pageContext.next}
+        </AniLink> 
+        </div>
+
+        <Explosive classValue='deco1'/>
+        <Explosive classValue='deco2'/>
+        </li>
       </ul>
     </section>
-  </div>
+  </Layout>
 }
 export default SeniorProfile

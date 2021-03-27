@@ -1,6 +1,6 @@
 import React from "react"
 import { GatsbyImage , getImage} from "gatsby-plugin-image";
-import Title from "./Title"
+// import Title from "./Title"
 import PropTypes from "prop-types"
 // import { Link } from "gatsby"
 // import {Link, TransitionLink} from 'gatsby-plugin-transition-link'

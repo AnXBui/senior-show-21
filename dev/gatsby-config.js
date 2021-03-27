@@ -3,10 +3,11 @@ let gtm = '1234'
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Landing Page Starter`,
-    description: `A slightly opinionated Gatsby Landing Page starter template. `,
-    author: `Jeremy Lynch`,
+    title: `Westphal Graphic Design Senior Show 21`,
+    description: `Welcome to the Graphic Design Senior Show 21 by Westphal College, Drexel University `,
+    author: `Graphic Group – Graphic Design Program, Drexel University`,
     siteUrl: `https://gatsby-strapi-starter.netlify.com/`,
+    keywords: `Graphic Design`,
     phone: '1800123456',
     fax: '180012345',
     address: '123 fake street',
@@ -56,7 +57,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Roboto Mono:100,400,800', 'Krona One']
+          families: ['Roboto Mono:400,800', 'Krona One']
         }
       }
     },
@@ -75,7 +76,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-transition-link",
       options: {
-          layout: require.resolve(`./src/components/Layout.js`)
+          // layout: require.resolve(`./src/components/Layout.js`)
         }
     },
     `gatsby-plugin-image`,
@@ -84,6 +85,7 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     'gatsby-plugin-robots-txt',
     `gatsby-plugin-netlify`,
+    `gatsby-plugin-preload-fonts`,
     `gatsby-plugin-styled-components`
   ],
 }

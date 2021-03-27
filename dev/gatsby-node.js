@@ -39,8 +39,16 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
   {
     allStrapiSeniors {
-      nodes {
-        name
+      edges {
+        node {
+          name
+        }
+        next {
+          name
+        }
+        previous {
+          name
+        }
       }
     }
   }
@@ -48,16 +56,35 @@ exports.createPages = async ({ graphql, actions }) => {
 
 
 
-console.log(result.data.allStrapiSeniors.nodes)
+// console.log(result.data.allStrapiSeniors.edges)
+
+const seniorArray = result.data.allStrapiSeniors.edges;
 
 
-result.data.allStrapiSeniors.nodes.forEach(senior => {
-    const slug = slugify(senior.name)
+seniorArray.forEach((senior, index) => {
+    const slug = slugify(senior.node.name);
+
+    // function isRealValue(obj)
+    //   {
+    //   return obj && obj !== 'null' && obj !== 'undefined';
+    //   }
+    // console.log(isRealValue(`prev is ${senior.prev}`));
+
+    console.log(senior)
+    // console.log(`value of prev is "${senior.prev}"`);
+    const nextName = (senior.next) ? senior.next.name : seniorArray[0].node.name;
+    const prevName = (senior.previous) ? senior.previous.name : seniorArray[seniorArray.length - 1].node.name;
+
+
+
+
     createPage({
       path: `/${slug}`,
       component: path.resolve(`src/templates/senior-template.js`),
       context: {
-        name: senior.name,
+        name: senior.node.name,
+        next: nextName ,
+        prev: prevName ,
       },
     })
   })
