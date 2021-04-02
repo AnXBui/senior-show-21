@@ -6,7 +6,7 @@ module.exports = {
     title: `Westphal Graphic Design Senior Show 21`,
     description: `Welcome to the Graphic Design Senior Show 21 by Westphal College, Drexel University `,
     author: `Graphic Group – Graphic Design Program, Drexel University`,
-    siteUrl: `https://gatsby-strapi-starter.netlify.com/`,
+    siteUrl: `https://reverent-bardeen-b71a04.netlify.app`,
     keywords: `Graphic Design`,
     phone: '1800123456',
     fax: '180012345',

@@ -134,6 +134,11 @@ const SeniorProfile = ({data, pageContext}) => {
       <button onClick={() => setBio(!bioState)} className={`projectOverlay ${bioState ? "expand" : " "}`}></button>
       <ul>
         {projects}
+
+        <li className='moreProjects'>
+          <p>Want to see projects? Visit my <a href={website}>website!</a></p>
+          
+        </li>
         <li className='profileLinkList'>
 
         <h3>More Seniors</h3>
