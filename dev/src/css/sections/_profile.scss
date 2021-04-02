@@ -533,6 +533,47 @@ div[data-rmiz-wrap='hidden'] {
      }
  }
 
+ .videoProjectImage{
+     padding: 39.4% 0 0;
+     margin: 0 15%;
+     position: relative;
+
+     >div{
+         width: 100% !important;
+         height: 100% !important;
+         position: absolute;
+         top: 0;
+         left: 0;
+     }
+
+     --plyr-color-main: #{$red};
+     --plyr-range-fill-background: #{$red};
+     --plyr-font-family: 'Roboto Mono', sans-serif;
+
+     .plyr--stopped{
+        .plyr__controls{
+            transform: translateY(100%);
+        }
+    }
+
+     button.plyr__control.plyr__control--overlaid[data-plyr='play']{
+        background: $dark;
+        padding: 2vw;
+
+        >svg{
+            min-width: 1.5vw;
+            min-height: 1.5vw;
+        }
+
+        &:hover, &:active{
+            background: $red;
+        }
+
+        
+     }
+
+ }
+
  .profileLinkList{
     padding: 4rem 15%;
     border-top: 2px solid $dark;

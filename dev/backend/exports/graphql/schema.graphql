@@ -54,6 +54,7 @@ type Senior {
   index: Int!
   projects_list: [ComponentProjectsProject]
   social_media: [ComponentSocialSocialLink]
+  thumbnail: UploadFile
   published_at: DateTime
 }
 
@@ -99,6 +100,7 @@ type SeniorGroupBy {
   avatar: [SeniorConnectionAvatar]
   photo: [SeniorConnectionPhoto]
   index: [SeniorConnectionIndex]
+  thumbnail: [SeniorConnectionThumbnail]
   published_at: [SeniorConnectionPublished_at]
 }
 
@@ -152,6 +154,11 @@ type SeniorConnectionIndex {
   connection: SeniorConnection
 }
 
+type SeniorConnectionThumbnail {
+  key: ID
+  connection: SeniorConnection
+}
+
 type SeniorConnectionPublished_at {
   key: DateTime
   connection: SeniorConnection
@@ -167,6 +174,7 @@ input SeniorInput {
   index: Int
   projects_list: [ComponentProjectsProjectInput]
   social_media: [ComponentSocialSocialLinkInput]
+  thumbnail: ID
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -182,6 +190,7 @@ input editSeniorInput {
   index: Int
   projects_list: [editComponentProjectsProjectInput]
   social_media: [editComponentSocialSocialLinkInput]
+  thumbnail: ID
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -739,7 +748,7 @@ input editComponentSocialSocialLinkInput {
   link: String
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Senior | SeniorConnection | SeniorAggregator | SeniorAggregatorSum | SeniorAggregatorAvg | SeniorAggregatorMin | SeniorAggregatorMax | SeniorGroupBy | SeniorConnectionId | SeniorConnectionCreated_at | SeniorConnectionUpdated_at | SeniorConnectionName | SeniorConnectionBio | SeniorConnectionWebsite | SeniorConnectionSignature | SeniorConnectionAvatar | SeniorConnectionPhoto | SeniorConnectionIndex | SeniorConnectionPublished_at | createSeniorPayload | updateSeniorPayload | deleteSeniorPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentProjectsProjectTag | ComponentProjectsProject | ComponentSocialSocialLink
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Senior | SeniorConnection | SeniorAggregator | SeniorAggregatorSum | SeniorAggregatorAvg | SeniorAggregatorMin | SeniorAggregatorMax | SeniorGroupBy | SeniorConnectionId | SeniorConnectionCreated_at | SeniorConnectionUpdated_at | SeniorConnectionName | SeniorConnectionBio | SeniorConnectionWebsite | SeniorConnectionSignature | SeniorConnectionAvatar | SeniorConnectionPhoto | SeniorConnectionIndex | SeniorConnectionThumbnail | SeniorConnectionPublished_at | createSeniorPayload | updateSeniorPayload | deleteSeniorPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentProjectsProjectTag | ComponentProjectsProject | ComponentSocialSocialLink
 
 input InputID {
   id: ID!

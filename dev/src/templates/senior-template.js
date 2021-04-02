@@ -3,6 +3,7 @@ import { graphql} from "gatsby"
 import SocialIcon from "../components/SocialIcon"
 import Explosive from "../components/svg/Explosive"
 import Project from "../components/Project"
+import VideoProject from "../components/VideoProject"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 
@@ -42,6 +43,7 @@ export const query = graphql`
           tag
         }
         title
+        video
         gallery {
           localFile {
             childImageSharp {
@@ -88,10 +90,17 @@ const SeniorProfile = ({data, pageContext}) => {
   })
 
   const projects = projects_list.map((project, index) => {
+
+    if (project.video !== 'none' && project.video != null) {
     return <li className='projectSingle' key={index}>
       {/* <h1>{project.title}</h1> */}
-      <Project data={project}/>
+      <VideoProject data={project}/>
     </li>
+    } else {
+      return <li className='projectSingle' key={index}>
+      <Project data={project}/>
+      </li> 
+    }
   })
 
   // const {allStrapiSeniors:{nodes: seniors}} = data
