@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import PropTypes from "prop-types"
 import 'react-medium-image-zoom/dist/styles.css'
-
+import * as styles from './Project.module.scss'
 
 import SwiperCore, { Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -75,7 +75,7 @@ const Project = ({data}) => {
     })
 
     return <div className={slideLoaded ? 'slideLoaded' : 'slideLoading'}>
-            <div ref={ref} className={`projectSlider`}>
+            <div ref={ref} className={'projectSlider'}>
               <Swiper
               spaceBetween={32}
               slidesPerView={1}

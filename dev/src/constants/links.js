@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
 const data = [
   {
     id: 1,
@@ -26,23 +26,23 @@ const data = [
     text: "contact",
     url: "/contact/",
   },
-]
+];
 
-const tempLinks = data.map(link => {
+const tempLinks = data.map((link) => {
   return (
     <li key={link.id}>
       <Link to={link.url}>{link.text}</Link>
     </li>
-  )
-})
+  );
+});
 // I KNOW WE CAN COMBINE IT !!!!!
 
-const links = ({styleClass}) => {
+const links = ({ styleClass }) => {
   return (
     <ul className={`navLinkList ${styleClass ? styleClass : ""}`}>
       {tempLinks}
     </ul>
-  )
-}
+  );
+};
 
 export default links;

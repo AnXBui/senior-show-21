@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 function FullLogo(props) {
   return (
@@ -23,7 +23,7 @@ function FullLogo(props) {
         />
       </g>
     </svg>
-  )
+  );
 }
 
-export default FullLogo
+export default FullLogo;

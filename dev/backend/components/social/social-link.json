@@ -8,11 +8,7 @@
   "attributes": {
     "type": {
       "type": "enumeration",
-      "enum": [
-        "facebook",
-        "instagram",
-        "linkedin"
-      ],
+      "enum": ["facebook", "instagram", "linkedin"],
       "required": true
     },
     "link": {
