@@ -2,6 +2,7 @@ let facebook_pixel = ''
 let gtm = '1234'
 
 module.exports = {
+  pathPrefix: `/seniorshow/`,
   siteMetadata: {
     title: `Westphal Graphic Design Senior Show 21`,
     description: `Welcome to the Graphic Design Senior Show 21 by Westphal College, Drexel University `,
@@ -22,7 +23,7 @@ module.exports = {
       options: {
         apiURL: `http://localhost:1337`,
         queryLimit: 1000, // Default to 100
-        contentTypes: [`seniors`],
+        contentTypes: [`seniors`, `awards`],
         //If using single types place them in this array.
         // singleTypes: [`home-page`],
       },

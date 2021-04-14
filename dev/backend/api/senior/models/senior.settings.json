@@ -74,6 +74,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "awards": {
+      "via": "senior",
+      "collection": "awards"
     }
   }
 }

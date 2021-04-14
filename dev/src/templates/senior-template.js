@@ -21,14 +21,10 @@ export const query = graphql`
     senior: strapiSeniors(name: { eq: $name }) {
       name
       avatar {
-        childImageSharp {
-          gatsbyImageData(formats: [AUTO, WEBP, AVIF], sizes: "", layout: FULL_WIDTH)
-        }
+        publicURL
       }
       signature {
-        childImageSharp {
-          gatsbyImageData(formats: [AUTO, WEBP, AVIF], sizes: "", layout: FULL_WIDTH)
-        }
+        publicURL
       }
       social_media {
         type
@@ -77,8 +73,8 @@ const SeniorProfile = ({data, pageContext}) => {
   // console.log(data.senior);
   const {senior} = data;
   const {name, bio,social_media,website, projects_list} = senior;
-  const avatar = getImage(senior.avatar);
-  const signature = getImage(senior.signature);
+  const avatar = senior.avatar.publicURL;
+  const signature = senior.signature.publicURL;
 
   const [bioState, setBio] = useState(false);
 
@@ -116,12 +112,12 @@ const SeniorProfile = ({data, pageContext}) => {
       <div className='stickyInfo'>
 
           <div className="seniorInfoMain">
-          <GatsbyImage className='seniorAvatar' image={avatar} alt={name + " avatar"} />
-          {/* <h1 className='seniorInfoName'>{name}</h1> */}
-          <GatsbyImage className=' seniorInfoName seniorSignature' image={signature} alt={name + " signature"} />
+          <img className='seniorAvatar' src={avatar} alt={name + "'s avatar"} />
+          <img className='seniorInfoName seniorSignature' src={signature} alt={name + "'s signature"} />
           </div>
 
         <div className='seniorInfoDetails'>
+          
         <button onClick={() => setBio(!bioState)} className='bioButton'>
             {bioState ? "Close Bio X" : "Read My Bio ➤"}
         </button>
@@ -145,7 +141,7 @@ const SeniorProfile = ({data, pageContext}) => {
         {projects}
 
         <li className='moreProjects'>
-          <p>Want to see projects? Visit my <a href={website}>website!</a></p>
+          <p>Want to see more projects? Visit my <a href={website}>website!</a></p>
           
         </li>
         <li className='profileLinkList'>
@@ -153,17 +149,17 @@ const SeniorProfile = ({data, pageContext}) => {
         <h3>More Seniors</h3>
 
         <div>
-        <AniLink cover to={`/${prevUrl}`} bg="#663399" className='profileLink' direction="right"
+        <AniLink cover to={`/${prevUrl}`} bg="#EC6B5B" className='profileLink' direction="right"
         duration={1}>
               {pageContext.prev}
         </AniLink> 
 
-        <AniLink cover to="/" bg="#663399" className='profileLink' direction="down"
+        <AniLink cover to="/" bg="#EC6B5B" className='profileLink' direction="down"
         duration={1}>
               back to home
         </AniLink> 
 
-        <AniLink cover to={`/${nextUrl}`} bg="#663399" className='profileLink' direction="left"
+        <AniLink cover to={`/${nextUrl}`} bg="#EC6B5B" className='profileLink' direction="left"
         duration={1}>
               {pageContext.next}
         </AniLink> 

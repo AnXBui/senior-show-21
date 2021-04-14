@@ -1,0 +1,16 @@
+.section{
+//    background-color:grey;
+    // border: 1px solid red;
+    width: 100%;
+}
+
+.info{
+    margin: var(--margin);
+}
+
+.awards{
+    // border: 2px solid red;
+    width: 100%;
+    background-color: var(--dark);
+    padding: var(--margin) 0;
+}

@@ -2,7 +2,7 @@
   "name": "seniorshow",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "Drexel University Graphic Design Senior Show 21",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",

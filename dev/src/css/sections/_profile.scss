@@ -172,6 +172,11 @@ div[data-rmiz-wrap='hidden'] {
     }
 }
 
+.seniorInfoMain{
+    width: 100%;
+    position: relative;
+}
+
 .seniorBio{
     position: fixed;
     top: 3.75rem;
@@ -277,30 +282,14 @@ div[data-rmiz-wrap='hidden'] {
 }
 
 .seniorAvatar{
-    margin: 10% 20% 0; 
-
-    @include md{
-        margin: 5% 5% 0; 
-    }
+    width: 100%;
 }
 
 .seniorSignature{
-    margin: 0 20%;
-
-    @include lg{
-        margin: 0 5%;
-    }
+    width: 100%;
+    margin-bottom: 10%;
 }
 
-.seniorInfoName{
-    margin: 1rem 2rem 10%;
-    // width: fit-content;
-    text-align: center;
-
-    @include md{
-        font-size: 1.2vw;
-    }
-}
 
 
 .seniorSocials{
@@ -501,8 +490,11 @@ div[data-rmiz-wrap='hidden'] {
      z-index: 2;
  }
 
+
  .swiper-container{
      padding: 0 15% !important;
+    //  mask-image: linear-gradient(to left, transparent 0%, black 15%,  black 85%, transparent 100%);
+
      &:hover, &:active{
         .swiper-button-next, .swiper-button-prev{
             opacity: 1;

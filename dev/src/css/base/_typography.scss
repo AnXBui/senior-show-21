@@ -10,3 +10,10 @@ p,a{
   font-family: 'Roboto Mono', sans-serif;
 }
 
+h2{
+  font-size: clamp(2rem, 7vw, 7vmax);
+  color: $red;
+
+  
+}
+

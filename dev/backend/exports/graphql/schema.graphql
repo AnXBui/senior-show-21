@@ -41,6 +41,106 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
+type Awards {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  senior: Senior
+  published_at: DateTime
+}
+
+type AwardsConnection {
+  values: [Awards]
+  groupBy: AwardsGroupBy
+  aggregate: AwardsAggregator
+}
+
+type AwardsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type AwardsGroupBy {
+  id: [AwardsConnectionId]
+  created_at: [AwardsConnectionCreated_at]
+  updated_at: [AwardsConnectionUpdated_at]
+  name: [AwardsConnectionName]
+  senior: [AwardsConnectionSenior]
+  published_at: [AwardsConnectionPublished_at]
+}
+
+type AwardsConnectionId {
+  key: ID
+  connection: AwardsConnection
+}
+
+type AwardsConnectionCreated_at {
+  key: DateTime
+  connection: AwardsConnection
+}
+
+type AwardsConnectionUpdated_at {
+  key: DateTime
+  connection: AwardsConnection
+}
+
+type AwardsConnectionName {
+  key: String
+  connection: AwardsConnection
+}
+
+type AwardsConnectionSenior {
+  key: ID
+  connection: AwardsConnection
+}
+
+type AwardsConnectionPublished_at {
+  key: DateTime
+  connection: AwardsConnection
+}
+
+input AwardInput {
+  name: String!
+  senior: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editAwardInput {
+  name: String
+  senior: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createAwardInput {
+  data: AwardInput
+}
+
+type createAwardPayload {
+  award: Awards
+}
+
+input updateAwardInput {
+  where: InputID
+  data: editAwardInput
+}
+
+type updateAwardPayload {
+  award: Awards
+}
+
+input deleteAwardInput {
+  where: InputID
+}
+
+type deleteAwardPayload {
+  award: Awards
+}
+
 type Senior {
   id: ID!
   created_at: DateTime!
@@ -56,6 +156,7 @@ type Senior {
   social_media: [ComponentSocialSocialLink]
   thumbnail: UploadFile
   published_at: DateTime
+  awards(sort: String, limit: Int, start: Int, where: JSON): [Awards]
 }
 
 type SeniorConnection {
@@ -175,6 +276,7 @@ input SeniorInput {
   projects_list: [ComponentProjectsProjectInput]
   social_media: [ComponentSocialSocialLinkInput]
   thumbnail: ID
+  awards: [ID]
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -191,6 +293,7 @@ input editSeniorInput {
   projects_list: [editComponentProjectsProjectInput]
   social_media: [editComponentSocialSocialLinkInput]
   thumbnail: ID
+  awards: [ID]
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -671,8 +774,10 @@ type deleteUserPayload {
 
 enum ENUM_COMPONENTPROJECTSPROJECTTAG_TAG {
   web
+  ui
   interactive
   print
+  editorial
   packaging
   exhibition
   environmental
@@ -748,7 +853,7 @@ input editComponentSocialSocialLinkInput {
   link: String
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Senior | SeniorConnection | SeniorAggregator | SeniorAggregatorSum | SeniorAggregatorAvg | SeniorAggregatorMin | SeniorAggregatorMax | SeniorGroupBy | SeniorConnectionId | SeniorConnectionCreated_at | SeniorConnectionUpdated_at | SeniorConnectionName | SeniorConnectionBio | SeniorConnectionWebsite | SeniorConnectionSignature | SeniorConnectionAvatar | SeniorConnectionPhoto | SeniorConnectionIndex | SeniorConnectionThumbnail | SeniorConnectionPublished_at | createSeniorPayload | updateSeniorPayload | deleteSeniorPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentProjectsProjectTag | ComponentProjectsProject | ComponentSocialSocialLink
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Awards | AwardsConnection | AwardsAggregator | AwardsGroupBy | AwardsConnectionId | AwardsConnectionCreated_at | AwardsConnectionUpdated_at | AwardsConnectionName | AwardsConnectionSenior | AwardsConnectionPublished_at | createAwardPayload | updateAwardPayload | deleteAwardPayload | Senior | SeniorConnection | SeniorAggregator | SeniorAggregatorSum | SeniorAggregatorAvg | SeniorAggregatorMin | SeniorAggregatorMax | SeniorGroupBy | SeniorConnectionId | SeniorConnectionCreated_at | SeniorConnectionUpdated_at | SeniorConnectionName | SeniorConnectionBio | SeniorConnectionWebsite | SeniorConnectionSignature | SeniorConnectionAvatar | SeniorConnectionPhoto | SeniorConnectionIndex | SeniorConnectionThumbnail | SeniorConnectionPublished_at | createSeniorPayload | updateSeniorPayload | deleteSeniorPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentProjectsProjectTag | ComponentProjectsProject | ComponentSocialSocialLink
 
 input InputID {
   id: ID!
@@ -767,6 +872,9 @@ type AdminUser {
 }
 
 type Query {
+  award(id: ID!, publicationState: PublicationState): Awards
+  awards(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Awards]
+  awardsConnection(sort: String, limit: Int, start: Int, where: JSON): AwardsConnection
   senior(id: ID!, publicationState: PublicationState): Senior
   seniors(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Senior]
   seniorsConnection(sort: String, limit: Int, start: Int, where: JSON): SeniorConnection
@@ -786,6 +894,9 @@ type Query {
 }
 
 type Mutation {
+  createAward(input: createAwardInput): createAwardPayload
+  updateAward(input: updateAwardInput): updateAwardPayload
+  deleteAward(input: deleteAwardInput): deleteAwardPayload
   createSenior(input: createSeniorInput): createSeniorPayload
   updateSenior(input: updateSeniorInput): updateSeniorPayload
   deleteSenior(input: deleteSeniorInput): deleteSeniorPayload

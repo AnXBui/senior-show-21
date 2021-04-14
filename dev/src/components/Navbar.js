@@ -120,7 +120,7 @@ const Navbar = ({navType="home", pageName="home"}) => {
 
   return <nav className='nav'>
     <div className="navBar">
-      <AniLink cover to="/" bg="#663399" className='navLogo' direction="right"
+      <AniLink cover to="/" bg="#EC6B5B" className='navLogo' direction="right"
   duration={1}>
           <Logo />
       </AniLink> 

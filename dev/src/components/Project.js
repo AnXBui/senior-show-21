@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react'
-import { GatsbyImage , getImage} from "gatsby-plugin-image";
+import { getImage} from "gatsby-plugin-image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -16,7 +16,7 @@ import ProjectImage from "../components/ProjectImage"
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 
-import useVisibilitySensor from "@rooks/use-visibility-sensor"
+// import useVisibilitySensor from "@rooks/use-visibility-sensor"
 
 
 SwiperCore.use([Navigation,A11y]);
