@@ -175,7 +175,6 @@
     height: 100vh;
     pointer-events: none;
     display: flex;
-    border: 2px solid red;
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 2vh;
@@ -203,6 +202,15 @@
 
     >h3{
         font-size: clamp(3rem, 4vw, 5vmax);
+        opacity: 0;
+        transition: opacity 0.25s;
+        color: $dark;
+    }
+}
+
+.triggerHome.init{
+    >h3{
+        opacity: 1;
     }
 }
 

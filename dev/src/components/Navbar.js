@@ -57,7 +57,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
       scroll = ScrollTrigger.create({
         trigger: trigger.current,
         start: "top 80%",
-        end: "bottom 80%",
+        end: "top -5%",
         onLeave: () => {setScrolled(true)},
         onEnterBack: () => {setScrolled(false)},
         // onUpdate: self => {
@@ -172,7 +172,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
         {navMenu()}
       </div>
     </nav>
-      {navType=='home' ? <div ref={trigger} className='triggerHome'><h3>↓</h3></div> : ''}
+      {navType=='home' ? <div ref={trigger} className={`triggerHome ${(!scrolled && navType=='home') ? 'init' : ''}`}><h3>↓</h3></div> : ''}
     </>
   );
 };
