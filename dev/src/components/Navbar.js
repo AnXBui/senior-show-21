@@ -75,10 +75,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
       
   },[])
 
-    
-
   
-
   // const pageUrl =
 
   const navMenu = () => {
@@ -175,7 +172,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
         {navMenu()}
       </div>
     </nav>
-      {navType=='home' ? <div ref={trigger} className='triggerHome'></div> : ''}
+      {navType=='home' ? <div ref={trigger} className='triggerHome'><h3>↓</h3></div> : ''}
     </>
   );
 };
