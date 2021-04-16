@@ -1,7 +1,4 @@
 import React, { useCallback, useState, useRef, useEffect } from "react";
-import PropTypes from "prop-types";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { Link } from "gatsby";
 import Senior from "./Senior";
 
 import SwiperCore, { Navigation, A11y, Autoplay, Mousewheel} from "swiper";
@@ -39,7 +36,7 @@ const AwardsSlider = ({ data }) => {
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => setSlide(true)}
       autoplay={{delay: 2000, disableOnInteraction: false}}
-      mousewheel={true}
+      mousewheel={{forceToAxis: true}}
       breakpoints={{
         768: {
           slidesPerView: 2,

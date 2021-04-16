@@ -9,7 +9,7 @@ import * as styles from "./Seniors.module.scss";
 
 const query = graphql`
   {
-    allStrapiSeniors(sort: { fields: name }) {
+    allStrapiSeniors(sort: { fields: last }) {
       nodes {
         name
         avatar {

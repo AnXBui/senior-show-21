@@ -10,6 +10,8 @@ h1,h2,h3,h4,h5,button{
   font-family: 'Krona One', sans-serif;;
 }
 
+
+
 .dark{
   color: $dark;
 }
@@ -18,13 +20,25 @@ h1,h2,h3,h4,h5,button{
   border-top: 2px solid $dark;
 }
 
-p,a{
+p,a, .p{
   font-family: 'Roboto Mono', sans-serif;
 }
 
-h2{
+h2, .h2{
   font-size: clamp(2rem, 7vw, 7vmax);
   color: $red;
+}
+
+h3, .h3{
+  font-size: clamp(1.5rem, 2.5vw, 7vmax);
+}
+
+p{
+  line-height: 1.8;
+
+  @include lg{
+    font-size: calc(1rem + 0.2vw);
+  }
 }
 
 

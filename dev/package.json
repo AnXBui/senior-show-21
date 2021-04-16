@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Jeremy Lynch",
   "dependencies": {
+    "@react-hook/media-query": "^1.1.1",
     "@react-icons/all-files": "^4.1.0",
     "@rooks/use-visibility-sensor": "^4.10.0",
     "babel-plugin-styled-components": "^1.12.0",

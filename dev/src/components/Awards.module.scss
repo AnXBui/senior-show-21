@@ -1,11 +1,57 @@
+@import "../css/helpers/variables";
+@import "../css/helpers/mixins";
+
+
 .section{
 //    background-color:grey;
     // border: 1px solid red;
     width: 100%;
+    position: relative;
 }
 
 .info{
-    margin: var(--margin);
+    padding: var(--margin);
+    padding-bottom: var(--margin3);
+    background: linear-gradient(to top, $pink 0%, rgba($pink, 0) 100%);
+    position: relative;
+    z-index: 2;
+
+    @include lg{
+        padding: var(--margin);
+
+    }
+
+    h2{
+        margin-bottom: var(--margin);
+        z-index: 3;
+        position: relative;
+    }
+}
+
+.infoText{
+    display: grid;
+
+    @include lg{
+        margin: 0 var(--margin);
+    }
+    
+    @include lg{
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 5vw 0;
+    }
+
+   
+
+    p{
+        &:nth-child(2){
+            margin-top: 2em;
+            @include lg{
+                margin-top: 0;
+                grid-row: 2;
+                grid-column: 2;
+            }   
+        }   
+    }
 }
 
 .awards{
@@ -13,4 +59,138 @@
     width: 100%;
     background-color: var(--dark);
     padding: var(--margin2) 0;
+    position: relative;
+}
+
+.banner{
+    background-color: var(--dark);
+    width: 100vw;
+    overflow-x: hidden;
+    padding: 2vw;
+    border: 2px solid var(--grey);
+    border-width: 2px 0;
+
+    >div{
+        display: flex;
+        width: 550vw;
+        animation: loopSlide;
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-timing-function: linear;
+
+        @include lg{
+            width: 250vw;
+        }
+    }
+
+    @keyframes loopSlide{
+        from {
+            transform: translateX(0);
+        }
+
+        to{
+            transform: translateX(-50%);
+        }
+    }
+}
+
+.explosive{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >svg{
+        width: 80%;
+        opacity: 0.15;
+    }
+}
+
+.textDeco{
+    width: 18.25%;
+    padding-bottom: 18.25%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    
+    >svg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.decoSide{
+    width: 3vw;
+    position: absolute;
+    right: calc( var(--margin) / 2);
+    top: var(--margin2);
+    z-index: 3;
+
+
+    @include lg{
+        right: var(--margin);
+        top: var(--margin2);
+    }
+}
+
+.decoBig{
+    width: 40vw;
+    height: 51.8vw;
+    border: 1px solid $dark;
+    margin-left: 50vw;
+    margin-bottom: 20vw;
+    z-index: 3;
+
+    @include lg{
+        width: 20vw;
+        height: 25.9vw;
+        margin: 0;
+        position: absolute;
+        right: var(--margin2);
+    }
+
+    >svg{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.deco{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-end;
+    width: 40vw;
+    height: 19vw;
+
+    >svg{
+        width: 50%;
+        height: 100%;
+    }
+
+    >img{
+        width: 100%;
+        position: absolute;
+        top: 2.5vw;
+        left: 0;
+    }
+}
+
+.deco2{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
 }

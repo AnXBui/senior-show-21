@@ -6,6 +6,7 @@ import Message from "../components/Message";
 import Awards from "../components/Awards";
 import Seniors from "../components/Seniors";
 import SocialMedia from "../components/SocialMedia";
+import Footer from "../components/Footer";
 import SEO from "../components/seo";
 
 // import Projects from "../components/Projects"
@@ -22,6 +23,7 @@ const Home = () => {
       <Awards />
       <Seniors />
       <SocialMedia />
+      <Footer />
     </Layout>
   );
 };

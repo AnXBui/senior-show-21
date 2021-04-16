@@ -26,21 +26,27 @@
     "signature": {
       "model": "file",
       "via": "related",
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "plugin": "upload",
       "required": true
     },
     "avatar": {
       "model": "file",
       "via": "related",
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "plugin": "upload",
       "required": true
     },
     "photo": {
       "model": "file",
       "via": "related",
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "plugin": "upload",
       "required": true
     },
@@ -63,13 +69,18 @@
     "thumbnail": {
       "model": "file",
       "via": "related",
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "plugin": "upload",
       "required": false
     },
     "awards": {
-      "via": "senior",
-      "collection": "awards"
+      "collection": "awards",
+      "via": "senior"
+    },
+    "last": {
+      "type": "string"
     }
   }
 }

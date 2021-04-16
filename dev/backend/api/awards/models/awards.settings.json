@@ -17,8 +17,8 @@
       "unique": true
     },
     "senior": {
-      "model": "senior",
-      "via": "awards"
+      "via": "awards",
+      "model": "senior"
     }
   }
 }

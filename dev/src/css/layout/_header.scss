@@ -14,8 +14,21 @@
     width: 100vw;
     z-index: 100;
     box-sizing: content-box;
-    background-color: $light;
-    border-bottom: 3px solid $dark;
+    --mg: 1rem;
+    z-index: 99;
+
+    &::before{
+        content:'';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: $light;
+        border-bottom: 2px solid $dark;
+        z-index: 0;
+        transition: transform 0.25s;
+    }
+    // background-color: $light;
+    // border-bottom: 3px solid $dark;
 
     .navBar{
         display: flex;
@@ -23,6 +36,8 @@
         height: 100%;
         justify-content: space-between;
         align-items: center;
+        z-index: 100;
+        position: relative;
     }
 
     .navLogo{
@@ -31,10 +46,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0 1rem;
+        margin: 0 var(--mg);
 
         @include lg{
-            width: 6.5rem;
+            width: 3rem;
+        }
+
+        >svg{
+            height: 90%;
+            width: 100%;
         }
     }
 
@@ -64,7 +84,7 @@
 
         @include lg{
             display: block;
-            margin: 1rem;
+            margin: var(--mg);
         }
     }
 
@@ -128,11 +148,32 @@
 
 }
 
+.nav.splash{
+    height: 4rem;
+
+    &::before{
+        transform: translateY(-100%);
+    }
+
+    @include md{
+        height: 6rem;
+        
+    }
+    --mg: calc(var(--margin) / 2);
+}
 
 
 
 .tl-edges{
     overflow-x:visible;
+}
+
+.triggerHome{
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
 }
 
 

@@ -52,6 +52,7 @@ body{
   --text-color: black;
   --border-wght: 1.5px;
   color: var(--text-color);
+  background: $light;
 }
 
 .flexBetween{
@@ -59,10 +60,16 @@ body{
   justify-content: space-between;
 }
 
-main{
-  overscroll-behavior: contain;
+main, body{
+  overscroll-behavior: none;
   overflow: scroll;
-  height: calc(100vh - 3.75rem);
+  // height: calc(100vh - 3.75rem);
+}
+
+html{
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  height: 100vh;
 }
 
 

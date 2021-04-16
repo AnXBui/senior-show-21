@@ -1,18 +1,13 @@
-import React, { useState } from "react";
-// import logo from "../assets/logo.svg"
-import { FaAlignRight } from "react-icons/fa";
-import PageLinks from "../constants/links";
+import React, { useRef, useState, useEffect } from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
-import { AnchorLink } from "gatsby-plugin-anchor-links";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
-// import scrollToElement from 'scroll-to-element';
 
 import Logo from "./svg/Logo";
 import Burger from "./svg/Burger";
 
-// import { gsap } from "gsap";
-// import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { gsap } from "gsap";
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 import {
   EmailShareButton,
@@ -25,6 +20,9 @@ import { HiMailOpen } from "@react-icons/all-files/hi/HiMailOpen";
 import { SiLinkedin } from "@react-icons/all-files/si/SiLinkedin";
 import { FaFacebookSquare } from "@react-icons/all-files/fa/FaFacebookSquare";
 import { FaTwitterSquare } from "@react-icons/all-files/fa/FaTwitterSquare";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const Navbar = ({ navType = "home", pageName = "home" }) => {
   const { site } = useStaticQuery(
@@ -48,7 +46,38 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
   const slug = slugify(pageName);
   const shareUrl = `${site.siteMetadata.siteUrl}/${slug}`;
 
-  const [social, setSocial] = useState(false);
+  const nav = useRef(null);
+  const trigger = useRef(null);
+  let scroll = useRef(null);
+
+  const [scrolled, setScrolled] = useState(false); 
+
+  useEffect(() => {
+    if (navType = "home"){
+      scroll = ScrollTrigger.create({
+        trigger: trigger.current,
+        start: "top 80%",
+        end: "bottom 80%",
+        onLeave: () => {setScrolled(true)},
+        onEnterBack: () => {setScrolled(false)},
+        // onUpdate: self => {
+        //   console.log("progress:", self.progress.toFixed(3), "direction:", self.direction, "velocity", self.getVelocity());
+        // }
+      });
+    }
+
+    return () => {
+      if (scroll){
+        scroll.kill();
+        scroll = null;
+      }
+    }
+      
+  },[])
+
+    
+
+  
 
   // const pageUrl =
 
@@ -56,22 +85,19 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
     if (navType == "home") {
       return (
         <div className="navMenu">
-          <AnchorLink className="navMenuItem" to="/#intro" title="intro" />
-          <AnchorLink
-            className="navMenuItem"
-            to="/#students"
-            title="students"
-          />
-          <AnchorLink
-            className="navMenuItem"
-            to="/#socialmedia"
-            title="social media"
-          />
-          <AnchorLink className="navMenuItem" to="/#info" title="more info" />
+
+
+          <a className="navMenuItem" href="/#intro">intro</a>
+
+
+          <a className="navMenuItem" href="/#students">students</a>
+
+          <a className="navMenuItem" href="/#social">social media</a>
+
+          <a className="navMenuItem" href="/#moreinfo">more info</a>
         </div>
       );
     } else {
-      console.log("navType is " + navType);
       return (
         <div className="navShare">
           <p>Share this!</p>
@@ -126,7 +152,8 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
   };
 
   return (
-    <nav className="nav">
+    <>
+    <nav ref={nav} className={`nav ${(!scrolled && navType=='home') ? 'splash' : 'scroll'}`}>
       <div className="navBar">
         <AniLink
           cover
@@ -148,6 +175,8 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
         {navMenu()}
       </div>
     </nav>
+      {navType=='home' ? <div ref={trigger} className='triggerHome'></div> : ''}
+    </>
   );
 };
 
