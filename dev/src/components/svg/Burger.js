@@ -1,13 +1,12 @@
 import React from "react";
 
-const Burger = () => {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-      <path
-        fillRule="evenodd"
-        d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-      />
-    </svg>
+const Burger = (props) => {
+  return ( <svg overflow="visible" viewBox="0 0 102.4 71.5" {...props}>
+  <path className="bar1" d="M95.2 14.4h-88c-4 0-7.2-3.2-7.2-7.2S3.2 0 7.2 0h88c4 0 7.2 3.2 7.2 7.2s-3.2 7.2-7.2 7.2z"/>
+  <path className="bar2a" d="M95.2 42.9h-88c-4 0-7.2-3.2-7.2-7.2s3.2-7.2 7.2-7.2h88c4 0 7.2 3.2 7.2 7.2s-3.2 7.2-7.2 7.2z"/>
+  <path className="bar2b" d="M95.2 42.9h-88c-4 0-7.2-3.2-7.2-7.2s3.2-7.2 7.2-7.2h88c4 0 7.2 3.2 7.2 7.2s-3.2 7.2-7.2 7.2z"/>
+  <path className="bar3" d="M95.2 71.5h-88c-4 0-7.2-3.2-7.2-7.2s3.2-7.2 7.2-7.2h88c4 0 7.2 3.2 7.2 7.2s-3.2 7.2-7.2 7.2z"/>
+</svg>
   );
 };
 

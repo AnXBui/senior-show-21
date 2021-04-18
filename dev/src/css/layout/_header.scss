@@ -25,7 +25,8 @@
         background-color: $light;
         border-bottom: 2px solid $dark;
         z-index: 0;
-        transition: transform 0.25s;
+        transition: transform 0.25s, background 0.25s;
+        transition-timing-function: ease-in-out;
     }
     // background-color: $light;
     // border-bottom: 3px solid $dark;
@@ -47,6 +48,9 @@
         justify-content: center;
         align-items: center;
         margin: 0 var(--mg);
+        z-index: 100;
+        position: relative;
+
 
         @include lg{
             width: 3rem;
@@ -55,6 +59,7 @@
         >svg{
             height: 90%;
             width: 100%;
+            transition: fill 0.25s;
         }
     }
 
@@ -64,14 +69,30 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 100;
+        position: relative;
 
-        @include lg{
+        @include md{
             display: none;
         }
 
         >svg{
-            width: 100%;
-            height: 100%;
+            width: 90%;
+            height: 90%;
+            fill: $dark;
+            transition: fill 0.25s, transform 0.25s;
+        }
+
+        &:hover, &:active{
+            >svg{
+                transform: scale(1.2);
+                fill: $green;
+            }
+        }
+
+        &:focus{
+            border: 0;
+            outline: 0;
         }
     }
 
@@ -80,16 +101,42 @@
     }
 
     .navMenu{
-        display: none;
+        top: 0;
+        z-index: 50;
+        transition: transform 0.3s;
+    }
 
-        @include lg{
-            display: block;
-            margin: var(--mg);
+    .navMenu.homeMenu{
+
+        @media (max-width: 767px){
+            transform: translateY(-120%);
+            position: fixed;
+            width: 100vw;
+            right: 0;
+            height: auto;
+            background-color: $dark;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 10vh 0;
+            margin-top: 3.75rem;
         }
+        
     }
 
     .navMenuItem{
-        margin-left: 2rem;
+        @media (max-width: 767px){
+            margin: 0 2rem;
+            padding: 1rem;
+            border-bottom: 1px solid $dark;
+            font-size: 2.5rem;
+            color: $light;
+            opacity: 0;
+            transition: opacity 0.25s 0.1s;
+        }
+
+        margin-right: 2rem;
+        
     }
 }
 
@@ -129,10 +176,10 @@
             }
 
             &:hover, &:active{
-                color: $red;
+                color: $green;
 
                 svg{
-                    fill: $red;
+                    fill: $green;
                 }
             }
         }
@@ -149,7 +196,7 @@
 }
 
 .nav.splash{
-    height: 4rem;
+    height: 4.5rem;
 
     &::before{
         transform: translateY(-100%);
@@ -180,7 +227,7 @@
     padding-bottom: 2vh;
     max-height: 170vw;
 
-    @media (max-width: 768px){
+    @media (max-width: 767px){
         @media (min-aspect-ratio: 5 / 9){
             max-height: none;
             min-height: 165vw;
@@ -214,5 +261,104 @@
     }
 }
 
+.nav.mobileOpen{
+
+    @media (max-width: 767px){
+        &::before{
+            background-color: $dark;
+            transform: translateY(0);
+        }
+        
+        .navLogo{
+            >svg{
+                fill: $light;
+            }
+        }
+    
+        .navButton{
+            >svg{
+                fill: $light;
+            }
+
+            &:hover, &:active{
+                >svg{
+                    transform: scale(1.2);
+                    fill: $green;
+                }
+            }
+        }
+    }
+}
+
+.navMenu.mobileOpen{
+    @media (max-width: 767px){
+        transform: translateY(0) !important;
+        transition-timing-function: ease-in-out;
+
+        .navMenuItem{
+            opacity: 1;
+        }
+    }
+}
+
+.bar1,.bar2a,.bar2b,.bar3{
+    transition: transform 0.25s;
+    transition-timing-function: ease-in-out;
+    transform-origin: center;
+}
+
+.close{
+    .bar1, .bar3{
+        transform: scaleX(0);
+    }
+    .bar2a{
+        transform: rotate(45deg);
+    }
+
+    .bar2b{
+        transform: rotate(-45deg);
+    }
+}
+
+.overlay{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    backdrop-filter: brightness(0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover, &:active{
+        outline: 0;
+    }
+
+    @include md{
+        display: none;
+    }
+}
+
+.overlay.expand{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.mobileOnly{
+    @include md{
+        display: none !important;
+    }
+}
+
+.desktopOnly{
+    display: none !important;
+
+    @include md{
+        display: block !important;
+    }
+}
 
 

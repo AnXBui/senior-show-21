@@ -51,6 +51,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
   let scroll = useRef(null);
 
   const [scrolled, setScrolled] = useState(false); 
+  const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     if (navType = "home"){
@@ -60,9 +61,6 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
         end: "top -5%",
         onLeave: () => {setScrolled(true)},
         onEnterBack: () => {setScrolled(false)},
-        // onUpdate: self => {
-        //   console.log("progress:", self.progress.toFixed(3), "direction:", self.direction, "velocity", self.getVelocity());
-        // }
       });
     }
 
@@ -81,7 +79,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
   const navMenu = () => {
     if (navType == "home") {
       return (
-        <div className="navMenu">
+        <>
 
 
           <a className="navMenuItem" href="/#intro">intro</a>
@@ -92,7 +90,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
           <a className="navMenuItem" href="/#social">social media</a>
 
           <a className="navMenuItem" href="/#moreinfo">more info</a>
-        </div>
+        </>
       );
     } else {
       return (
@@ -150,8 +148,8 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
 
   return (
     <>
-    <nav ref={nav} className={`nav ${(!scrolled && navType=='home') ? 'splash' : 'scroll'}`}>
-      <div className="navBar">
+    <nav ref={nav} className={`nav ${(!scrolled && navType=='home') ? 'splash' : 'scroll'} ${(!opened && navType=='home') ? 'mobileOpen' : ''}`}>
+      <div className={`navBar`}>
         <AniLink
           cover
           to="/"
@@ -163,16 +161,26 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
           <Logo />
         </AniLink>
 
+        {/* <p>{opened ? 'opened' : 'close'}</p> */}
+
         <button
           className={`navButton ${navType == "profile" ? "displayNone" : " "}`}
+          onClick= {() => setOpened(!opened)}
+          aria-label={`toggle menu`}
         >
-          <Burger />
+          <Burger className={(!opened && navType=='home') ? 'close' : ''}/>
         </button>
 
-        {navMenu()}
+        <div className={`navMenu ${(navType=='home') ? 'homeMenu' : ''} ${(!opened && navType=='home') ? 'mobileOpen' : ''}`}>
+          {navMenu()}
+        </div>
+
+        
       </div>
     </nav>
       {navType=='home' ? <div ref={trigger} className={`triggerHome ${(!scrolled && navType=='home') ? 'init' : ''}`}><h3>↓</h3></div> : ''}
+      {navType=='home' ? <button aria-label={`toggle menu`} onClick= {() => setOpened(!opened)} className={`overlay ${(!opened && navType=='home') ? 'expand' : 'none'}`}></button> : ''}
+
     </>
   );
 };
