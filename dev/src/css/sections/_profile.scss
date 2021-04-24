@@ -274,8 +274,8 @@ div[data-rmiz-wrap='hidden'] {
 
     @include md{
         position: sticky;
-        top: 2rem;
-        margin-right: 10%;
+        top: 3.75rem;
+        margin-right: calc(10% + 6px);
         display: block;
         border-bottom: 0;
     }
@@ -287,7 +287,7 @@ div[data-rmiz-wrap='hidden'] {
 
 .seniorSignature{
     width: 80%;
-    margin: 0 10% 10%;
+    margin: 10% 10% 10%;
 }
 
 

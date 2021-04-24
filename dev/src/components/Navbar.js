@@ -54,6 +54,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
+    console.log(opened);
     if (navType = "home"){
       scroll = ScrollTrigger.create({
         trigger: trigger.current,
@@ -148,7 +149,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
 
   return (
     <>
-    <nav ref={nav} className={`nav ${(!scrolled && navType=='home') ? 'splash' : 'scroll'} ${(!opened && navType=='home') ? 'mobileOpen' : ''}`}>
+    <nav ref={nav} className={`nav ${(!scrolled && navType=='home') ? 'splash' : 'scroll'} ${(opened && navType=='home') ? 'mobileOpen' : 'mobileClose'}`}>
       <div className={`navBar`}>
         <AniLink
           cover
@@ -168,10 +169,10 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
           onClick= {() => setOpened(!opened)}
           aria-label={`toggle menu`}
         >
-          <Burger className={(!opened && navType=='home') ? 'close' : ''}/>
+          <Burger className={(opened && navType=='home') ? 'close' : ''}/>
         </button>
 
-        <div className={`navMenu ${(navType=='home') ? 'homeMenu' : ''} ${(!opened && navType=='home') ? 'mobileOpen' : ''}`}>
+        <div className={`navMenu ${(navType=='home') ? 'homeMenu' : ''} ${(opened && navType=='home') ? 'mobileOpen' : ''}`}>
           {navMenu()}
         </div>
 
@@ -179,7 +180,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
       </div>
     </nav>
       {navType=='home' ? <div ref={trigger} className={`triggerHome ${(!scrolled && navType=='home') ? 'init' : ''}`}><h3>↓</h3></div> : ''}
-      {navType=='home' ? <button aria-label={`toggle menu`} onClick= {() => setOpened(!opened)} className={`overlay ${(!opened && navType=='home') ? 'expand' : 'none'}`}></button> : ''}
+      {navType=='home' ? <button aria-label={`toggle menu`} onClick= {() => setOpened(!opened)} className={`overlay ${(opened && navType=='home') ? 'expand' : 'none'}`}></button> : ''}
 
     </>
   );

@@ -6,11 +6,14 @@ import Project from "../components/Project";
 import VideoProject from "../components/VideoProject";
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
+
+
 
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 // import Layout from "../components/Layout"
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+// import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 export const query = graphql`
   query GetSingleSenior($name: String) {
@@ -19,6 +22,13 @@ export const query = graphql`
       avatar {
         publicURL
       }
+
+      photo {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1, formats: WEBP)
+        }
+      }
+
       signature {
         publicURL
       }
@@ -72,6 +82,7 @@ const SeniorProfile = ({ data, pageContext }) => {
   const { name, bio, social_media, website, projects_list } = senior;
   const avatar = senior.avatar.publicURL;
   const signature = senior.signature.publicURL;
+  const photo = getImage(senior.photo);
 
   const [bioState, setBio] = useState(false);
 
@@ -113,11 +124,14 @@ const SeniorProfile = ({ data, pageContext }) => {
       <aside className={`seniorInfo ${bioState ? "expand" : " "}`}>
         <div className="stickyInfo">
           <div className="seniorInfoMain">
-            <img
+            {/* <img
               className="seniorAvatar"
               src={avatar}
               alt={name + "'s avatar"}
-            />
+            /> */}
+
+            <GatsbyImage image={photo} alt={data.name + "'s photo"} />
+            
             <img
               className="seniorInfoName seniorSignature"
               src={signature}

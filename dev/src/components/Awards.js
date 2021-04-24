@@ -21,24 +21,24 @@ import { StaticImage } from "gatsby-plugin-image"
 // import services from "../constants/services"
 
 const query = graphql`
-  {
-    allStrapiAwards {
-      nodes {
-        senior {
-          name
-          avatar {
-            publicURL
-          }
-          photo {
-            childrenImageSharp {
-              gatsbyImageData
-            }
+{
+  allStrapiAwards {
+    nodes {
+      senior {
+        name
+        photo {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1, formats: WEBP)
           }
         }
-        name
+        avatar {
+          publicURL
+        }
       }
+      name
     }
   }
+}
 `;
 
 const Awards = () => {

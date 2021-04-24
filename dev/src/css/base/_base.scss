@@ -60,17 +60,18 @@ body{
   justify-content: space-between;
 }
 
-main, body{
+body{
+  //   scroll-behavior: smooth;
   overscroll-behavior: none;
-  overflow: scroll;
+
   // height: calc(100vh - 3.75rem);
 }
 
-html{
-  scroll-behavior: smooth;
-  overscroll-behavior: none;
-  height: 100vh;
-}
+// html{
+//   scroll-behavior: smooth;
+//   overscroll-behavior: none;
+//   height: 100vh;
+// }
 
 
 

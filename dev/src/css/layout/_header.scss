@@ -204,7 +204,12 @@
 
     @include md{
         height: 6rem;
-        
+       
+        .navLogo{
+            width: 4rem;
+            height: 3rem;
+            justify-content: flex-start;
+        }
     }
     --mg: calc(var(--margin) / 2);
 }

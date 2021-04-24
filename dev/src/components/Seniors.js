@@ -1,8 +1,9 @@
 import React from "react";
-// import { GatsbyImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 import Senior from "./Senior";
 // import { FaAngleDoubleRight } from "react-icons/fa"
 import { graphql, useStaticQuery } from "gatsby";
+import arrow from "./../assets/arrow.png";
 import * as styles from "./Seniors.module.scss";
 // import PropTypes from "prop-types"
 // import { Link } from "gatsby"
@@ -17,13 +18,18 @@ const query = graphql`
         }
         photo {
           childImageSharp {
-            gatsbyImageData(formats: WEBP, placeholder: DOMINANT_COLOR)
+            gatsbyImageData(layout: FULL_WIDTH
+              placeholder: BLURRED
+              aspectRatio: 1
+              formats: WEBP)
           }
         }
       }
     }
   }
 `;
+
+
 
 const Seniors = () => {
   const data = useStaticQuery(query);
@@ -42,7 +48,13 @@ const Seniors = () => {
 
   return (
     <section className={styles.section} id="students">
-      <h2>Class of 21'</h2>
+      <h2>Class of 21'
+      <div className={styles.arrow}>
+      <StaticImage src="./../assets/arrow.png" alt=''/>
+      </div>
+      </h2>
+      
+      
 
       <ul className={styles.wrapper}>{seniorsList}</ul>
     </section>

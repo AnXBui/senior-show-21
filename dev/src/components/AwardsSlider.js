@@ -16,6 +16,7 @@ const AwardsSlider = ({ data }) => {
   // console.log(data);
   const awardsList = data.map((award, index) => {
     const { name, senior } = award;
+    // console.log(senior);
     return (
       <SwiperSlide className={`${styles.item}`} key={index}>
         <Senior data={senior} className={styles.profile} />
@@ -33,7 +34,7 @@ const AwardsSlider = ({ data }) => {
       navigation
       loop={true}
       loopedSlides={3}
-      onSlideChange={() => console.log("slide change")}
+      // onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => setSlide(true)}
       autoplay={{delay: 2000, disableOnInteraction: false}}
       mousewheel={{forceToAxis: true}}

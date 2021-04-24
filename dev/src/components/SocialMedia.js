@@ -43,10 +43,10 @@ const SocialMedia = () => {
       </div>
     </section>
 
-      <div className={styles.preFooter}>
+      {/* <div className={styles.preFooter}>
         <p> Made with <RiHeart3Line/> at Westphal</p>
       <Westphal />
-      </div>
+      </div> */}
     </>
   );
 };

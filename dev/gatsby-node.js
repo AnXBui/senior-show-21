@@ -37,7 +37,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`
     {
-      allStrapiSeniors {
+      allStrapiSeniors(sort: { fields: last })  {
         edges {
           node {
             name

@@ -3,11 +3,15 @@ import * as styles from "./Message.module.scss"
 import ColorWheels from "./svg/ColorWheels"
 import Stroke1 from "./svg/Stroke1"
 import cross from "./../assets/cross.png"
+import Glitch1 from "./svg/Glitch1"
 // import Title from "./Title"
 // import services from "../constants/services"
 const Message = () => {
   return (
     <section id="intro" className={styles.section}>
+      <div className={styles.glitch}>
+        <Glitch1 />
+      </div>
       <h2><span className={`dark h3`}>A message from the</span>Senior Class</h2>
       <p>
       The Graphic Design program at Drexel has been our home for the past four years. We came in as naïve freshman, unsure of our futures and if we were going to measure up. As time passed, we learned the specifics of our profession to prepare us for the future, but we also had the opportunity to find ourselves along the way. All of us were taught the same underlying principles, yet we were able to discover our unique styles and were encouraged to embrace them. Our professors urged us to share our thoughts freely with one another, which developed into the pillar of the class of ‘21: we believe the best work is from collaboration and the exchanging of individual ideas. 

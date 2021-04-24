@@ -48,19 +48,22 @@ const Hero = () => {
       </div>
       
       
-      <Bar className={styles.bar}/>
 
+      <div className={styles.bar}><Bar/></div>
+    
       <div className={styles.twist}><Twist/></div>
 
       <div className={styles.rainbow}></div>
 
-      <Xbox className={styles.xbox}/>
+      <div className={styles.xbox}><Xbox/></div>
+
+      
 
       <div className={styles.texture} style={{backgroundImage: `url(${texture})`}}></div>
 
       <div className={styles.textBox}><h3>"<span>Design</span> Our Way."</h3></div>
 
-      <Toggle className={styles.toggle}/>
+      <div className={styles.toggle}><Toggle/></div>
 
       <div className={styles.swiggle}><div><Swiggle /></div></div>
 
@@ -71,6 +74,8 @@ const Hero = () => {
       <div className={styles.tear}><div style={{backgroundImage: `url(${tear})`}}></div></div>
 
       <Stratch className={styles.stratch}/>
+
+      <div className={styles.box}></div>
 
       
     </section>
