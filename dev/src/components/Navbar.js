@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
-import { graphql, useStaticQuery, Link } from "gatsby";
+import { graphql, useStaticQuery} from "gatsby";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
+import { withPrefix } from "gatsby"
+
 
 
 import Logo from "./svg/Logo";
@@ -83,14 +85,14 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
         <>
 
 
-          <a className="navMenuItem" href="/#intro">intro</a>
+          <a className="navMenuItem" href={withPrefix("/#intro")}>intro</a>
 
 
-          <a className="navMenuItem" href="/#students">students</a>
+          <a className="navMenuItem" href={withPrefix("/#students")}>students</a>
 
-          <a className="navMenuItem" href="/#social">social media</a>
+          <a className="navMenuItem" href={withPrefix("/#social")}>social media</a>
 
-          <a className="navMenuItem" href="/#moreinfo">more info</a>
+          <a className="navMenuItem" href={withPrefix("/#moreinfo")}>more info</a>
         </>
       );
     } else {

@@ -77,12 +77,19 @@ const Project = ({data}) => {
     return <div className={slideLoaded ? 'slideLoaded' : 'slideLoading'}>
             <div ref={ref} className={'projectSlider'}>
               <Swiper
-              spaceBetween={32}
+              spaceBetween={16}
               slidesPerView={1}
               navigation
               loop={true}
               onSlideChange={() => console.log('slide change')}
+              breakpoints={{
+                768:{
+                  spaceBetween: 16
+                }
+              }}
               onSwiper={(swiper) => setSlide(true)}
+              
+
               >
               {images}
               </Swiper>

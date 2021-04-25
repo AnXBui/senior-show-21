@@ -24,7 +24,8 @@ function Glitch2(props) {
         xmlns="http://www.w3.org/2000/svg"
         {...props}
       >
-        <path fill="#2E2D2C" d="M95 0h254v103H95zM0 0h94.583v60.987H0z" />
+        <path fill="#2E2D2C" d="M94.27 0H349v104H94.27z" />
+        <path fill="#2E2D2C" d="M0 0h114v62H0z" />
       </svg>
     )
   }

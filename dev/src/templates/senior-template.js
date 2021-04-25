@@ -7,6 +7,7 @@ import VideoProject from "../components/VideoProject";
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import * as styles from "./senior-template.module.scss"
 
 
 
@@ -25,7 +26,7 @@ export const query = graphql`
 
       photo {
         childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1, formats: WEBP)
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1, formats: [AUTO, WEBP, AVIF])
         }
       }
 
@@ -50,7 +51,7 @@ export const query = graphql`
           localFile {
             childImageSharp {
               gatsbyImageData(
-                formats: [AUTO, WEBP]
+                formats: [AUTO, WEBP, AVIF]
                 sizes: ""
                 layout: FULL_WIDTH
               )
@@ -124,13 +125,10 @@ const SeniorProfile = ({ data, pageContext }) => {
       <aside className={`seniorInfo ${bioState ? "expand" : " "}`}>
         <div className="stickyInfo">
           <div className="seniorInfoMain">
-            {/* <img
-              className="seniorAvatar"
-              src={avatar}
-              alt={name + "'s avatar"}
-            /> */}
 
-            <GatsbyImage image={photo} alt={data.name + "'s photo"} />
+            <div className={styles.photo}>
+              <GatsbyImage image={photo} alt={data.name + "'s photo"} />
+            </div>
             
             <img
               className="seniorInfoName seniorSignature"
@@ -153,8 +151,8 @@ const SeniorProfile = ({ data, pageContext }) => {
         </div>
 
         <div className="seniorBio">
-          <p>{bio}</p>
           <button onClick={() => setBio(!bioState)}>Back</button>
+          <p>{bio}</p>
         </div>
       </aside>
       <section ref={wrapper} className="seniorProjects">

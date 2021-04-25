@@ -23,7 +23,7 @@ const SocialMedia = () => {
         >
           @drexelgraphicdesign{" "}
         </a>
-        on instagram for more!
+        on Instagram for more!
       </h3>
       <ul className={styles.list}>
         <li className={styles.item}>

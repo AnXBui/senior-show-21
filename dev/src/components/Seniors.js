@@ -21,7 +21,7 @@ const query = graphql`
             gatsbyImageData(layout: FULL_WIDTH
               placeholder: BLURRED
               aspectRatio: 1
-              formats: WEBP)
+              formats: [AUTO, WEBP, AVIF])
           }
         }
       }

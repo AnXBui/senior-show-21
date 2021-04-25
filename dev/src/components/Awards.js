@@ -28,7 +28,7 @@ const query = graphql`
         name
         photo {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1, formats: WEBP)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1, formats: [AUTO, WEBP, AVIF])
           }
         }
         avatar {

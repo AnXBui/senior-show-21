@@ -6,7 +6,11 @@
     position: relative;
 
     @include md{
-        padding-top: var(--margin);
+        padding-top: calc(var(--margin) * 0.75);
+    }
+
+    @include xl{
+        padding-top: calc(var(--margin) * 0.5)
     }
     // padding-bottom: var(--margin2);
 
@@ -53,8 +57,11 @@
     margin-left: calc(100% - 10vw);
     margin-top: 10%;
     z-index: 2;
+    border: 1px solid $dark;
+    border-right: 0;
 
     @include lg{
+        border-width: 1px;
         width: var(--margin2);
         padding-bottom: calc(var(--margin2)*1.5);
         margin-left: calc(100% - var(--margin2)); 
@@ -99,9 +106,11 @@
     height: 3rem;
     bottom: 8vw;
     right: 12vw;
+    // border: 1px solid $dark;
 
     @include lg{
         width: calc(var(--margin2) * 0.5);
+        // border-width: 2px;
         padding-bottom: calc(var(--margin2) * 0.5);
         bottom: calc(var(--margin2) * 1.05);
         right: calc(var(--margin2) * 1.2);
@@ -145,6 +154,7 @@
    justify-content: flex-end;
    align-items: flex-end;
    margin-left: auto;
+   margin-bottom: 1rem;
 
    @include md{
        width: 20vw;
@@ -154,6 +164,7 @@
    @include lg{
        width: 15vw;
        height: 15vw;
+       margin-bottom: -5vw;
    }
    
 }

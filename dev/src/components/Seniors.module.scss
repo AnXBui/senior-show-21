@@ -7,6 +7,7 @@
     h2{
         margin: var(--margin) 0;
         position: relative;
+        z-index: 3;
     }
 }
 
@@ -42,29 +43,53 @@
     border: 2px solid $dark;
     padding: 8%;
     position: relative;
+    overflow: hidden;
 
     &:nth-child(6n + 1){
-        background: linear-gradient(to top, $pink 3%, rgba($pink, 0) 15%);
+        &::before{
+           background: linear-gradient(to top, $pink 3%, rgba($pink, 0) 15%);
+        }
     }
 
     &:nth-child(6n + 2){
-        background: linear-gradient(to top, $red 3%, rgba($red, 0) 15%);
+        &::before{
+            background: linear-gradient(to top, $red 3%, rgba($red, 0) 15%);
+    }
     }
 
     &:nth-child(6n + 3){
-        background: linear-gradient(to top, $yellow 3%, rgba($yellow, 0) 15%);
+        &::before{
+            background: linear-gradient(to top, $yellow 3%, rgba($yellow, 0) 15%);
+    }
     }
 
     &:nth-child(6n + 4){
-        background: linear-gradient(to top, $navy 3%, rgba($navy, 0) 15%);
+        &::before{
+            background: linear-gradient(to top, $navy 3%, rgba($navy, 0) 15%);
+    }
     }
 
     &:nth-child(6n + 5){
-        background: linear-gradient(to top, $blue 3%, rgba($blue, 0) 15%);
+        &::before{
+            background: linear-gradient(to top, $blue 3%, rgba($blue, 0) 15%);
+    }
     }
 
     &:nth-child(6n + 6){
-        background: linear-gradient(to top, $green 3%, rgba($green, 0) 15%);
+        &::before{
+            background: linear-gradient(to top, $green 3%, rgba($green, 0) 15%);
+    }
+    }
+
+    &::before{
+        content:'';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+        pointer-events: none;
     }
 
     h3{
@@ -75,6 +100,8 @@
         text-align: center;
         padding: 0.75em;
         font-size: 4vw;
+        z-index: 4;
+
 
         @include md{
             font-size: 2vw; 

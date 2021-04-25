@@ -56,7 +56,11 @@ div[data-rmiz-wrap='hidden'] {
 }
 
 .projectSingle{
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+
+    @include md{
+        margin-bottom: 4rem;
+    }
     &:last-child{
         margin-bottom: 0;
     }
@@ -65,10 +69,14 @@ div[data-rmiz-wrap='hidden'] {
 }
 
 .projectInfo{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap:wrap;
+    
     padding: 0 calc(15%);
+
+    @include md{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap:wrap;
+    }
     
 
     @include md{
@@ -82,8 +90,12 @@ div[data-rmiz-wrap='hidden'] {
 
     ul{
         display: flex;
-        justify-content: space-between;
-        margin-top: 0.75rem;
+        margin-top: 0.5rem;
+
+        @include md{
+            margin-top: 0.75rem;
+            justify-content: space-between;
+        }
         
         li{
             padding-left: 1rem;
@@ -104,10 +116,12 @@ div[data-rmiz-wrap='hidden'] {
 
             &:first-child{
                 border-left: 0;
+                padding-left: 0;
             }
 
             p{
                 font-size: 0.85rem;
+                line-height: 0.75em;
             }
         }
     }
@@ -158,7 +172,7 @@ div[data-rmiz-wrap='hidden'] {
         height: 100%;
         position: absolute;
         top: 0;
-        right: 0;
+        right: -10%;
         background: $rainbow;
         border-right: 3px solid $dark;
         border-left: 3px solid $dark;
@@ -197,7 +211,7 @@ div[data-rmiz-wrap='hidden'] {
         height: calc(100vh - 3.75rem);
         position: fixed;
         clip-path: inset(0 100% 0 0);
-        width: 40vw;
+        width: 60vw;
         transition: clip-path 0.25s;
         transform: translateX(0);
         left: 20vw;
@@ -209,6 +223,7 @@ div[data-rmiz-wrap='hidden'] {
     p{
         line-height: 150%;
         padding: 2rem;
+        padding-bottom: 4rem;
 
         @include sm{
             margin-left: 6rem;
@@ -224,11 +239,15 @@ div[data-rmiz-wrap='hidden'] {
 
     button{
         position: sticky;
-        bottom: 0;
+        top: 0;
+        left: 0;
         width: 100%;
         background-color: $light;
-        padding: 2rem;
-        border-top: 2px solid $dark;
+        height: 4rem;
+        border-bottom: 2px solid $dark;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         @include sm{
             width: auto;
@@ -240,7 +259,7 @@ div[data-rmiz-wrap='hidden'] {
             position: absolute;
         }
 
-        @include lg{
+        @include md{
             display: none;
         }
     }
@@ -248,7 +267,7 @@ div[data-rmiz-wrap='hidden'] {
 
 .seniorInfo.expand{
     &::after{
-        transform: translateX(40vw);
+        transform: translateX(60vw);
     }
 
     .seniorBio{
@@ -275,7 +294,7 @@ div[data-rmiz-wrap='hidden'] {
     @include md{
         position: sticky;
         top: 3.75rem;
-        margin-right: calc(10% + 6px);
+        margin-right:  0;
         display: block;
         border-bottom: 0;
     }

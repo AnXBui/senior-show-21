@@ -1,10 +1,12 @@
 .item{
     // background-color: red;
     // position: relative;
-    --clip: 100%;
+    --opacity: 0%;
+    --scale: 1.2;
 
     &:hover, &:active{
-        --clip: 0%;
+        --opacity: 100%;
+        --scale: 1;
     }
 
     
@@ -16,15 +18,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    // opacity: 0;
-    transition: clip-path 0.25s;
-    clip-path: inset(var(--clip) 0% 0% 0%);
-    
+    opacity: var(--opacity);
+    transition: opacity 0.25s ;
+    z-index: 2;
+    overflow: hidden;
     
 
     >div{
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transform: scale(var(--scale));
+        transition: transform 0.25s;
     }
 }

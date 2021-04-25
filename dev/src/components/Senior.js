@@ -23,14 +23,15 @@ const Senior = ({ data, className = "" }) => {
     <div className={`${className} ${styles.item}`}>
       <AniLink cover to={slug} bg="#EC6B5B" direction="left" duration={1}>
         <h3>{data.name}</h3>
+        <div className={styles.photo}>
+          <GatsbyImage image={photo} alt={data.name + "'s photo"} />
+        </div>
         <img
           src={avatar ? avatar.publicURL : ""}
           alt={data.name + "'s avatar"}
         />
 
-        <div className={styles.photo}>
-          <GatsbyImage image={photo} alt={data.name + "'s photo"} />
-        </div>
+       
       </AniLink>
     </div>
   );
