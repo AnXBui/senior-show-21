@@ -1,20 +1,60 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import { StaticImage } from "gatsby-plugin-image"
 import * as styles from "./SocialMedia.module.scss"
 import {useMediaQuery} from '@react-hook/media-query'
 import {Glitch1, Glitch2} from "./svg/SocialGlitch"
-import Westphal from "./svg/Westphal"
-import { RiHeart3Line } from "@react-icons/all-files/ri/RiHeart3Line";
+import { gsap, ScrollTrigger} from "gsap/all";
+
+
+gsap.registerPlugin(ScrollTrigger); 
 
 // import Title from "./Title"
 // import services from "../constants/services"
 const SocialMedia = () => {
   const desktop = useMediaQuery('only screen and (min-width: 992px)')
 
+  const container = useRef(null);
+  const animate = useRef(null);
+  const title = useRef(null);
+
+  useEffect(() => {
+    let tl = gsap.timeline();
+
+    gsap.set(title.current, {transformOrigin:'center bottom'});
+
+    tl.from(container.current, 0.5,{alpha:0, delay: 0.5})
+    tl.from(title.current, 0.5, {alpha: 0, xPercent: -10, ease:'power2'},'-=0.25')
+
+      
+    animate.current = ScrollTrigger.create({
+      trigger: container.current,
+      animation: tl,
+      start: "top 90%",
+      toggleActions: "play none resume reset",
+      end: "bottom top",
+    });
+
+
+    
+
+    return () => {
+      if (animate.current != null){
+        animate.current.kill();
+      }
+    }
+
+}, [])
+
+
+
+
+
+
+
   return (
     <>
-    <section className={styles.section} id="social">
-      <h3 className={styles.title}>
+    <section ref={container} className={styles.section} id="social">
+      <h3 ref={title} className={styles.title}>
           Follow us{" "} 
         <a
           className={`krona`}
@@ -42,11 +82,6 @@ const SocialMedia = () => {
           <Glitch2 />
       </div>
     </section>
-
-      {/* <div className={styles.preFooter}>
-        <p> Made with <RiHeart3Line/> at Westphal</p>
-      <Westphal />
-      </div> */}
     </>
   );
 };

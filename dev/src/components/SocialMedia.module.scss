@@ -50,6 +50,10 @@
     }
   a{
       color: var(--red);
+
+      &:hover, &:active{
+          color: var(--navy);
+      }
   }  
 }
 

@@ -1,15 +1,16 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
-// import Title from "./Title"
 import PropTypes from "prop-types";
-// import { Link } from "gatsby"
-// import {Link, TransitionLink} from 'gatsby-plugin-transition-link'
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import * as styles from "./Senior.module.scss"
+import { gsap, ScrollTrigger} from "gsap/all";
+
 
 // import {slugify} from "slugify"
 
 var slugify = require("slugify");
+gsap.registerPlugin(ScrollTrigger); 
+
 
 const Senior = ({ data, className = "" }) => {
   console.log(`rendering ${data}`);
@@ -17,6 +18,8 @@ const Senior = ({ data, className = "" }) => {
   const { avatar } = data;
   const photo = getImage(data.photo);
   const slug = slugify(data.name);
+
+
   // const signature = getImage(data.blogPost.avatar)
 
   return (
@@ -29,9 +32,8 @@ const Senior = ({ data, className = "" }) => {
         <img
           src={avatar ? avatar.publicURL : ""}
           alt={data.name + "'s avatar"}
+          loading='lazy'
         />
-
-       
       </AniLink>
     </div>
   );

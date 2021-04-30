@@ -1,8 +1,5 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { StaticImage } from "gatsby-plugin-image";
-import { Link } from "gatsby";
-import { graphql, useStaticQuery } from "gatsby";
-import SocialLinks from "../constants/socialLinks";
 import HeroMain from "./svg/HeroMain"
 import Bar from "./svg/Bar"
 import Twist from "./svg/Twist"
@@ -16,16 +13,14 @@ import Stratch from "./svg/Stratch"
 import texture from "./../assets/textTexture.png"
 import tear from "./../assets/tear.svg"
 import * as styles from "./Hero.module.scss"
+import TextLoop from "react-text-loop";
+
 
 const Hero = () => {
   return (
     <>
     <div className={styles.fade}></div>
     <section className={styles.section}>
-      {/* <StaticImage src="../assets/hero-img.png" alt="hero image" className="heroImg" /> */}
-      {/* <h1>Graphic Design 2021</h1>
-      <h2>Senior Showcase</h2>
-      <p>See our ways</p> */}
       <div className={styles.main}>
         <HeroMain/>
       </div>
@@ -61,7 +56,7 @@ const Hero = () => {
 
       <div className={styles.texture} style={{backgroundImage: `url(${texture})`}}></div>
 
-      <div className={styles.textBox}><h3>"<span>Design</span> Our Way."</h3></div>
+      <div className={styles.textBox}><h3><span><TextLoop springConfig={{ stiffness: 100, damping: 10 }} interval={1250} children={["Design", "See", "Think", "Create"]} /></span> Our Way.</h3></div>
 
       <div className={styles.toggle}><Toggle/></div>
 
@@ -69,13 +64,15 @@ const Hero = () => {
 
       <div className={styles.glow}></div>
 
-      <div className={styles.print}><StaticImage src='./../assets/printTexture2.png' alt=''/></div>
+      <div className={styles.print}><StaticImage loading='eager' src='./../assets/printTexture2.png' alt=''/></div>
 
       <div className={styles.tear}><div style={{backgroundImage: `url(${tear})`}}></div></div>
 
       <Stratch className={styles.stratch}/>
 
       <div className={styles.box}></div>
+
+      
 
       
     </section>

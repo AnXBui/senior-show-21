@@ -302,6 +302,10 @@
             height: 130%;
             overflow: hidden;
             z-index: 3;
+            animation: scaleLoop 1.5s infinite alternate linear;
+            transform-origin: center bottom;
+
+
 
             @include md{
                 width: 90%;
@@ -310,9 +314,28 @@
 
             >svg{
                 fill: $red;
+
             }
 
 
+        }
+
+        @keyframes scaleLoop{
+            from{
+                transform: scale(1);
+            }
+            to{
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes scaleLoop2{
+            from{
+                transform: scale(1);
+            }
+            to{
+                transform: scale(1.3);
+            }
         }
     }
 
@@ -443,7 +466,10 @@
     border: 1px solid $dark;
     border-left: 0;
     border-right: 0;
-    background: radial-gradient(circle at 50%, $navy 0%, rgba($navy,0.5) 35%, rgba($blue, 0) 80%);
+    position: relative;
+    overflow: hidden;
+    // animation: glowLoop 1.5s infinite alternate linear;
+
 
     @include md{
         grid-column: 16 / 18;
@@ -453,8 +479,32 @@
         border-top: 0;
         border-left: 0;
         border-width: 2px;
+    }
+
+    &::before{
+        content:'';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: radial-gradient(circle at 50%, $navy 0%, rgba($navy,0.5) 35%, rgba($blue, 0) 80%);
+        animation: scaleLoop2 1s infinite alternate-reverse linear;
 
     }
+
+    // @keyframes glowLoop{
+    //     from{
+    //         background: radial-gradient(circle at 50%, $navy 0%, rgba($navy,0.5) 35%, rgba($blue, 0) 80%);
+
+    //     }
+    //     to{
+    //         background: radial-gradient(circle at 50%, $navy 10%, rgba($navy,0.5) 45%, rgba($blue, 0) 90%);
+
+    //     }
+    // }
+
+
 }
 
 .tear{

@@ -51,9 +51,9 @@ const Project = ({data}) => {
         trigger: element,
         start: "top 70%",
         end: "bottom 30%",
-        scroller:".seniorProfile",
         toggleClass: "activeSlide"
       });
+
     }, []);
 
 
