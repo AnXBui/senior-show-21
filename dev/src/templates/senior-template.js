@@ -96,7 +96,7 @@ const SeniorProfile = ({ data, pageContext }) => {
   });
 
   const projects = projects_list.map((project, index) => {
-    if (project.video !== "none" && project.video != null) {
+    if (project.video != "none" && project.video != '' && project.video != null || project.gallery == null) {
       return (
         <li className="projectSingle" key={index}>
           {/* <h1>{project.title}</h1> */}

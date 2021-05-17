@@ -15,17 +15,22 @@ const VideoProject = ({ data }) => {
   });
 
   const videoTarget = useRef(null);
+  let plyrPlayer = useRef(null);
 
   useEffect(() => {
     if (typeof window !== "undefined" && typeof document !== "undefined") {
       const Plyr = require("plyr");
-      new Plyr(videoTarget.current, {
+      plyrPlayer = new Plyr(videoTarget.current, {
         // controls: ['play-large', 'play', 'progress', 'mute', 'fullscreen'],
         resetOnEnd: true,
         hideControls: true,
       });
     }
-  }, video);
+
+    return () => {
+      plyrPlayer.destroy();
+    }
+  }, []);
 
   return (
     <div className="videoProject">

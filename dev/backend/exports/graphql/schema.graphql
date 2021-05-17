@@ -794,6 +794,7 @@ enum ENUM_COMPONENTPROJECTSPROJECTTAG_TAG {
   branding
   typography
   illustration
+  capstone
 }
 
 type ComponentProjectsProjectTag {
@@ -813,7 +814,6 @@ input editComponentProjectsProjectTagInput {
 type ComponentProjectsProject {
   id: ID!
   title: String!
-  description: String!
   project_tag: [ComponentProjectsProjectTag]
   index: Int!
   video: String
@@ -822,7 +822,6 @@ type ComponentProjectsProject {
 
 input ComponentProjectsProjectInput {
   title: String!
-  description: String!
   project_tag: [ComponentProjectsProjectTagInput!]
   index: Int
   video: String
@@ -832,7 +831,6 @@ input ComponentProjectsProjectInput {
 input editComponentProjectsProjectInput {
   id: ID
   title: String
-  description: String
   project_tag: [editComponentProjectsProjectTagInput]
   index: Int
   video: String
@@ -843,6 +841,8 @@ enum ENUM_COMPONENTSOCIALSOCIALLINK_TYPE {
   facebook
   instagram
   linkedin
+  dribble
+  behance
 }
 
 type ComponentSocialSocialLink {

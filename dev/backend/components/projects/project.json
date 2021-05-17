@@ -11,10 +11,6 @@
       "type": "string",
       "required": true
     },
-    "description": {
-      "type": "text",
-      "required": true
-    },
     "project_tag": {
       "type": "component",
       "repeatable": true,
@@ -34,7 +30,9 @@
     "gallery": {
       "collection": "file",
       "via": "related",
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "plugin": "upload",
       "required": false
     }

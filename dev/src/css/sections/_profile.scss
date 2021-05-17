@@ -182,6 +182,7 @@ div[data-rmiz-wrap='hidden'] {
 
         @include md{
             display: block;
+            border-width: 2px;
         }
     }
 }
