@@ -22,20 +22,22 @@ const SocialMedia = () => {
 
     gsap.set(title.current, {transformOrigin:'center bottom'});
 
-    tl.from(container.current, 0.5,{alpha:0, delay: 0.5})
-    tl.from(title.current, 0.5, {alpha: 0, xPercent: -10, ease:'power2'},'-=0.25')
+    tl.fromTo(container.current, 0.5,{alpha:0},{alpha: 1})
+    tl.fromTo(title.current, 0.5, {alpha: 0, xPercent: -10},{alpha: 1, xPercent: 0, ease:'power2'},'-=0.45')
 
       
     animate.current = ScrollTrigger.create({
       trigger: container.current,
       animation: tl,
-      start: "top 90%",
-      toggleActions: "play none resume reset",
-      end: "bottom top",
+      start: "top bottom",
+      scrub: 0.25,
+      end: "20% top",
+      onEnter: () => {
+        ScrollTrigger.refresh();
+      }
+
     });
 
-
-    
 
     return () => {
       if (animate.current != null){
@@ -44,11 +46,6 @@ const SocialMedia = () => {
     }
 
 }, [])
-
-
-
-
-
 
 
   return (

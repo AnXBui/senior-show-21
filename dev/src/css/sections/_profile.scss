@@ -85,6 +85,10 @@ div[data-rmiz-wrap='hidden'] {
 
     h3{
         margin-top: 0.75rem;
+
+        @include md{
+            font-size: 1.75vw;
+        }
     }
 
 
@@ -174,8 +178,8 @@ div[data-rmiz-wrap='hidden'] {
         top: 0;
         right: -10%;
         background: $rainbow;
-        border-right: 3px solid $dark;
-        border-left: 3px solid $dark;
+        border-right: 2px solid $dark;
+        border-left: 2px solid $dark;
         transform: translateX(0);
         transition: transform 0.25s;
         display: none;
@@ -211,12 +215,12 @@ div[data-rmiz-wrap='hidden'] {
 
     @include md{
         border: 3px solid $dark;
-        border-right: 2px solid $dark;
+        border-right: 1px solid $dark;
         border-top: 0;
         height: calc(100vh - 3.75rem);
         position: fixed;
         clip-path: inset(0 100% 0 0);
-        width: calc(80vw - 18rem - 2.5vw + 2px);
+        width: calc(80vw - 18rem - 2.5vw + 1px);
         transition: clip-path 0.25s;
         transform: translateX(0);
         left: 20vw;
@@ -272,7 +276,7 @@ div[data-rmiz-wrap='hidden'] {
 
 .seniorInfo.expand{
     &::after{
-        transform: translateX(calc(80vw - 18rem - 2.5vw + 5px));
+        transform: translateX(calc(80vw - 18rem - 2.5vw + 4.25px));
     }
 
 

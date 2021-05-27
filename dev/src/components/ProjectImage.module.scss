@@ -1,0 +1,11 @@
+.blurred{
+        filter: blur(10px);
+}
+
+.image{
+    overflow: hidden;
+    border: 1px solid var(--dark);
+    >*{
+      transition: filter 0.5s ease-in-out;
+    }
+}

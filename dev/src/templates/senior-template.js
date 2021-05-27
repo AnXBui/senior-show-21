@@ -51,9 +51,10 @@ export const query = graphql`
           localFile {
             childImageSharp {
               gatsbyImageData(
-                formats: [AUTO, WEBP, AVIF]
-                sizes: ""
-                layout: FULL_WIDTH
+                formats: [AUTO, WEBP, AVIF],
+                sizes: "90vw",
+                layout: FULL_WIDTH,
+                placeholder: BLURRED
               )
             }
           }

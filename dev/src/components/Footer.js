@@ -11,8 +11,9 @@ import { FaVimeoSquare } from "@react-icons/all-files/fa/FaVimeoSquare";
 
 
 const Footer = () => {
-  return <footer>
+  return <footer className={styles.footer}>
        <p>Graphic Group Drexel Unversity © 2021</p>
+       <p>Designed by Nhi Nguyen, Luka Kimlicko, Glenn Volpe and Bex Lewis</p>
        <p>Developed by <a href='https://me.axbdesign.com/'>An Bui</a></p>
   </footer>;
 };

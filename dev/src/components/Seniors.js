@@ -69,7 +69,7 @@ const Seniors = () => {
     animate.current = ScrollTrigger.create({
       trigger: container.current,
       animation: tl,
-      start: "top 80%",
+      start: "top 90%",
       end: "bottom top",
       onEnter: () => {
         ScrollTrigger.refresh();
@@ -82,14 +82,17 @@ const Seniors = () => {
       let tl = gsap.timeline();
       gsap.set(item, {transformOrigin:'center bottom'});
 
-      tl.from(item, 0.5, {alpha: 0, yPercent: 20, ease:'back'})
+      tl.fromTo(item, {alpha: 0, yPercent: 20},{alpha: 1, yPercent: 0, duration: 0.1},'start')
+      // tl.to(item, {alpha: 1, duration: 1},'start')
+      // tl.to(item, {alpha: 0, yPercent: -20, duration: 0.1})
+      // tl.from(item, 0.5, {alpha: 0, yPercent: 20, ease:'back'})
 
       animateList.current[index] = ScrollTrigger.create({
         trigger: item,
         animation: tl,
-        start: "top 70%",
-        toggleActions: "play complete none none",
-        end: "bottom top",
+        start: "top bottom",
+        scrub: 0.25,
+        end: "top 75%",
       });
 
     })

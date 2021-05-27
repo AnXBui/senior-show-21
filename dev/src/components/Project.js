@@ -42,6 +42,7 @@ const Project = ({data}) => {
 
     const [slideLoaded, setSlide] = useState(false);
     const ref = useRef(null);
+    const multiple = gallery.length > 1;
     // const parent = wrapper;
 
 
@@ -58,15 +59,18 @@ const Project = ({data}) => {
 
 
     const images = gallery.map((image, index) => {
+        console.log(multiple);
+        console.log(gallery);
        
         const src = getImage(image.localFile);
 
-        if (image.localFile){
+        if (image.localFile && multiple){
             return <SwiperSlide className={(index === 0) ? 'main' : 'second'} key={index}>
             <ProjectImage url={src} alt={title}/>
         </SwiperSlide> 
-        } else 
-        return null;
+        } else if (image.localFile){
+           return <ProjectImage className={`main`} url={src} alt={title}/>
+        } else return null;
        
       })
 
@@ -75,7 +79,9 @@ const Project = ({data}) => {
     })
 
     return <div className={slideLoaded ? 'slideLoaded' : 'slideLoading'}>
-            <div ref={ref} className={'projectSlider'}>
+            <div ref={ref} className={`projectSlider ${!multiple ? styles.single : null}`}>
+
+            {multiple ? (
               <Swiper
               spaceBetween={16}
               slidesPerView={1}
@@ -93,6 +99,7 @@ const Project = ({data}) => {
               >
               {images}
               </Swiper>
+              ) : images}
             </div>
 
         
