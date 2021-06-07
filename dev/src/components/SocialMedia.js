@@ -64,13 +64,13 @@ const SocialMedia = () => {
       </h3>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <StaticImage src="./../assets/instagram1.png" alt="Senior show instagram post: Publication" />
+          <StaticImage sizes={'(min-width: 992px) 30w, (min-width: 768px) 40w, 90w'} src="./../assets/instagram1.png" alt="Senior show instagram post: Publication" />
         </li>
         <li className={styles.item}>
-          <StaticImage src="./../assets/instagram2.png" alt="Senior show instagram post: Packaging" />
+          <StaticImage sizes={'(min-width: 992px) 30w, (min-width: 768px) 40w, 90w'} src="./../assets/instagram2.png" alt="Senior show instagram post: Packaging" />
         </li>
         {desktop ? <li className={styles.item}>
-          <StaticImage src="./../assets/instagram3.png" alt="Senior show instagram post: Branding" />
+          <StaticImage sizes={'(min-width: 992px) 30w, (min-width: 768px) 40w, 90w'} src="./../assets/instagram3.png" alt="Senior show instagram post: Branding" />
         </li> : null}
 
       </ul>

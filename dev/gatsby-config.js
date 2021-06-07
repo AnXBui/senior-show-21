@@ -2,7 +2,7 @@ let facebook_pixel = "";
 let gtm = "1234";
 
 module.exports = {
-  pathPrefix: `/seniorshow/`,
+  pathPrefix: `/GD/SeniorShow21/testbed/`,
   siteMetadata: {
     title: `Westphal Graphic Design Senior Show 21`,
     description: `Welcome to the Graphic Design Senior Show 21 by Westphal College, Drexel University `,

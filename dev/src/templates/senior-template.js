@@ -54,6 +54,7 @@ export const query = graphql`
                 formats: [AUTO, WEBP, AVIF],
                 sizes: "90vw",
                 layout: FULL_WIDTH,
+                quality: 90,
                 placeholder: BLURRED
               )
             }
@@ -128,7 +129,7 @@ const SeniorProfile = ({ data, pageContext }) => {
           <div className="seniorInfoMain">
 
             <div className={styles.photo}>
-              <GatsbyImage image={photo} alt={data.name + "'s photo"} />
+              <GatsbyImage critical={true} image={photo} alt={data.name + "'s photo"} />
             </div>
             
             <img

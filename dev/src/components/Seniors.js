@@ -22,6 +22,7 @@ const query = graphql`
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH
               placeholder: BLURRED
+              sizes:"(min-width: 992px) 30w, (min-width: 768px) 40w, 90w"
               aspectRatio: 1
               formats: [AUTO, WEBP, AVIF])
           }

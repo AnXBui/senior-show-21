@@ -1,0 +1,213 @@
+/* =============
+   Countdown
+============= */
+
+$dark: #2E2D2C;
+$light: #EDE0DB;
+
+$red: #EC6B5B;
+$yellow: #F7B125;
+$green: #02B49C;
+$blue: #1075BB;
+$sky: #3EC1DF;
+$pink: #ED93A8;
+
+
+h1, h2{
+  font-family: 'Krona One', sans-serif;
+}
+
+p,a{
+  font-family: 'Roboto Mono', monospace;
+  color: $dark;
+}
+
+// font-family: 'Krona One', sans-serif;
+// font-family: 'Roboto Mono', monospace;
+
+main{
+  display: grid;
+
+  @include md{
+    height: 100vh;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+  }
+
+}
+
+.countdown{
+  background-color: $dark;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  grid-row: 2 / 3;
+  padding: 10%;
+
+  @include md{
+    grid-row: 1 / 3;
+    grid-column: 1 / 2;
+  }
+
+  h1{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    column-gap: 5%;
+    font-size: 9vw;
+
+    @include md{
+      width: 90%;
+      font-size: 6.5vw;
+    }
+
+    @include lg{
+      width: 80%;
+      font-size: 5.5vw;
+    }
+
+    @include xl{
+      font-size: 6.5vw;
+    }
+
+    div{
+      color: $light;
+      text-transform: uppercase;
+      &:nth-child(2n + 1){
+        color: $red;
+      }
+    }
+  }
+}
+
+.extra{
+  width: 100%;
+  grid-template-columns: 25% 75%;
+  column-gap: 5%;
+  color: $light;
+  margin-top: 2vw;
+  display: flex;
+
+  @include md{
+    display: grid;
+    width: 80%;
+  }
+  p{
+    color: $light;
+    text-transform: uppercase;
+    font-family: 'Krona One', sans-serif;
+
+    @include md{
+      font-size: 1vw;
+    }
+
+    @include lg{
+      font-size: 1.2vw;
+    }
+
+    @include xl{
+      font-size: 1.25vw;
+    }
+  }
+}
+
+
+
+aside{
+  background-color: $light;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-row: 1 / 2;
+
+
+  @include md{
+    width: 35vw;
+    max-width: 55vh;
+    min-width: 350px;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+
+  @include lg{
+    min-width: 450px;
+  }
+}
+
+.info{
+  @include md{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    width: 35vw;
+    max-width: 55vh;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @include lg{
+    min-width: 450px;
+  }
+}
+
+.rainbow{
+  padding-bottom: 10%;
+  background: linear-gradient(to left, $red 0%, $yellow 20%, $green 40%, $blue 60%, $sky 80%, $pink 100%);
+  border: 1px solid $dark;
+  order: 2;
+
+  @include md{
+    order: 1;
+  }
+}
+
+.main{
+  order: 1;
+
+  @include md{
+    order: 2;
+  }
+}
+
+
+
+.infoText{
+  padding: 10%;
+  line-height: 1.5;
+  font-size: clamp(1rem, 1.35vw, 1.5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p{
+    font-size: 1.25rem;
+
+    @include md{
+      font-size: 2vw;
+    }
+
+    @include lg{
+      font-size: 1.35vw;
+    }
+
+    @include xl{
+      font-size: 1.25vw;
+    }
+  }
+}
+
+.infoButton{
+  padding: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Krona One', sans-serif;
+  border-top: 1px solid $dark;
+  font-size: clamp(1.25rem, 1.25vw, 1.8rem);
+
+  &:hover, &:active{
+    color: $red;
+  }
+}

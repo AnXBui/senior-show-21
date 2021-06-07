@@ -7,7 +7,7 @@ import { FiZoomIn } from "@react-icons/all-files/fi/FiZoomIn";
 import "react-medium-image-zoom/dist/styles.css";
 import * as styles from "./ProjectImage.module.scss"
 
-const ProjectImage = ({ url, alt }) => {
+const ProjectImage = ({ url, alt, first=false }) => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [loaded, setLoad] = useState(false);
 
@@ -33,7 +33,8 @@ const ProjectImage = ({ url, alt }) => {
         onZoomChange={handleZoomChange}
         zoomMargin={50}
       >
-        <GatsbyImage onLoad={() => {setLoaded()}} className={`${loaded ?  null : styles.blurred}`} image={url} alt={alt} />
+        <GatsbyImage sizes={isZoomed ? '90w' : '(min-width: 768px) 40w, 90w'} critical={first} loading={first ? 'eager' : 'lazy'} onLoad={() => {setLoaded()}} className={`${loaded ?  null : styles.blurred}`} image={url} alt={alt} />
+
       </ControlledZoom>
       <button className="zoomButton" onClick={handleImgLoad}>
         <FiZoomIn />

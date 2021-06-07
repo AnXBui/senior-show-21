@@ -65,11 +65,11 @@ const Project = ({data}) => {
         const src = getImage(image.localFile);
 
         if (image.localFile && multiple){
-            return <SwiperSlide className={(index === 0) ? 'main' : 'second'} key={index}>
-            <ProjectImage url={src} alt={title}/>
+            return <SwiperSlide className={(index === 0) ? 'main' : 'second'} key={`${title} ${index}`}>
+            <ProjectImage first={(index === 0) ? true : false  } url={src} alt={title}/>
         </SwiperSlide> 
         } else if (image.localFile){
-           return <ProjectImage className={`main`} url={src} alt={title}/>
+           return <ProjectImage key={`${title} ${index}`} first={true} className={`main`} url={src} alt={title}/>
         } else return null;
        
       })
