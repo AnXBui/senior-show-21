@@ -1,8 +1,10 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { withPrefix } from "gatsby"
+
 import { useStaticQuery, graphql } from "gatsby";
 
-const SEO = ({ description, lang, meta, title }) => {
+const SEO = ({ isHome=true, description, lang, meta, image, title,location='' }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -20,6 +22,7 @@ const SEO = ({ description, lang, meta, title }) => {
   );
 
   const metaDescription = description || site.siteMetadata.description;
+  const url = withPrefix(site.siteMetadata.siteUrl);
 
   return (
     <Helmet
@@ -43,7 +46,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:type`,
@@ -58,8 +61,28 @@ const SEO = ({ description, lang, meta, title }) => {
           content: title,
         },
         {
+          name: `og:image`,
+          content: `${url}${image}`,
+        },
+        {
+          name: `twitter:image:alt`,
+          content: `Drexel Graphic Design 21 Senior Showcase `,
+        },
+        {
+          name: `og:url`,
+          content: `${url}${location}`,
+        },
+        {
+          name: `og:site_name`,
+          content: `${site.siteMetadata.title}`,
+        },
+        {
           name: `twitter:description`,
-          content: metaDescription,
+          content: description,
+        },
+        {
+          name: `twitter:card`,
+          content:"summary_large_image",
         },
       ]}
     />

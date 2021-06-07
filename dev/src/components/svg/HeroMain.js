@@ -6,6 +6,7 @@ function HeroMain(props) {
       viewBox="0 0 453 359"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-label='Graphic Design 21 Senior Showcase'
       {...props}
     >
       <path

@@ -1,16 +1,44 @@
-.blurred{
-        filter: blur(10px);
+.blurred {
+  filter: blur(10px);
 }
 
-.image{
-    overflow: hidden;
-    border: 1px solid var(--dark);
-    >*{
-      transition: filter 0.5s ease-in-out;
-    }
+.loading {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1rem);
+    left: calc(50% - 1rem);
+    width: 2rem;
+    height: 2rem;
+    background: url("./../assets/loading.svg");
+    background-size: 250%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 10;
+  }
 }
 
-.buttonHide{
+.image {
+  background: white;
+  overflow: hidden;
+  border: 1px solid var(--dark);
+  > * {
+    transition: filter 0.5s ease-in-out;
+  }
+}
+
+.buttonHide {
   opacity: 0;
+  display: none;
   pointer-events: none;
+}
+
+.zoomedImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }

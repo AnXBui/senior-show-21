@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useEffect } from "react";
+import React from "react";
 import Senior from "./Senior";
 
 import SwiperCore, { Navigation, A11y, Autoplay, Mousewheel} from "swiper";
@@ -25,8 +25,6 @@ const AwardsSlider = ({ data }) => {
     );
   });
 
-  const [slideLoaded, setSlide] = useState(false);
-
   return (
     <Swiper
       spaceBetween={32}
@@ -35,7 +33,6 @@ const AwardsSlider = ({ data }) => {
       loop={true}
       loopedSlides={3}
       // onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => setSlide(true)}
       autoplay={{delay: 2000, disableOnInteraction: false}}
       mousewheel={{forceToAxis: true}}
       breakpoints={{

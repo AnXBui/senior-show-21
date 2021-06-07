@@ -1,602 +1,588 @@
 @import "../css/helpers/variables";
 @import "../css/helpers/mixins";
 
-.fade{
+.fade {
+  width: 100%;
+  height: 8rem;
+  position: absolute;
+  top: 0;
+  background: linear-gradient(to bottom, $pink 0%, rgba($pink, 0) 100%);
+}
+
+.section {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 10vw 10vw 5vw 10vw 28.4vw auto 10vw 13vw 8vw 5vw 5vw;
+
+  @include md {
+    grid-template-columns: 1.2fr 0.8fr repeat(8, 1fr) 0.8fr repeat(5, 1fr) 0.8fr 1.2fr;
+    grid-template-rows: 3.4vw 4.8vw 4.4vw 4.7vw 4.4vw calc(2vw + 1px) 3.3vw 4.4vw 4vw 3vw 5.6vw 3.5vw;
+    margin-top: 2.3vw;
+  }
+}
+
+.rainbow {
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+  background: repeating-linear-gradient(
+    to right,
+    $red 0%,
+    $yellow 20%,
+    $green 40%,
+    $blue 60%,
+    $navy 80%,
+    $pink 100%
+  );
+  border: 1px solid $dark;
+
+  @include md {
+    grid-row: 1 / 2;
+    grid-column: 1 / 4;
+    border-bottom: 0;
+    width: calc(100% + 2px);
+    border-left: 0;
+    border-width: 2px;
+    height: 100%;
+  }
+}
+
+.faces {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  height: 100%;
+  width: 80%;
+  padding: 10%;
+  position: relative;
+
+  > svg {
     width: 100%;
-    height: 8rem;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    left: 0;
+  }
+
+  @include md {
+    grid-row: 1 / 2;
+    grid-column: 4 / 7;
+  }
+}
+
+.main {
+  grid-column: 2 / 8;
+  grid-row: 5 / 7;
+  border: 1px solid $dark;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+
+  @include md {
+    grid-column: 4 / 12;
+    grid-row: 2 / 11;
+    border-width: 2px;
+  }
+
+  > svg {
+    position: absolute;
+    width: 102%;
+    height: 102%;
+    top: -1%;
+    left: -1%;
+
+    @include md {
+      top: -1%;
+      left: -1%;
+      width: 102%;
+      height: 102%;
+    }
+  }
+}
+
+.box {
+  grid-column: 2 / 8;
+  grid-row: 5 / 7;
+  background-color: $dark;
+  z-index: 4;
+  width: 8vw;
+  height: 8vw;
+  justify-self: flex-end;
+  position: absolute;
+  right: 15.5vw;
+  top: -8vw;
+
+  @include md {
+    position: relative;
+    top: 0;
+    right: 9vw;
+    grid-column: 10 / 12;
+    grid-row: 1 / 2;
+    width: 3.5vw;
+    height: 3.5vw;
+  }
+}
+
+.bar {
+  grid-row: 6 / 7;
+  grid-column: 8 / 9;
+  padding-bottom: 250%;
+  width: 100%;
+  object-fit: fill;
+  position: relative;
+  border-top: 1px solid $dark;
+  // left: -10%;
+
+  > svg {
     position: absolute;
     top: 0;
-    background: linear-gradient(to bottom, $pink 0%, rgba($pink, 0) 100%);
-}
-
-.section{
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: 10vw 10vw 5vw 10vw 28.4vw auto 10vw 13vw 8vw 5vw 5vw;
-
-    @include md{
-        grid-template-columns: 1.2fr 0.8fr repeat(8, 1fr) 0.8fr repeat(5, 1fr) 0.8fr 1.2fr;  
-        grid-template-rows: 3.4vw 4.8vw 4.4vw 4.7vw 4.4vw calc(2vw + 1px) 3.3vw 4.4vw 4vw 3vw 5.6vw 3.5vw;
-        margin-top: 2.3vw;
-    }
-}
-
-
-
-.rainbow{
-    grid-column: 1 / 3;
-    grid-row: 3 / 4;
-    background: repeating-linear-gradient(to right, $red 0%, $yellow 20%, $green 40%, $blue 60%, $navy 80%, $pink 100%);
-    border: 1px solid $dark;
-
-    @include md{
-        grid-row: 1 / 2;
-        grid-column: 1 / 4;
-        border-bottom: 0;
-        width: calc(100% + 2px);
-        border-left: 0;
-        border-width: 2px;
-        height: 100%;
-    }
-}
-
-.faces{
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
+    left: 0;
+    width: 105%;
     height: 100%;
-    width: 80%;
-    padding: 10%;
-    position: relative;
+    left: -5%;
+  }
 
-    >svg{
-        width: 100%;
-        height: 80%;
-        position: absolute;
-        top: 10%;
-        left: 0;
-    }
-
-    @include md{
-        grid-row: 1 / 2;
-        grid-column: 4 / 7;
-    }
+  @include md {
+    grid-column: 18 / 19;
+    grid-row: 3 / 7;
+    padding-bottom: 0;
+    left: -5%;
+    width: 105%;
+    border-width: 2px;
+  }
 }
 
+.twist {
+  grid-row: 5 / 6;
+  grid-column: 8 / 9;
+  height: 31vw;
+  background-color: $grey;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid $dark;
+  border-top: 1px solid $dark;
 
-
-.main{
-    grid-column: 2 / 8;
-    grid-row: 5 / 7;
+  @include md {
     border: 1px solid $dark;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
+    border-left: 0;
+    border-right: 0;
+    border-width: 2px;
+  }
 
-    @include md{
-        grid-column: 4 / 12;
-        grid-row: 2 / 11;
-        border-width: 2px;
-
-    }
-
-    >svg{
-        position: absolute;
-        width: 102%;
-        height: 102%;
-        top: -1%;
-        left: -1%;
-
-        @include md{
-            top: -1%;
-            left: -1%;
-            width: 102%;
-            height: 102%;  
-        }
-    }
-}
-
-
-.box{
-    grid-column: 2 / 8;
-    grid-row: 5 / 7;
-    background-color: $dark;
-    z-index: 4;
-    width: 8vw;
-    height: 8vw;
-    justify-self: flex-end;
+  > svg {
     position: absolute;
-    right: 15.5vw;
-    top: -8vw;
+    top: 10%;
+    left: 10%;
+    height: 120%;
 
-    @include md{
-        position: relative;
-        top: 0;
-        right: 9vw;
-        grid-column: 10 / 12;
-        grid-row: 1 / 2;
-        width: 3.5vw;
-        height: 3.5vw;
+    @include md {
+      height: 90%;
+      left: -10%;
     }
+  }
+
+  @include md {
+    grid-column: 17 / 18;
+    grid-row: 3 / 7;
+    height: auto;
+    overflow: visible;
+  }
 }
 
+.xbox {
+  grid-column: 2 / 4;
+  grid-row: 4 / 5;
+  height: 101%;
+  width: 100%;
+  position: relative;
+  top: -1%;
 
-.bar{
-    grid-row: 6 / 7;
-    grid-column: 8 / 9;
-    padding-bottom: 250%;
-    width: 100%;
-    object-fit: fill;
-    position: relative;
-    border-top: 1px solid $dark;
-    // left: -10%;
-
-
-    >svg{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 105%;
-        height: 100%;
-        left: -5%;
-    }
-
-    @include md{
-        grid-column: 18 / 19;
-        grid-row: 3 / 7;
-        padding-bottom: 0;
-        left: -5%;
-        width: 105%;
-        border-width: 2px;
-
-    }
-}
-
-.twist{
-    grid-row: 5 / 6;
-    grid-column: 8 / 9;
-    height: 31vw;
-    background-color: $grey;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid $dark;
-    border-top: 1px solid $dark;
-
-    @include md{
-        border: 1px solid $dark;
-        border-left: 0;
-        border-right: 0;
-        border-width: 2px;
-
-    }
-
-
-    >svg{
-        position: absolute;
-        top: 10%;
-        left: 10%;
-        height: 120%;
-
-        @include md{
-            height: 90%;
-            left: -10%;
-        }
-    }
-
-    @include md{
-        grid-column: 17 / 18;
-        grid-row: 3 / 7;
-        height: auto;
-        overflow: visible;
-    }
-}
-
-.xbox{
-    grid-column: 2 / 4;
-    grid-row: 4 / 5;
-    height: 101%;
-    width: 100%;
-    position: relative;
+  > svg {
+    width: 102%;
+    height: 102%;
+    position: absolute;
     top: -1%;
+    left: -1%;
+  }
 
-    >svg{
-        width: 102%;
-        height: 102%;
-        position: absolute;
-        top: -1%;
-        left: -1%;
-    }
-
-    @include md{
-        grid-column: 1 / 3;
-        grid-row: 2 / 8;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        top: 0;
-    }
-}
-
-.texture{
-    grid-column: 1 / 2;
-    grid-row: 4 / 6;
-    position: relative;
-    background-color: $grey;
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: 3;
+  @include md {
+    grid-column: 1 / 3;
+    grid-row: 2 / 8;
     width: 100%;
     height: 100%;
-
-    @include md{
-        grid-column: 3 / 4;
-        grid-row: 2 / 6;
-        border-left: 1px solid $dark;
-        border-top: 1px solid $dark;
-        // border-left: 2px solid $dark;
-        overflow: hidden;
-        border-width: 2px;
-
-    }
+    overflow: hidden;
+    top: 0;
+  }
 }
 
-.rect{
-    grid-column: 4 / 8;
+.texture {
+  grid-column: 1 / 2;
+  grid-row: 4 / 6;
+  position: relative;
+  background-color: $grey;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+
+  @include md {
+    grid-column: 3 / 4;
+    grid-row: 2 / 6;
+    border-left: 1px solid $dark;
+    border-top: 1px solid $dark;
+    // border-left: 2px solid $dark;
+    overflow: hidden;
+    border-width: 2px;
+  }
+}
+
+.rect {
+  grid-column: 4 / 8;
+  grid-row: 2 / 5;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border: 1px solid $dark;
+  border-bottom: 0;
+  z-index: 3;
+
+  @include md {
+    grid-column: 12 / 17;
     grid-row: 2 / 5;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    border: 1px solid $dark;
-    border-bottom: 0;
-    z-index: 3;
-
-    @include md{
-        grid-column: 12 / 17;
-        grid-row: 2 / 5;
-        border: 1px solid $dark;
-        border-left: 0;
-        border-width: 2px;
-
-    }
-
-    >div{
-        position: absolute;
-
-        &:nth-child(1){
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 60%;
-            height: 90%;
-            overflow: hidden;
-            z-index: 2;
-
-            @include md{
-                width: 40%;
-                height: 100%;
-            }
-
-            >svg{
-                position: absolute;
-                top: -60%;
-                left: -15%;
-                width: 150%;
-                height: 180%;
-
-                @include md{
-                    top: -50%;
-                    left: -5%;
-                    width: 115%;
-                    height: 150%;
-                }
-            }
-        }
-
-        &:nth-child(2){
-            position: absolute;
-            bottom: 0;
-            left: 15%;
-            width: 100%;
-            height: 130%;
-            overflow: hidden;
-            z-index: 3;
-            animation: scaleLoop 1.5s infinite alternate linear;
-            transform-origin: center bottom;
-
-
-
-            @include md{
-                width: 90%;
-                left: 15%;
-            }
-
-            >svg{
-                fill: $red;
-
-            }
-
-
-        }
-
-        @keyframes scaleLoop{
-            from{
-                transform: scale(1);
-            }
-            to{
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes scaleLoop2{
-            from{
-                transform: scale(1);
-            }
-            to{
-                transform: scale(1.3);
-            }
-        }
-    }
-
-
-
-}
-
-.textBox{
-    grid-row: 7 / 8;
-    grid-column: 4 / 9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid $dark;
-    border-top: 0;
-    border-right: 0;
-    border-left: 0;
-    background: linear-gradient(to bottom, $yellow 0%, rgba($yellow, 0) 100%);
-
-    @include md{
-        grid-column: 11 / 19;
-        grid-row: 11 / 12;
-        border: 1px solid $dark;
-        border-right: 0;
-        position: relative;
-        width: calc(100% + 1px);
-        left: -1px;
-        border-width: 2px;
-
-    }
-    
-
-    h3{
-        font-size: 4vw;
-
-        @include md{
-            font-size: 2vw;
-        }
-    }
-}
-
-.toggle{
-    grid-row: 8 / 9;
-    grid-column: 4 /7;
-    border: 1px solid $dark;
-    border-right: 1px;
-    border-top: 0;
-    position: relative;
-    z-index: 2;
-    border-left: 0;
-
-
-    >svg{
-        width: 102%;
-        height: 105%;
-        position: absolute;
-        top: -3%;
-        left: -1.25%;
-    }
-
-    @include md{
-        grid-row: 5 / 7;
-        grid-column: 14 / 17;
-        border: 1px solid $dark;
-        // border-right: 0;
-        border-top: 0;
-        overflow: hidden;
-        border-width: 2px;
-
-    }
-}
-
-.swiggle{
-    grid-row: 8 / 12;
-    border: 1px solid $dark;
-    border-top: 0;
-    grid-column: 7 / 8;
-    background-color: $grey;
-    position: relative;
-
-    @include md{
-        border: 0;
-
-        &::before{
-            content:'';
-            width: 40%;
-            padding-bottom: 40%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: $dark;
-        }
-    }
-
-
-    >div{
-        position: absolute;
-        top: 5%;
-        right: 0%;
-        width: 160%;
-        height: 120%;
-        overflow: hidden;
-
-        @include md{
-            width: 120%;
-            top: 0;
-            height: 100%;
-        }
-
-        svg{
-            position: absolute;
-            top: 5%;
-            right: -10%;
-            width: 100%;
-            height: 100%;
-        }
-    } 
-
-    @include md{
-        grid-row: 5 / 11;
-        grid-column: 12 / 14;
-    }
-}
-
-.glow{
-    grid-column: 8 / 9;
-    grid-row: 9 / 11;
     border: 1px solid $dark;
     border-left: 0;
-    border-right: 0;
-    position: relative;
-    overflow: hidden;
-    // animation: glowLoop 1.5s infinite alternate linear;
+    border-width: 2px;
+  }
 
-
-    @include md{
-        grid-column: 16 / 18;
-        grid-row: 7 / 10;
-        height: 90%;
-        border: 1px solid $dark;
-        border-top: 0;
-        border-left: 0;
-        border-width: 2px;
-    }
-
-    &::before{
-        content:'';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: radial-gradient(circle at 50%, $navy 0%, rgba($navy,0.5) 35%, rgba($blue, 0) 80%);
-        animation: scaleLoop2 1s infinite alternate-reverse linear;
-
-    }
-
-    // @keyframes glowLoop{
-    //     from{
-    //         background: radial-gradient(circle at 50%, $navy 0%, rgba($navy,0.5) 35%, rgba($blue, 0) 80%);
-
-    //     }
-    //     to{
-    //         background: radial-gradient(circle at 50%, $navy 10%, rgba($navy,0.5) 45%, rgba($blue, 0) 90%);
-
-    //     }
-    // }
-
-
-}
-
-.tear{
-    grid-column: 1 / 2;
-    grid-row: 6 / 8;
-    position: relative;
-    border: 1px solid $dark;
-    border-left: 0;
-    border-right: 0;
-    overflow: hidden;
-    background-color: $light;
-    z-index: 2;
-
-    @include md{
-        grid-column: 3 / 4;
-        grid-row: 6 / 11;
-        border: 1px solid $dark;
-        border-right: 0;
-        border-width: 2px;
-
-    }
-
-    >div{
-        position: absolute;
-        top: -100%;
-        left: 0;
-        width: 100%;
-        height: 200%;
-        background-size: 70% auto;
-        background-position: center center;
-        background-repeat: no-repeat space;
-        transform: translateY(0);
-        animation: infiTear 6s linear infinite;
-    }
-
-    @keyframes infiTear{
-        0%{
-            transform: translateY(0);
-        }
-
-        100%{
-            transform: translateY(51%);
-        }
-    }
-
-
-}
-
-.print{
-    grid-column: 2 / 4;
-    height: 100%;
-    grid-row: 7 / 11;
-    border: 1px solid $dark;
-    position: relative;
-    background: $green;
-    z-index: 2;
-    border-top: 0;
-
-    @include md{
-        grid-row: 7 / 11;
-        grid-column: 14 / 16;
-        border-top: 0;
-        border-bottom: 0;
-        border-width: 2px;
-
-    }
-
-    >*{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-}
-
-.stratch{
+  > div {
     position: absolute;
-    grid-column: 1 / 5;
-    grid-row: 10 / 11;
-    top: -100%;
-    left: 5%;
-    z-index: 1;
-    width: 80%;
 
-    @include md{
-        grid-row: 10 / 12;
-        grid-column: 1 / 6;
-        width: 65%;
-        left: 10%;
-        top: -10%;
+    &:nth-child(1) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 90%;
+      overflow: hidden;
+      z-index: 2;
+
+      @include md {
+        width: 40%;
+        height: 100%;
+      }
+
+      > svg {
+        position: absolute;
+        top: -60%;
+        left: -15%;
+        width: 150%;
+        height: 180%;
+
+        @include md {
+          top: -50%;
+          left: -5%;
+          width: 115%;
+          height: 150%;
+        }
+      }
     }
 
+    &:nth-child(2) {
+      position: absolute;
+      bottom: 0;
+      left: 15%;
+      width: 100%;
+      height: 130%;
+      overflow: hidden;
+      z-index: 3;
+      animation: scaleLoop 1.5s infinite alternate linear;
+      transform-origin: center bottom;
+
+      @include md {
+        width: 90%;
+        left: 15%;
+      }
+
+      > svg {
+        fill: $red;
+      }
+    }
+
+    @keyframes scaleLoop {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes scaleLoop2 {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.3);
+      }
+    }
+  }
 }
 
+.textBox {
+  grid-row: 7 / 8;
+  grid-column: 4 / 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $dark;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  background: linear-gradient(to bottom, $yellow 0%, rgba($yellow, 0) 100%);
+
+  @include md {
+    grid-column: 11 / 19;
+    grid-row: 11 / 12;
+    border: 1px solid $dark;
+    border-right: 0;
+    position: relative;
+    width: calc(100% + 1px);
+    left: -1px;
+    border-width: 2px;
+  }
+
+  h3 {
+    font-size: 4vw;
+
+    @include md {
+      font-size: 2vw;
+    }
+  }
+}
+
+.toggle {
+  grid-row: 8 / 9;
+  grid-column: 4 /7;
+  border: 1px solid $dark;
+  border-right: 1px;
+  border-top: 0;
+  position: relative;
+  z-index: 2;
+  border-left: 0;
+
+  > svg {
+    width: 102%;
+    height: 105%;
+    position: absolute;
+    top: -3%;
+    left: -1.25%;
+  }
+
+  @include md {
+    grid-row: 5 / 7;
+    grid-column: 14 / 17;
+    border: 1px solid $dark;
+    // border-right: 0;
+    border-top: 0;
+    overflow: hidden;
+    border-width: 2px;
+  }
+}
+
+.swiggle {
+  grid-row: 8 / 12;
+  border: 1px solid $dark;
+  border-top: 0;
+  grid-column: 7 / 8;
+  background-color: $grey;
+  position: relative;
+
+  @include md {
+    border: 0;
+
+    &::before {
+      content: "";
+      width: 40%;
+      padding-bottom: 40%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $dark;
+    }
+  }
+
+  > div {
+    position: absolute;
+    top: 5%;
+    right: 0%;
+    width: 160%;
+    height: 120%;
+    overflow: hidden;
+
+    @include md {
+      width: 120%;
+      top: 0;
+      height: 100%;
+    }
+
+    svg {
+      position: absolute;
+      top: 5%;
+      right: -10%;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @include md {
+    grid-row: 5 / 11;
+    grid-column: 12 / 14;
+  }
+}
+
+.glow {
+  grid-column: 8 / 9;
+  grid-row: 9 / 11;
+  border: 1px solid $dark;
+  border-left: 0;
+  border-right: 0;
+  position: relative;
+  overflow: hidden;
+  // animation: glowLoop 1.5s infinite alternate linear;
+
+  @include md {
+    grid-column: 16 / 18;
+    grid-row: 7 / 10;
+    height: 90%;
+    border: 1px solid $dark;
+    border-top: 0;
+    border-left: 0;
+    border-width: 2px;
+  }
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(
+      circle at 50%,
+      $navy 0%,
+      rgba($navy, 0.5) 35%,
+      rgba($blue, 0) 80%
+    );
+    animation: scaleLoop2 1s infinite alternate-reverse linear;
+  }
+
+  // @keyframes glowLoop{
+  //     from{
+  //         background: radial-gradient(circle at 50%, $navy 0%, rgba($navy,0.5) 35%, rgba($blue, 0) 80%);
+
+  //     }
+  //     to{
+  //         background: radial-gradient(circle at 50%, $navy 10%, rgba($navy,0.5) 45%, rgba($blue, 0) 90%);
+
+  //     }
+  // }
+}
+
+.tear {
+  grid-column: 1 / 2;
+  grid-row: 6 / 8;
+  position: relative;
+  border: 1px solid $dark;
+  border-left: 0;
+  border-right: 0;
+  overflow: hidden;
+  background-color: $light;
+  z-index: 2;
+
+  @include md {
+    grid-column: 3 / 4;
+    grid-row: 6 / 11;
+    border: 1px solid $dark;
+    border-right: 0;
+    border-width: 2px;
+  }
+
+  > div {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-size: 70% auto;
+    background-position: center center;
+    background-repeat: no-repeat space;
+    transform: translateY(0);
+    animation: infiTear 6s linear infinite;
+  }
+
+  @keyframes infiTear {
+    0% {
+      transform: translateY(0);
+    }
+
+    100% {
+      transform: translateY(51%);
+    }
+  }
+}
+
+.print {
+  grid-column: 2 / 4;
+  height: 100%;
+  grid-row: 7 / 11;
+  border: 1px solid $dark;
+  position: relative;
+  background: $green;
+  z-index: 2;
+  border-top: 0;
+
+  @include md {
+    grid-row: 7 / 11;
+    grid-column: 14 / 16;
+    border-top: 0;
+    border-bottom: 0;
+    border-width: 2px;
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.stratch {
+  //   position: absolute;
+  grid-column: 1 / 5;
+  grid-row: 10 / 11;
+  top: -100%;
+  left: 5%;
+  z-index: 1;
+  width: 80%;
+  position: relative;
+
+  @include md {
+    grid-row: 10 / 12;
+    grid-column: 1 / 6;
+    width: 65%;
+    left: 10%;
+    top: -10%;
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 120%;
+  }
+}

@@ -1,7 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
+import { GatsbyImage} from "gatsby-plugin-image";
 import { Controlled as ControlledZoom } from "react-medium-image-zoom";
 import { FiZoomIn } from "@react-icons/all-files/fi/FiZoomIn";
 import "react-medium-image-zoom/dist/styles.css";
@@ -27,13 +25,19 @@ const ProjectImage = ({ url, alt, first=false }) => {
 
 
   return (
-    <div className={`zoomableImage ${styles.image}`}>
+    <div className={`zoomableImage ${styles.image} ${loaded ? null : styles.loading}`}>
       <ControlledZoom
         isZoomed={isZoomed}
         onZoomChange={handleZoomChange}
         zoomMargin={50}
       >
-        <GatsbyImage sizes={isZoomed ? '90w' : '(min-width: 768px) 40w, 90w'} critical={first} loading={first ? 'eager' : 'lazy'} onLoad={() => {setLoaded()}} className={`${loaded ?  null : styles.blurred}`} image={url} alt={alt} />
+        <GatsbyImage sizes={'(min-width: 768px) 40w, 90w'} critical={first ? true : false} loading={first ? 'eager' : 'lazy'} onLoad={() => {setLoaded()}} className={`${loaded ?  null : styles.blurred}`} image={url} alt={alt} />
+
+
+        {isZoomed ? <img className={styles.zoomedImage} srcset={url.images.fallback.srcSet} sizes='90w' alt={alt}/> : null}
+        
+
+        
 
       </ControlledZoom>
       <button className={`zoomButton ${loaded ? null : styles.buttonHide}`} onClick={handleImgLoad}>

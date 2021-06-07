@@ -2,9 +2,8 @@ import React, { useRef, useEffect } from "react";
 import "plyr-react/dist/plyr.css";
 
 const VideoProject = ({ data }) => {
-  console.log(data);
 
-  const { title, description, project_tag, video } = data;
+  const { title, project_tag, video } = data;
 
   const tags = project_tag.map((item, index) => {
     return (
@@ -28,7 +27,10 @@ const VideoProject = ({ data }) => {
     }
 
     return () => {
-      plyrPlayer.destroy();
+      if (plyrPlayer.current !== null){
+        plyrPlayer.destroy();
+        plyrPlayer = null;
+      }  
     }
   }, []);
 

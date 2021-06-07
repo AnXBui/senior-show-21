@@ -39,15 +39,14 @@ a {
 
   > div {
     grid-area: content;
-
   }
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
-body{
+body {
   --bg-color: white;
   --text-color: black;
   --border-wght: 1.5px;
@@ -55,27 +54,15 @@ body{
   background: $light;
 }
 
-.flexBetween{
+.flexBetween {
   display: flex;
   justify-content: space-between;
 }
 
-body{
-  //   scroll-behavior: smooth;
+body {
   overscroll-behavior: none;
-
-  // height: calc(100vh - 3.75rem);
 }
 
-// html{
-//   scroll-behavior: smooth;
-//   overscroll-behavior: none;
-//   height: 100vh;
-// }
-
-
-
-.main{
+.main {
   background-color: $light;
-  // min-height: 100vh;
 }

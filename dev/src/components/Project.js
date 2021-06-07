@@ -1,9 +1,8 @@
-import React, { useCallback, useState, useRef, useEffect } from 'react'
+import React, {  useState, useRef, useEffect } from 'react'
 import { getImage} from "gatsby-plugin-image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import PropTypes from "prop-types"
 import 'react-medium-image-zoom/dist/styles.css'
 import * as styles from './Project.module.scss'
 
@@ -16,29 +15,16 @@ import ProjectImage from "../components/ProjectImage"
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 
-// import useVisibilitySensor from "@rooks/use-visibility-sensor"
 
 
 SwiperCore.use([Navigation,A11y]);
 gsap.registerPlugin(ScrollTrigger);
 
 
-
-
-
-var slugify = require('slugify')
-
-const settings = {
-    dots: false,
-    infinite: false,
-    autoplay: false,
-  }
-
-
 const Project = ({data}) => {
 
   
-    const {title, description, project_tag, gallery} = data;
+    const {title, project_tag, gallery} = data;
 
     const [slideLoaded, setSlide] = useState(false);
     const ref = useRef(null);
@@ -59,14 +45,14 @@ const Project = ({data}) => {
 
 
     const images = gallery.map((image, index) => {
-        console.log(multiple);
-        console.log(gallery);
        
         const src = getImage(image.localFile);
+        const initial = index === 0;
+
 
         if (image.localFile && multiple){
             return <SwiperSlide className={(index === 0) ? 'main' : 'second'} key={`${title} ${index}`}>
-            <ProjectImage first={(index === 0) ? true : false  } url={src} alt={title}/>
+            <ProjectImage first={initial} url={src} alt={title}/>
         </SwiperSlide> 
         } else if (image.localFile){
            return <ProjectImage key={`${title} ${index}`} first={true} className={`main`} url={src} alt={title}/>
@@ -87,15 +73,12 @@ const Project = ({data}) => {
               slidesPerView={1}
               navigation
               loop={true}
-              onSlideChange={() => console.log('slide change')}
               breakpoints={{
                 768:{
                   spaceBetween: 16
                 }
               }}
               onSwiper={(swiper) => setSlide(true)}
-              
-
               >
               {images}
               </Swiper>

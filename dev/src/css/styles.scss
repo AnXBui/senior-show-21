@@ -22,3 +22,12 @@
 // Sections Styles
 @import "sections/_home";
 @import "sections/_profile";
+
+*:not(button):not(a) {
+  cursor: url("./../assets/cursor.png") 0 0, auto;
+}
+
+button,
+a {
+  cursor: url("./../assets/hand.png") 4 1, pointer !important;
+}

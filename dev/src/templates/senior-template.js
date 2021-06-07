@@ -8,6 +8,8 @@ import Layout from "../components/Layout";
 import SEO from "../components/seo";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import * as styles from "./senior-template.module.scss"
+import thumbnail from "../assets/thumbnail.png"
+
 
 
 
@@ -26,7 +28,12 @@ export const query = graphql`
 
       photo {
         childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1, formats: [AUTO, WEBP, AVIF])
+          gatsbyImageData(
+            layout: FULL_WIDTH, 
+            placeholder: BLURRED, 
+            aspectRatio: 1, 
+            sizes:"15w"
+            formats: [AUTO, WEBP, AVIF])
         }
       }
 
@@ -52,9 +59,9 @@ export const query = graphql`
             childImageSharp {
               gatsbyImageData(
                 formats: [AUTO, WEBP, AVIF],
-                sizes: "90vw",
+                sizes:"(min-width: 768px) 40w , 90w"
                 layout: FULL_WIDTH,
-                quality: 90,
+                quality: 80,
                 placeholder: BLURRED
               )
             }
@@ -72,20 +79,17 @@ const SeniorProfile = ({ data, pageContext }) => {
 
   const wrapper = useRef(null);
 
-  console.log(pageContext.next);
 
   const nextUrl = slugify(pageContext.next);
   const prevUrl = slugify(pageContext.prev);
 
-  // console.log(query);
 
-  // const data = useStaticQuery(query)
-  // console.log(data.senior);
   const { senior } = data;
   const { name, bio, social_media, website, projects_list } = senior;
-  const avatar = senior.avatar.publicURL;
   const signature = senior.signature.publicURL;
   const photo = getImage(senior.photo);
+  const url = slugify(name);
+
 
   const [bioState, setBio] = useState(false);
 
@@ -98,7 +102,7 @@ const SeniorProfile = ({ data, pageContext }) => {
   });
 
   const projects = projects_list.map((project, index) => {
-    if (project.video != "none" && project.video != '' && project.video != null || project.gallery == null) {
+    if ((project.video !== "none" && project.video !== '' && project.video !== null) || project.gallery === null) {
       return (
         <li className="projectSingle" key={`Project ${index}`}>
           {/* <h1>{project.title}</h1> */}
@@ -122,7 +126,12 @@ const SeniorProfile = ({ data, pageContext }) => {
 
   return (
     <Layout type="profile" page={name} className="seniorProfile">
-      <SEO title={name} description={seoDesc} />
+      <SEO 
+        title={name} 
+        description={seoDesc} 
+        image={thumbnail}
+        location={url}
+      />
 
       <aside className={`seniorInfo ${bioState ? "expand" : " "}`}>
         <div className="stickyInfo">
@@ -159,6 +168,7 @@ const SeniorProfile = ({ data, pageContext }) => {
       </aside>
       <section ref={wrapper} className="seniorProjects">
         <button
+          aria-label='See my bio'
           onClick={() => setBio(!bioState)}
           className={`projectOverlay ${bioState ? "expand" : " "}`}
         ></button>

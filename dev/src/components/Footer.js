@@ -1,14 +1,5 @@
 import React from "react";
-import SocialLinks from "../constants/socialLinks";
-import onehundred from "./../assets/100years.png";
-import acw from "./../assets/acw-white.png";
 import * as styles from "./Footer.module.scss"
-
-import { FaInstagramSquare } from "@react-icons/all-files/fa/FaInstagramSquare";
-import { FaTwitterSquare } from "@react-icons/all-files/fa/FaTwitterSquare";
-import { FaFacebookSquare } from "@react-icons/all-files/fa/FaFacebookSquare";
-import { FaVimeoSquare } from "@react-icons/all-files/fa/FaVimeoSquare";
-
 
 const Footer = () => {
   return <footer className={styles.footer}>

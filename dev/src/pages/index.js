@@ -1,5 +1,4 @@
 import React from "react";
-import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Hero from "../components/Hero";
 import Message from "../components/Message";
@@ -8,15 +7,16 @@ import Seniors from "../components/Seniors";
 import SocialMedia from "../components/SocialMedia";
 import Footer from "../components/Footer";
 import SEO from "../components/seo";
+import thumbnail from "../assets/thumbnail.png"
 
-// import Projects from "../components/Projects"
-// import Blogs from "../components/Blogs"
+
 const Home = () => {
   return (
     <Layout>
       <SEO
         title="Home"
         description="Welcome to the Graphic Design Senior Show 21!"
+        image={thumbnail}
       />
       <Hero />
       <Message />

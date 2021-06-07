@@ -1,7 +1,4 @@
 import React from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Title from "./Title";
-import PropTypes from "prop-types";
 import { FaInstagramSquare } from "@react-icons/all-files/fa/FaInstagramSquare";
 import { HiMailOpen } from "@react-icons/all-files/hi/HiMailOpen";
 import { FaBehanceSquare } from "@react-icons/all-files/fa/FaBehanceSquare";
@@ -40,7 +37,7 @@ const SocialIcon = ({ type, link }) => {
   };
 
   return (
-    <a href={"https://" + link} target="_blank" rel="noopener noreferrer">
+    <a className={'profileSocialIcon'} href={"https://" + link} target="_blank" rel="noopener noreferrer">
       {socialSvg()}
     </a>
   );

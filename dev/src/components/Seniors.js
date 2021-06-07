@@ -77,17 +77,12 @@ const Seniors = () => {
       }
     });
 
-    let tl2 = gsap.timeline();
-
     seniorRefs.current.forEach((item, index) => {
       let tl = gsap.timeline();
       gsap.set(item, {transformOrigin:'center bottom'});
 
       tl.fromTo(item, {alpha: 0, yPercent: 20},{alpha: 1, yPercent: 0, duration: 0.1},'start')
-      // tl.to(item, {alpha: 1, duration: 1},'start')
-      // tl.to(item, {alpha: 0, yPercent: -20, duration: 0.1})
-      // tl.from(item, 0.5, {alpha: 0, yPercent: 20, ease:'back'})
-
+      
       animateList.current[index] = ScrollTrigger.create({
         trigger: item,
         animation: tl,
