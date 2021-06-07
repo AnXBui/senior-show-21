@@ -46,7 +46,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
   var slugify = require("slugify");
 
   const slug = slugify(pageName);
-  const shareUrl = `${site.siteMetadata.siteUrl}/${slug}`;
+  const shareUrl = `${withPrefix(site.siteMetadata.siteUrl)}/${slug}`;
 
   const nav = useRef(null);
   const trigger = useRef(null);
@@ -123,7 +123,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
               url={shareUrl}
               title={`See these amazing works by ${pageName} – The Graphic Design Senior Show 2021`}
               summary={`Featuring work by ${pageName} – a Graphic Design senior at Westphal College, Drexel University.`}
-              source={site.siteMetadata.siteUrl}
+              source={withPrefix(site.siteMetadata.siteUrl)}
               className="socialShareIcon"
             >
               <SiLinkedin />
