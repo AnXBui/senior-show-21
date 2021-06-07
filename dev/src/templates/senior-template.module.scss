@@ -1,4 +1,8 @@
-.photo{
-    margin: 0 20%;
-    padding-top: 4rem;
+.photo {
+  margin: 0 20%;
+  padding-top: 4rem;
+
+  > * {
+    border: 1px solid var(--dark);
+  }
 }

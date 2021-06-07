@@ -99,7 +99,7 @@ const Message = () => {
 
 
   return (
-    <section ref={container} d="intro" className={styles.section}>
+    <section ref={container} id="intro" className={styles.section}>
       <div ref={glitch} className={styles.glitch}>
         <Glitch1 />
       </div>

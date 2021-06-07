@@ -56,6 +56,7 @@ const SocialMedia = () => {
         <a
           className={`krona`}
           target="_blank"
+          rel='noreferrer'
           href="https://www.instagram.com/drexelgraphicdesign/"
         >
           @drexelgraphicdesign{" "}

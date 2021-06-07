@@ -100,14 +100,14 @@ const SeniorProfile = ({ data, pageContext }) => {
   const projects = projects_list.map((project, index) => {
     if (project.video != "none" && project.video != '' && project.video != null || project.gallery == null) {
       return (
-        <li className="projectSingle" key={index}>
+        <li className="projectSingle" key={`Project ${index}`}>
           {/* <h1>{project.title}</h1> */}
           <VideoProject data={project} />
         </li>
       );
     } else {
       return (
-        <li className="projectSingle" key={index}>
+        <li className="projectSingle" key={`Project ${index}`}>
           <Project data={project} />
         </li>
       );
@@ -129,7 +129,7 @@ const SeniorProfile = ({ data, pageContext }) => {
           <div className="seniorInfoMain">
 
             <div className={styles.photo}>
-              <GatsbyImage critical={true} image={photo} alt={data.name + "'s photo"} />
+              <GatsbyImage critical={true} loading='eager' image={photo} alt={data.name + "'s photo"} />
             </div>
             
             <img
@@ -146,7 +146,7 @@ const SeniorProfile = ({ data, pageContext }) => {
 
             <ul className="seniorSocials">{socialLinks}</ul>
 
-            <a className="seniorWebsite solidButton" href={website}>
+            <a className="seniorWebsite solidButton" rel='noreferrer' target='_blank' href={website}>
               Website
             </a>
           </div>
@@ -167,7 +167,7 @@ const SeniorProfile = ({ data, pageContext }) => {
 
           <li className="moreProjects">
             <p>
-              Want to see more projects? Visit my <a href={website}>website!</a>
+              Want to see more projects? Visit my <a rel='noreferrer' target='_blank' href={website}>website!</a>
             </p>
           </li>
           <li className="profileLinkList">

@@ -36,7 +36,7 @@ const ProjectImage = ({ url, alt, first=false }) => {
         <GatsbyImage sizes={isZoomed ? '90w' : '(min-width: 768px) 40w, 90w'} critical={first} loading={first ? 'eager' : 'lazy'} onLoad={() => {setLoaded()}} className={`${loaded ?  null : styles.blurred}`} image={url} alt={alt} />
 
       </ControlledZoom>
-      <button className="zoomButton" onClick={handleImgLoad}>
+      <button className={`zoomButton ${loaded ? null : styles.buttonHide}`} onClick={handleImgLoad}>
         <FiZoomIn />
       </button>
     </div>
