@@ -155,7 +155,7 @@ const SeniorProfile = ({ data, pageContext }) => {
 
             <ul className="seniorSocials">{socialLinks}</ul>
 
-            <a className="seniorWebsite solidButton" rel='noreferrer' target='_blank' href={website}>
+            <a className="seniorWebsite solidButton" target='_blank' href={website}>
               Website
             </a>
           </div>
@@ -177,7 +177,7 @@ const SeniorProfile = ({ data, pageContext }) => {
 
           <li className="moreProjects">
             <p>
-              Want to see more projects? Visit my <a rel='noreferrer' target='_blank' href={website}>website!</a>
+              Want to see more projects? Visit my <a target='_blank' href={website}>website!</a>
             </p>
           </li>
           <li className="profileLinkList">

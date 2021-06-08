@@ -23,7 +23,8 @@ const query = graphql`
             gatsbyImageData(layout: FULL_WIDTH
               placeholder: BLURRED
               sizes:"(min-width: 992px) 30w, (min-width: 768px) 40w, 90w"
-              aspectRatio: 1
+              aspectRatio: 1,
+              quality: 90,
               formats: [AUTO, WEBP, AVIF])
           }
         }
@@ -81,8 +82,8 @@ const Seniors = () => {
       let tl = gsap.timeline();
       gsap.set(item, {transformOrigin:'center bottom'});
 
-      tl.fromTo(item, {alpha: 0, yPercent: 20},{alpha: 1, yPercent: 0, duration: 0.1},'start')
-      
+      tl.fromTo(item, {alpha: 0},{alpha: 1, duration: 0.1},'start')
+
       animateList.current[index] = ScrollTrigger.create({
         trigger: item,
         animation: tl,

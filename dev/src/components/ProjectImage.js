@@ -25,13 +25,22 @@ const ProjectImage = ({ url, alt, first=false }) => {
 
 
   return (
-    <div className={`zoomableImage ${styles.image} ${loaded ? null : styles.loading}`}>
+    // <div className={`zoomableImage ${styles.image} ${loaded ? null : styles.loading}`}>
+    <div className={`zoomableImage ${styles.image}`}>
       <ControlledZoom
         isZoomed={isZoomed}
         onZoomChange={handleZoomChange}
         zoomMargin={50}
       >
-        <GatsbyImage sizes={'(min-width: 768px) 40w, 90w'} critical={first ? true : false} loading={first ? 'eager' : 'lazy'} onLoad={() => {setLoaded()}} className={`${loaded ?  null : styles.blurred}`} image={url} alt={alt} />
+        <GatsbyImage 
+          sizes={'(min-width: 768px) 40w, 90w'} 
+          critical={first ? true : false} 
+          loading={first ? 'eager' : 'lazy'} 
+          onLoad={() => {setLoaded()}} 
+          // placeholderClassName={styles.blurred}
+          className={styles.imageWrapper}
+          // className={`${loaded ?  null : styles.blurred}`} 
+          image={url} alt={alt} />
 
 
         {isZoomed ? <img className={styles.zoomedImage} srcset={url.images.fallback.srcSet} sizes='90w' alt={alt}/> : null}

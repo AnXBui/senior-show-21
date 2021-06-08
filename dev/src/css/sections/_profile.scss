@@ -372,6 +372,10 @@ div[data-rmiz-wrap="hidden"] {
   }
 
   @include md {
+    font-size: 1.5vw;
+  }
+
+  @include lg {
     font-size: 1vw;
   }
 }
@@ -481,10 +485,15 @@ div[data-rmiz-wrap="hidden"] {
   opacity: 0;
   filter: invert(1);
   cursor: url("./../assets/hand.png") 5 0, pointer !important;
+  display: none;
 
   &:hover,
   &:active {
     background-color: rgba($light, 1);
+  }
+
+  @media (min-aspect-ratio: 5/3) {
+    display: block;
   }
 }
 

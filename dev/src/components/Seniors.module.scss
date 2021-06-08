@@ -1,114 +1,117 @@
 @import "../css/helpers/variables";
 @import "../css/helpers/mixins";
 
-.section{
+.section {
+  margin: 25vw var(--margin);
+
+  @include md {
     margin: 0 var(--margin);
+  }
 
-    h2{
-        margin: var(--margin) 0;
-        position: relative;
-        z-index: 3;
-    }
-}
-
-.arrow{
-    position: absolute;
-    width: 1.35em;
-    height: 1em;
-    left: -1.5em;
-    top: 0;
-
-    >*{
-        width: 100%;
-        height: 100%;
-    }
-}
-
-.wrapper{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 2rem;
-    --pink: #ED93A8;
-
-    @include md{
-        grid-template-columns: 1fr 1fr; 
-    }
-
-    @include lg{
-        grid-template-columns: 1fr 1fr 1fr; 
-    }
-}
-
-.item{
-    border: 2px solid $dark;
-    padding: 8%;
+  h2 {
+    margin: var(--margin) 0;
     position: relative;
-    overflow: hidden;
+    z-index: 3;
+  }
+}
 
-    &:nth-child(6n + 1){
-        &::before{
-           background: linear-gradient(to top, $pink 3%, rgba($pink, 0) 15%);
-        }
+.arrow {
+  position: absolute;
+  width: 1.35em;
+  height: 1em;
+  left: -1.5em;
+  top: 0;
+
+  > * {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+  --pink: #ed93a8;
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include lg {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.item {
+  border: 2px solid $dark;
+  padding: 8%;
+  position: relative;
+  overflow: hidden;
+
+  &:nth-child(6n + 1) {
+    &::before {
+      background: linear-gradient(to top, $pink 3%, rgba($pink, 0) 15%);
+    }
+  }
+
+  &:nth-child(6n + 2) {
+    &::before {
+      background: linear-gradient(to top, $red 3%, rgba($red, 0) 15%);
+    }
+  }
+
+  &:nth-child(6n + 3) {
+    &::before {
+      background: linear-gradient(to top, $yellow 3%, rgba($yellow, 0) 15%);
+    }
+  }
+
+  &:nth-child(6n + 4) {
+    &::before {
+      background: linear-gradient(to top, $navy 3%, rgba($navy, 0) 15%);
+    }
+  }
+
+  &:nth-child(6n + 5) {
+    &::before {
+      background: linear-gradient(to top, $blue 3%, rgba($blue, 0) 15%);
+    }
+  }
+
+  &:nth-child(6n + 6) {
+    &::before {
+      background: linear-gradient(to top, $green 3%, rgba($green, 0) 15%);
+    }
+  }
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  h3 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    padding: 0.75em;
+    font-size: 4vw;
+    z-index: 4;
+
+    @include md {
+      font-size: 2vw;
     }
 
-    &:nth-child(6n + 2){
-        &::before{
-            background: linear-gradient(to top, $red 3%, rgba($red, 0) 15%);
+    @include lg {
+      font-size: calc(1rem + 0.05vw);
     }
-    }
-
-    &:nth-child(6n + 3){
-        &::before{
-            background: linear-gradient(to top, $yellow 3%, rgba($yellow, 0) 15%);
-    }
-    }
-
-    &:nth-child(6n + 4){
-        &::before{
-            background: linear-gradient(to top, $navy 3%, rgba($navy, 0) 15%);
-    }
-    }
-
-    &:nth-child(6n + 5){
-        &::before{
-            background: linear-gradient(to top, $blue 3%, rgba($blue, 0) 15%);
-    }
-    }
-
-    &:nth-child(6n + 6){
-        &::before{
-            background: linear-gradient(to top, $green 3%, rgba($green, 0) 15%);
-    }
-    }
-
-    &::before{
-        content:'';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: 3;
-        pointer-events: none;
-    }
-
-    h3{
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        left: 0;
-        text-align: center;
-        padding: 0.75em;
-        font-size: 4vw;
-        z-index: 4;
-
-
-        @include md{
-            font-size: 2vw; 
-        }
-
-        @include lg{
-            font-size: calc(1rem + 0.05vw); 
-        }
-    }
+  }
 }

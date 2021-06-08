@@ -31,7 +31,7 @@ const SocialMedia = () => {
       animation: tl,
       start: "top bottom",
       scrub: 0.25,
-      end: "20% top",
+      end: "80% bottom",
       onEnter: () => {
         ScrollTrigger.refresh();
       }
@@ -56,7 +56,6 @@ const SocialMedia = () => {
         <a
           className={`krona`}
           target="_blank"
-          rel='noreferrer'
           href="https://www.instagram.com/drexelgraphicdesign/"
         >
           @drexelgraphicdesign{" "}

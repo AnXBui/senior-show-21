@@ -29,6 +29,12 @@
   }
 }
 
+.imageWrapper {
+  *[data-placeholder-image] {
+    filter: blur(15px);
+  }
+}
+
 .buttonHide {
   opacity: 0;
   display: none;

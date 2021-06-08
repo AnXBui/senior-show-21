@@ -282,17 +282,28 @@
     }
   }
 
-  > h3 {
+  > * {
     font-size: clamp(3rem, 4vw, 5vmax);
     opacity: 0;
     transition: opacity 0.25s;
     color: $dark;
+    z-index: 10;
+    pointer-events: none;
+
+    h3 {
+      font-size: clamp(3rem, 4vw, 5vmax);
+      //   opacity: 0;
+      transition: opacity 0.25s;
+      color: $dark;
+      pointer-events: none;
+    }
   }
 }
 
 .triggerHome.init {
-  > h3 {
+  > * {
     opacity: 1;
+    pointer-events: all;
   }
 }
 
@@ -332,6 +343,7 @@
 
     .navMenuItem {
       opacity: 1;
+      text-align: center;
     }
   }
 }

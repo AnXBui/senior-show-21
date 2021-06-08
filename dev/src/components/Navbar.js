@@ -10,6 +10,8 @@ import Burger from "./svg/Burger";
 
 import { gsap } from "gsap";
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
 
 import {
   EmailShareButton,
@@ -23,7 +25,7 @@ import { SiLinkedin } from "@react-icons/all-files/si/SiLinkedin";
 import { FaFacebookSquare } from "@react-icons/all-files/fa/FaFacebookSquare";
 import { FaTwitterSquare } from "@react-icons/all-files/fa/FaTwitterSquare";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 
 const Navbar = ({ navType = "home", pageName = "home" }) => {
@@ -46,7 +48,8 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
   var slugify = require("slugify");
 
   const slug = slugify(pageName);
-  const shareUrl = `${withPrefix(site.siteMetadata.siteUrl)}/${slug}`;
+  const siteWPrefix = `${site.siteMetadata.siteUrl}/GD/SeniorShow21`;
+  const shareUrl = `${siteWPrefix}/${slug}`;
 
   const nav = useRef(null);
   const trigger = useRef(null);
@@ -54,6 +57,16 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
 
   const [scrolled, setScrolled] = useState(false); 
   const [opened, setOpened] = useState(false);
+
+  const arrowClick = (target) => {
+    gsap.to(window, {scrollTo:`#${target}`, duration: 0.5, ease:'ease-in-out'})
+  }
+
+  const scrollTop = () => {
+    if (navType === "home"){
+      gsap.to(window, {scrollTo: 0, duration: 0.5, ease:'ease-in-out'})
+    }
+  }
 
   useEffect(() => {
     if (navType === "home"){
@@ -85,14 +98,14 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
         <>
 
 
-          <a className="navMenuItem" href={withPrefix("/#intro")}>intro</a>
+          <a className="navMenuItem" onClick={() => {arrowClick('intro')}} href={"/#intro"}>intro</a>
 
 
-          <a className="navMenuItem" href={withPrefix("/#students")}>students</a>
+          <a className="navMenuItem" onClick={() => {arrowClick('students')}} href={"/#students"}>students</a>
 
-          <a className="navMenuItem" href={withPrefix("/#social")}>social media</a>
+          <a className="navMenuItem" onClick={() => {arrowClick('social')}} href={"/#social"}>social media</a>
 
-          <a className="navMenuItem" rel="noreferrer" target='_blank' href={`https://drexel.edu/westphal/academics/undergraduate/graphic-design/senior-show/`}>more info</a>
+          <a className="navMenuItem" target='_blank' href={`https://drexel.edu/westphal/academics/undergraduate/graphic-design`}>more info</a>
         </>
       );
     } else {
@@ -157,6 +170,7 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
           cover
           to="/"
           bg="#EC6B5B"
+          onClick={() => {scrollTop();}}
           className="navLogo"
           direction="right"
           duration={1}
@@ -181,7 +195,11 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
         
       </div>
     </nav>
-      {navType === 'home' ? <div ref={trigger} className={`triggerHome ${(!scrolled && navType === 'home') ? 'init' : ''}`}><h3>↓</h3></div> : ''}
+      {navType === 'home' ? <div aria-label={`start`} ref={trigger} className={`triggerHome ${(!scrolled && navType === 'home') ? 'init' : ''}`}>
+        <button onClick={() => {arrowClick('intro')}} >
+          <h3>↓</h3>
+        </button>
+      </div> : ''}
       {navType === 'home' ? <button aria-label={`toggle menu`} onClick= {() => setOpened(!opened)} className={`overlay ${(opened && navType === 'home') ? 'expand' : 'none'}`}></button> : ''}
 
     </>

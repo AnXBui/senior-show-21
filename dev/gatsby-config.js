@@ -58,12 +58,6 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: "gatsby-plugin-anchor-links",
-      options: {
-        duration: 250,
-      },
-    },
     // {
     //   resolve: `gatsby-plugin-layout`,
     //   options: {
