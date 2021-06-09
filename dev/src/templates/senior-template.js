@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { graphql } from "gatsby";
+import { graphql, withPrefix } from "gatsby";
 import SocialIcon from "../components/SocialIcon";
 import Explosive from "../components/svg/Explosive";
 import Project from "../components/Project";
@@ -27,14 +27,7 @@ export const query = graphql`
       }
 
       photo {
-        childImageSharp {
-          gatsbyImageData(
-            layout: FULL_WIDTH, 
-            placeholder: BLURRED, 
-            aspectRatio: 1, 
-            sizes:"15w"
-            formats: [AUTO, WEBP, AVIF])
-        }
+        publicURL
       }
 
       signature {
@@ -58,7 +51,7 @@ export const query = graphql`
           localFile {
             childImageSharp {
               gatsbyImageData(
-                formats: [AUTO, WEBP, AVIF],
+                formats: [AUTO, WEBP],
                 sizes:"(min-width: 768px) 40w , 90w"
                 layout: FULL_WIDTH,
                 quality: 80,
@@ -86,10 +79,20 @@ const SeniorProfile = ({ data, pageContext }) => {
 
   const { senior } = data;
   const { name, bio, social_media, website, projects_list } = senior;
-  const signature = senior.signature.publicURL;
-  const photo = getImage(senior.photo);
+  let signature = senior.signature.publicURL;
+  let photo = senior.photo.publicURL;
   const url = slugify(name);
 
+  let signaturePrefixed = signature;;
+  let photoPrefixed = photo;
+
+  if (signature.startsWith("/static")){
+    signaturePrefixed= withPrefix(signature.substring(1));
+  } 
+
+  if (photo.startsWith("/static")){
+    photoPrefixed = withPrefix(photo.substring(1));
+  }
 
   const [bioState, setBio] = useState(false);
 
@@ -138,13 +141,14 @@ const SeniorProfile = ({ data, pageContext }) => {
           <div className="seniorInfoMain">
 
             <div className={styles.photo}>
-              <GatsbyImage critical={true} loading='eager' image={photo} alt={data.name + "'s photo"} />
+              {/* <GatsbyImage critical={true} loading='eager' image={photo} alt={data.name + "'s photo"} /> */}
+              <img src={photoPrefixed} alt={`${name}'s photo`}/>
             </div>
             
             <img
               className="seniorInfoName seniorSignature"
-              src={signature}
-              alt={name + "'s signature"}
+              src={signaturePrefixed}
+              alt={`${name}'s signature`}
             />
           </div>
 

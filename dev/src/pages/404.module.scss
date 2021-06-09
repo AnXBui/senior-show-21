@@ -10,8 +10,17 @@
   background: var(--dark);
 
   h2 {
+    position: relative;
+    z-index: 2;
     font-size: clamp(2rem, 4vw, 4rem);
     color: var(--light);
+  }
+
+  p {
+    position: relative;
+    color: var(--light);
+    margin-top: 2rem;
+    z-index: 2;
   }
 }
 
@@ -19,4 +28,27 @@
   margin-top: 2rem;
   font-size: clamp(1.5rem, 1.5vw, 3rem);
   color: var(--red);
+  z-index: 2;
+  display: block;
+  text-transform: uppercase;
+}
+
+.explosive {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  > div {
+    position: absolute;
+    width: 90vw;
+    height: 90vw;
+    top: calc(50vh - 45vw);
+    left: calc(5vw);
+    z-index: 1;
+    opacity: 0.1;
+  }
 }

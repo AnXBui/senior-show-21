@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import { graphql, useStaticQuery} from "gatsby";
+import { graphql, useStaticQuery, withPrefix} from "gatsby";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
-import { withPrefix } from "gatsby"
 
 
 
@@ -98,12 +97,12 @@ const Navbar = ({ navType = "home", pageName = "home" }) => {
         <>
 
 
-          <a className="navMenuItem" onClick={() => {arrowClick('intro')}} href={"/#intro"}>intro</a>
+          <a className="navMenuItem" onClick={() => {arrowClick('intro')}} href={withPrefix("/#intro")}>intro</a>
 
 
-          <a className="navMenuItem" onClick={() => {arrowClick('students')}} href={"/#students"}>students</a>
+          <a className="navMenuItem" onClick={() => {arrowClick('students')}} href={withPrefix("/#students")}>students</a>
 
-          <a className="navMenuItem" onClick={() => {arrowClick('social')}} href={"/#social"}>social media</a>
+          <a className="navMenuItem" onClick={() => {arrowClick('social')}} href={withPrefix("/#social")}>social media</a>
 
           <a className="navMenuItem" target='_blank' href={`https://drexel.edu/westphal/academics/undergraduate/graphic-design`}>more info</a>
         </>
